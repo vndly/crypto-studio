@@ -25,13 +25,25 @@ public class Analyzer
 
         for (CandleStick candleStick : candleSticks)
         {
+            buyStrategy.update(candleStick);
+            sellStrategy.update(candleStick);
+
             if (state == State.BUYING)
             {
-                // TODO
+                if (buyStrategy.isTriggered())
+                {
+                    // TODO
+                    state = State.SELLING;
+                }
             }
             else if (state == State.SELLING)
             {
-                // TODO
+                if (sellStrategy.isTriggered())
+                {
+                    // TODO
+
+                    state = State.BUYING;
+                }
             }
         }
 

@@ -1,9 +1,14 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
+import com.mauriciotogneri.cryptostudio.model.CandleStick;
 import com.mauriciotogneri.javautils.Strings;
 
 public abstract class Strategy
 {
+    public abstract void update(CandleStick candleStick);
+
+    public abstract boolean isTriggered();
+
     public static Strategy fromString(String name)
     {
         if (Strings.equals(name, "GAIN"))
