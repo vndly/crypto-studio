@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.parameters;
+package com.mauriciotogneri.cryptostudio.configuration;
 
 import com.mauriciotogneri.javautils.Resource;
 
@@ -6,8 +6,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Parameters
+public class Configuration
 {
+    public final Range<String> pair;
     public final Range<Double> maxCost;
 
     public final Range<String> buyStrategy;
@@ -19,7 +20,7 @@ public class Parameters
     public final Range<Double> trailingProfit;
     public final Range<Double> stopLossTrigger;
 
-    public Parameters(String filePath) throws Exception
+    public Configuration(String filePath) throws Exception
     {
         Properties properties = new Properties();
         InputStream input = null;
@@ -29,6 +30,7 @@ public class Parameters
             input = new FileInputStream(filePath);
             properties.load(input);
 
+            pair = new RangeString(properties.getProperty("pair"));
             maxCost = new RangeDouble(properties.getProperty("max_cost"));
 
             buyStrategy = new RangeString(properties.getProperty("buy_strategy"));

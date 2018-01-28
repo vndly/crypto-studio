@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.parameters;
+package com.mauriciotogneri.cryptostudio.configuration;
 
 import java.util.ArrayList;
 import java.util.Iterator;

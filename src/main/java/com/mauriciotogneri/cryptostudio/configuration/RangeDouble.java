@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.parameters;
+package com.mauriciotogneri.cryptostudio.configuration;
 
 public class RangeDouble extends Range<Double>
 {

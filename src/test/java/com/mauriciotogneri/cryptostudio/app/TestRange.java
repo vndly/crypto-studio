@@ -1,8 +1,8 @@
 package com.mauriciotogneri.cryptostudio.app;
 
-import com.mauriciotogneri.cryptostudio.parameters.Range;
-import com.mauriciotogneri.cryptostudio.parameters.RangeDouble;
-import com.mauriciotogneri.cryptostudio.parameters.RangeString;
+import com.mauriciotogneri.cryptostudio.configuration.Range;
+import com.mauriciotogneri.cryptostudio.configuration.RangeDouble;
+import com.mauriciotogneri.cryptostudio.configuration.RangeString;
 
 import org.junit.Assert;
 import org.junit.Test;

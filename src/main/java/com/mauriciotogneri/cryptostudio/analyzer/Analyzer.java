@@ -1,28 +1,18 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
-import com.mauriciotogneri.cryptostudio.strategies.Strategy;
+import com.mauriciotogneri.cryptostudio.result.Result;
 
 public class Analyzer
 {
-    public Result run(double maxCost,
-                      Strategy buyStrategy,
-                      double buyValue,
-                      double trailingBuy,
-                      Strategy sellStrategy,
-                      double sellValue,
-                      double trailingProfit,
-                      double stopLossTrigger)
+    public Result run(Parameters parameters)
     {
-        System.out.println(maxCost);
-        System.out.println(buyStrategy);
-        System.out.println(buyValue);
-        System.out.println(trailingBuy);
-        System.out.println(sellStrategy);
-        System.out.println(sellValue);
-        System.out.println(trailingProfit);
-        System.out.println(stopLossTrigger);
-        System.out.println("======================");
+        Result result = new Result(parameters);
 
-        return new Result();
+        // TODO: do magic stuff
+        result.event();
+        result.event();
+        result.event();
+
+        return result;
     }
 }
