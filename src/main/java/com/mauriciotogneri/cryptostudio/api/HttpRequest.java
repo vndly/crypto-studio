@@ -8,6 +8,8 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
 
 public class HttpRequest
 {
@@ -15,38 +17,43 @@ public class HttpRequest
 
     public HttpRequest()
     {
-        this.client = new OkHttpClient();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(Level.BODY);
+
+        this.client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .build();
     }
 
-    public <T> T execute(HttpUrl url, Class<T> clazz) throws Exception
+    public <T> T execute(HttpUrl url, Class<T> clazz)
     {
         String body = response(url);
 
         return new Gson().fromJson(body, clazz);
     }
 
-    public JsonElement execute(HttpUrl url) throws Exception
+    public JsonElement execute(HttpUrl url)
     {
-//        HttpUrl uri = new HttpUrl.Builder()
-//                .scheme("http")
-//                .host("www.google.com")
-//                .addPathSegment("search")
-//                .addQueryParameter("q", "polar bears")
-//                .build();
-
         String body = response(url);
 
         return new JsonParser().parse(body);
     }
 
-    private String response(HttpUrl url) throws Exception
+    private String response(HttpUrl url)
     {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        try
+        {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
 
-        Response response = client.newCall(request).execute();
+            Response response = client.newCall(request).execute();
 
-        return response.body().string();
+            return response.body().string();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 }
