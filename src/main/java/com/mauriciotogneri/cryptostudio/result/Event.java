@@ -1,5 +1,11 @@
 package com.mauriciotogneri.cryptostudio.result;
 
-public class Event
+public abstract class Event
 {
+    protected final long time;
+
+    protected Event(long time)
+    {
+        this.time = time;
+    }
 }

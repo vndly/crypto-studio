@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class Range<T> implements Iterable<T>
 {
-    private List<T> list = new ArrayList<>();
+    private final List<T> list = new ArrayList<>();
 
     protected void add(T element)
     {
