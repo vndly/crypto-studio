@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
-import com.mauriciotogneri.cryptostudio.strategies.Strategy;
+import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
 public class Parameters
 {

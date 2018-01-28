@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.strategies;
+package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.javautils.Strings;
 
