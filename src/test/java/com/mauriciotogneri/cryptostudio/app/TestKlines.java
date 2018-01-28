@@ -7,16 +7,19 @@ import com.mauriciotogneri.cryptostudio.types.Interval;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
 
 public class TestKlines
 {
     @Test
-    public void testKlines()
+    public void testKlines() throws IOException
     {
-        Klines klines = new Klines("ETHBTC", Interval.ONE_MINUTE, 2000);
+        int limit = 10000;
+
+        Klines klines = new Klines("ETHBTC", Interval.ONE_MINUTE, limit);
         List<CandleStick> list = klines.execute();
 
-        Assert.assertTrue(list.size() == 2000);
+        Assert.assertTrue(list.size() == limit);
     }
 }
