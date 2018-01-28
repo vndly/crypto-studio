@@ -5,9 +5,9 @@ import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
 import com.mauriciotogneri.cryptostudio.result.Result;
+import com.mauriciotogneri.javautils.Resource;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,23 +61,15 @@ public class Studio
         return results;
     }
 
-    public static void output(List<Result> results, String filePath) throws Exception
-    {
-        String json = new GsonBuilder().setPrettyPrinting().create().toJson(results);
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-        writer.write(json);
-        writer.flush();
-        writer.close();
-    }
-
     public static void main(String[] args) throws Exception
     {
         if (args.length > 1)
         {
             Studio studio = new Studio();
             List<Result> results = studio.run(new Configuration(args[0]));
-            output(results, args[1]);
+
+            String json = new GsonBuilder().setPrettyPrinting().create().toJson(results);
+            Resource.save(new File(args[1]), json);
         }
         else
         {

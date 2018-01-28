@@ -7,13 +7,12 @@ import com.mauriciotogneri.cryptostudio.types.Interval;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.List;
 
 public class TestKlines
 {
     @Test
-    public void testKlines() throws IOException
+    public void testKlines()
     {
         int limit = 10000;
 
