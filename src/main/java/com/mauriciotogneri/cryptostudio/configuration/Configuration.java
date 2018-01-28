@@ -9,6 +9,7 @@ import java.util.Properties;
 public class Configuration
 {
     public final Range<String> pair;
+    public final Range<String> interval;
     public final Range<Double> maxCost;
 
     public final Range<String> buyStrategy;
@@ -31,6 +32,7 @@ public class Configuration
             properties.load(input);
 
             pair = new RangeString(properties.getProperty("pair"));
+            interval = new RangeString(properties.getProperty("interval"));
             maxCost = new RangeDouble(properties.getProperty("max_cost"));
 
             buyStrategy = new RangeString(properties.getProperty("buy_strategy"));

@@ -16,8 +16,8 @@ public class Result
         this.events = new ArrayList<>();
     }
 
-    public void event()
+    public void event(Event event)
     {
-        // TODO
+        events.add(event);
     }
 }

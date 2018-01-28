@@ -20,34 +20,38 @@ public class Studio
 
         for (String pair : configuration.pair)
         {
-            for (Double maxCost : configuration.maxCost)
+            for (String interval : configuration.interval)
             {
-                for (String buyStrategy : configuration.buyStrategy)
+                for (Double maxCost : configuration.maxCost)
                 {
-                    for (Double buyValue : configuration.buyValue)
+                    for (String buyStrategy : configuration.buyStrategy)
                     {
-                        for (Double trailingBuy : configuration.trailingBuy)
+                        for (Double buyValue : configuration.buyValue)
                         {
-                            for (String sellStrategy : configuration.sellStrategy)
+                            for (Double trailingBuy : configuration.trailingBuy)
                             {
-                                for (Double sellValue : configuration.sellValue)
+                                for (String sellStrategy : configuration.sellStrategy)
                                 {
-                                    for (Double trailingProfit : configuration.trailingProfit)
+                                    for (Double sellValue : configuration.sellValue)
                                     {
-                                        for (Double stopLossTrigger : configuration.stopLossTrigger)
+                                        for (Double trailingProfit : configuration.trailingProfit)
                                         {
-                                            Parameters parameters = new Parameters(pair,
-                                                                                   maxCost,
-                                                                                   buyStrategy,
-                                                                                   buyValue,
-                                                                                   trailingBuy,
-                                                                                   sellStrategy,
-                                                                                   sellValue,
-                                                                                   trailingProfit,
-                                                                                   stopLossTrigger);
+                                            for (Double stopLossTrigger : configuration.stopLossTrigger)
+                                            {
+                                                Parameters parameters = new Parameters(pair,
+                                                                                       interval,
+                                                                                       maxCost,
+                                                                                       buyStrategy,
+                                                                                       buyValue,
+                                                                                       trailingBuy,
+                                                                                       sellStrategy,
+                                                                                       sellValue,
+                                                                                       trailingProfit,
+                                                                                       stopLossTrigger);
 
-                                            Result result = analyzer.run(parameters);
-                                            results.add(result);
+                                                Result result = analyzer.run(parameters);
+                                                results.add(result);
+                                            }
                                         }
                                     }
                                 }

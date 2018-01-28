@@ -1,6 +1,11 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
+import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.result.Event;
 import com.mauriciotogneri.cryptostudio.result.Result;
+
+import java.util.List;
+import java.util.Random;
 
 public class Analyzer
 {
@@ -8,10 +13,16 @@ public class Analyzer
     {
         Result result = new Result(parameters);
 
-        // TODO: do magic stuff
-        result.event();
-        result.event();
-        result.event();
+        List<CandleStick> candleSticks = parameters.candleSticks();
+        Random random = new Random();
+
+        for (CandleStick candleStick : candleSticks)
+        {
+            if (random.nextInt(1000) == 0)
+            {
+                result.event(new Event());
+            }
+        }
 
         return result;
     }
