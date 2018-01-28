@@ -1,7 +1,7 @@
 package com.mauriciotogneri.cryptostudio.app;
 
 import com.mauriciotogneri.cryptostudio.parameters.Range;
-import com.mauriciotogneri.cryptostudio.parameters.RangeFloat;
+import com.mauriciotogneri.cryptostudio.parameters.RangeDouble;
 import com.mauriciotogneri.cryptostudio.parameters.RangeString;
 
 import org.junit.Assert;
@@ -28,16 +28,30 @@ public class TestRange
     }
 
     @Test
-    public void testRangeFloat()
+    public void testRangeDouble()
     {
-        List<Float> list = new ArrayList<>();
-        Range<Float> range = new RangeFloat("1 4 0.5");
+        List<Double> list = new ArrayList<>();
+        Range<Double> range = new RangeDouble("1 4 0.5");
 
-        for (Float element : range)
+        for (Double element : range)
         {
             list.add(element);
         }
 
-        Assert.assertTrue(list.equals(Arrays.asList(1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f)));
+        Assert.assertTrue(list.equals(Arrays.asList(1d, 1.5d, 2d, 2.5d, 3d, 3.5d, 4d)));
+    }
+
+    @Test
+    public void testRangeDoubleSingle()
+    {
+        List<Double> list = new ArrayList<>();
+        Range<Double> range = new RangeDouble("-0.5");
+
+        for (Double element : range)
+        {
+            list.add(element);
+        }
+
+        Assert.assertTrue(list.equals(Arrays.asList(-0.5d)));
     }
 }

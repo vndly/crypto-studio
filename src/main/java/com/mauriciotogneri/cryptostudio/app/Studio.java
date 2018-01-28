@@ -10,21 +10,21 @@ public class Studio
     {
         Analyzer analyzer = new Analyzer();
 
-        for (Float maxCost : parameters.maxCost)
+        for (Double maxCost : parameters.maxCost)
         {
             for (String buyStrategy : parameters.buyStrategy)
             {
-                for (Float buyValue : parameters.buyValue)
+                for (Double buyValue : parameters.buyValue)
                 {
-                    for (Float trailingBuy : parameters.trailingBuy)
+                    for (Double trailingBuy : parameters.trailingBuy)
                     {
                         for (String sellStrategy : parameters.sellStrategy)
                         {
-                            for (Float sellValue : parameters.sellValue)
+                            for (Double sellValue : parameters.sellValue)
                             {
-                                for (Float trailingProfit : parameters.trailingProfit)
+                                for (Double trailingProfit : parameters.trailingProfit)
                                 {
-                                    for (Float stopLossTrigger : parameters.stopLossTrigger)
+                                    for (Double stopLossTrigger : parameters.stopLossTrigger)
                                     {
                                         analyzer.run(maxCost,
                                                      Strategy.fromString(buyStrategy),

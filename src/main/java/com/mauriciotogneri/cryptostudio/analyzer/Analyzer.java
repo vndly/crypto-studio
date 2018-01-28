@@ -4,14 +4,14 @@ import com.mauriciotogneri.cryptostudio.strategies.Strategy;
 
 public class Analyzer
 {
-    public Result run(float maxCost,
+    public Result run(double maxCost,
                       Strategy buyStrategy,
-                      float buyValue,
-                      float trailingBuy,
+                      double buyValue,
+                      double trailingBuy,
                       Strategy sellStrategy,
-                      float sellValue,
-                      float trailingProfit,
-                      float stopLossTrigger)
+                      double sellValue,
+                      double trailingProfit,
+                      double stopLossTrigger)
     {
         System.out.println(maxCost);
         System.out.println(buyStrategy);

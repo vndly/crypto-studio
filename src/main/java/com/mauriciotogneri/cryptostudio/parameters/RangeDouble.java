@@ -1,20 +1,20 @@
 package com.mauriciotogneri.cryptostudio.parameters;
 
-public class RangeFloat extends Range<Float>
+public class RangeDouble extends Range<Double>
 {
-    public RangeFloat(String input)
+    public RangeDouble(String input)
     {
         String[] parts = input.split(" ");
 
         if (parts.length == 1)
         {
-            add(Float.parseFloat(parts[0]));
+            add(Double.parseDouble(parts[0]));
         }
         else if (parts.length == 3)
         {
-            Float start = Float.parseFloat(parts[0].trim());
-            Float end = Float.parseFloat(parts[1].trim());
-            Float step = Float.parseFloat(parts[2].trim());
+            Double start = Double.parseDouble(parts[0].trim());
+            Double end = Double.parseDouble(parts[1].trim());
+            Double step = Double.parseDouble(parts[2].trim());
 
             while (start <= end)
             {
