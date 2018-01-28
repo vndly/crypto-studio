@@ -1,2 +1,1 @@
-# crypto-studio
-Crypto Studio
+# Crypto Studio
