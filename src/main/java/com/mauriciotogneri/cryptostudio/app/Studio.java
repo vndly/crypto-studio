@@ -1,11 +1,10 @@
 package com.mauriciotogneri.cryptostudio.app;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
 import com.mauriciotogneri.cryptostudio.result.Result;
-import com.mauriciotogneri.cryptostudio.strategies.Strategy;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -39,10 +38,10 @@ public class Studio
                                         {
                                             Parameters parameters = new Parameters(pair,
                                                                                    maxCost,
-                                                                                   Strategy.fromString(buyStrategy),
+                                                                                   buyStrategy,
                                                                                    buyValue,
                                                                                    trailingBuy,
-                                                                                   Strategy.fromString(sellStrategy),
+                                                                                   sellStrategy,
                                                                                    sellValue,
                                                                                    trailingProfit,
                                                                                    stopLossTrigger);
@@ -64,7 +63,7 @@ public class Studio
 
     public static void output(List<Result> results, String filePath) throws Exception
     {
-        String json = new Gson().toJson(results);
+        String json = new GsonBuilder().setPrettyPrinting().create().toJson(results);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
         writer.write(json);
