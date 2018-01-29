@@ -15,7 +15,7 @@ public abstract class Strategy
     {
         if (Strings.equals(name, "GAIN"))
         {
-            return new GAIN();
+            return new GAIN(parameters.sellValue);
         }
         else if (Strings.equals(name, "LOSS"))
         {

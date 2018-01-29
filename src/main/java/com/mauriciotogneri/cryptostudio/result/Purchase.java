@@ -1,11 +1,11 @@
 package com.mauriciotogneri.cryptostudio.result;
 
-public class BuyEvent extends Event
+public class Purchase extends Event
 {
     public final double boughtPrice;
     public final double boughtAmount;
 
-    public BuyEvent(long time, double boughtPrice, double boughtAmount)
+    public Purchase(long time, double boughtPrice, double boughtAmount)
     {
         super(time);
 
