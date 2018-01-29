@@ -65,11 +65,11 @@ public class Parameters
 
     public Strategy buyStrategy()
     {
-        return Strategy.fromString(buyStrategy);
+        return Strategy.fromString(buyStrategy, this);
     }
 
     public Strategy sellStrategy()
     {
-        return Strategy.fromString(sellStrategy);
+        return Strategy.fromString(sellStrategy, this);
     }
 }

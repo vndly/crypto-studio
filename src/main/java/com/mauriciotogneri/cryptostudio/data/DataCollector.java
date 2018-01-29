@@ -13,10 +13,10 @@ public class DataCollector
 {
     public static void main(String[] args) throws Exception
     {
-        String pair = "XRPBTC";
+        String pair = "ETHBTC";
         Interval interval = Interval.ONE_MINUTE;
-        Integer limit = 10000;
-        String filePath = String.format("data/%s_%s_%s.json", pair, interval, limit);
+        Integer limit = 43200; // 30 days
+        String filePath = String.format("data/%s_%s.json", pair, interval);
 
         Klines klines = new Klines(pair, interval, limit);
         List<CandleStick> list = klines.execute();

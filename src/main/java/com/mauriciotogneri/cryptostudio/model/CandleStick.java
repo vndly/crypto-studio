@@ -38,4 +38,9 @@ public class CandleStick
         this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
         this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
     }
+
+    public double price()
+    {
+        return (open + close + high + low) / 4;
+    }
 }

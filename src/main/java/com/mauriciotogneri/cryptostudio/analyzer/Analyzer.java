@@ -1,6 +1,7 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
 import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.result.BuyEvent;
 import com.mauriciotogneri.cryptostudio.result.Result;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
@@ -23,6 +24,9 @@ public class Analyzer
         Strategy buyStrategy = parameters.buyStrategy();
         Strategy sellStrategy = parameters.sellStrategy();
 
+        double boughtPrice;
+        double boughtAmount;
+
         for (CandleStick candleStick : candleSticks)
         {
             buyStrategy.update(candleStick);
@@ -34,6 +38,11 @@ public class Analyzer
                 {
                     // TODO
                     state = State.SELLING;
+
+                    boughtPrice = candleStick.price();
+                    boughtAmount = parameters.maxCost / boughtPrice;
+
+                    result.event(new BuyEvent(candleStick.openTime, boughtPrice, boughtAmount));
                 }
             }
             else if (state == State.SELLING)

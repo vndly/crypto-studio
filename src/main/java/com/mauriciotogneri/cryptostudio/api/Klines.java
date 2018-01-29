@@ -42,6 +42,15 @@ public class Klines
             list.addAll(newElements);
 
             endTime = newElements.get(newElements.size() - 1).openTime - 1;
+
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
         }
 
         Collections.reverse(list);

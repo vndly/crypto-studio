@@ -49,6 +49,11 @@ public class HttpRequest
 
             Response response = client.newCall(request).execute();
 
+            if (response.code() == 429)
+            {
+                System.exit(-1);
+            }
+
             return response.body().string();
         }
         catch (Exception e)
