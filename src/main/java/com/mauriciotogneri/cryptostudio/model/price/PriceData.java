@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.model;
+package com.mauriciotogneri.cryptostudio.model.price;
 
 public interface PriceData
 {

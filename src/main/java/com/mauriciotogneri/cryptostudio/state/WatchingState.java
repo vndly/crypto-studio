@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.model.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 
 public class WatchingState extends State
 {

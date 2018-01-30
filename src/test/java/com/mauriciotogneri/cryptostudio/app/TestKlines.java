@@ -1,7 +1,7 @@
 package com.mauriciotogneri.cryptostudio.app;
 
 import com.mauriciotogneri.cryptostudio.api.Klines;
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 
 import org.junit.Assert;

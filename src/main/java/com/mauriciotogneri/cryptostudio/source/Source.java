@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.source;
 
-import com.mauriciotogneri.cryptostudio.model.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.javautils.Strings;
 
 import java.util.List;

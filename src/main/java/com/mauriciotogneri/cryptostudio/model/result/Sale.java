@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.result;
+package com.mauriciotogneri.cryptostudio.model.result;
 
 public class Sale extends Event
 {

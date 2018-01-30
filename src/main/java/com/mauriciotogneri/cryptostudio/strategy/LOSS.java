@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 import com.mauriciotogneri.cryptostudio.utils.RingBuffer;
 

@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
-import com.mauriciotogneri.cryptostudio.result.Result;
+import com.mauriciotogneri.cryptostudio.model.result.Result;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;

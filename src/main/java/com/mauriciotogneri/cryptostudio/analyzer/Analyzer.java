@@ -1,8 +1,8 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
-import com.mauriciotogneri.cryptostudio.model.PriceData;
-import com.mauriciotogneri.cryptostudio.result.Purchase;
-import com.mauriciotogneri.cryptostudio.result.Result;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.result.Purchase;
+import com.mauriciotogneri.cryptostudio.model.result.Result;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 import com.mauriciotogneri.cryptostudio.utils.Decimal;
@@ -20,7 +20,7 @@ public class Analyzer
         Result result = new Result(parameters);
 
         State state = State.BUYING;
-        Source source  = parameters.source();
+        Source source = parameters.source();
         Strategy buyStrategy = parameters.buyStrategy();
         Strategy sellStrategy = parameters.sellStrategy();
 

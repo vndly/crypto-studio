@@ -1,8 +1,8 @@
-package com.mauriciotogneri.cryptostudio.data;
+package com.mauriciotogneri.cryptostudio.app;
 
 import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.api.Klines;
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.source.FileSource;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 import com.mauriciotogneri.javautils.Resource;

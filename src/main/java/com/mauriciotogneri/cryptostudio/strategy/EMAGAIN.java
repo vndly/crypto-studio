@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 
 public class EMAGAIN extends Strategy
 {

@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.result;
+package com.mauriciotogneri.cryptostudio.model.result;
 
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 

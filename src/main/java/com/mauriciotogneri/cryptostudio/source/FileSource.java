@@ -2,8 +2,8 @@ package com.mauriciotogneri.cryptostudio.source;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
-import com.mauriciotogneri.cryptostudio.model.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

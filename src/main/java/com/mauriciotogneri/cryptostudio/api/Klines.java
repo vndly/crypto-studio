@@ -2,7 +2,7 @@ package com.mauriciotogneri.cryptostudio.api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 
 import java.util.ArrayList;
