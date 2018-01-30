@@ -85,8 +85,7 @@ public enum Interval
         }
     }
 
-    @Override
-    public String toString()
+    public String code()
     {
         return code;
     }

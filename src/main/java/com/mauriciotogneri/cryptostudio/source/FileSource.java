@@ -26,7 +26,8 @@ public class FileSource extends Source
     {
         try
         {
-            InputStream inputStream = new FileInputStream(String.format("data/%s_%s.json", pair, interval));
+            String filePath = file(pair, interval);
+            InputStream inputStream = new FileInputStream(filePath);
             String json = new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next();
 
             return new Gson().fromJson(json, new TypeToken<List<CandleStick>>()
@@ -37,5 +38,10 @@ public class FileSource extends Source
         {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String file(String pair, String interval)
+    {
+        return String.format("data/%s_%s.json", pair, interval);
     }
 }

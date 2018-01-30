@@ -2,7 +2,7 @@ package com.mauriciotogneri.cryptostudio.state;
 
 import com.mauriciotogneri.cryptostudio.model.PriceData;
 
-public interface State
+public abstract class State
 {
-    State update(PriceData priceData);
+    public abstract State update(PriceData priceData);
 }

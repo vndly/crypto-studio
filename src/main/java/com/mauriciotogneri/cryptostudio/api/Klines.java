@@ -65,7 +65,7 @@ public class Klines
                 .host("api.binance.com")
                 .encodedPath("/api/v1/klines")
                 .addQueryParameter("symbol", pair)
-                .addQueryParameter("interval", interval.toString())
+                .addQueryParameter("interval", interval.code())
                 .addQueryParameter("limit", String.valueOf(size));
 
         if (endTime != null)

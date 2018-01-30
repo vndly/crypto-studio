@@ -27,7 +27,7 @@ public class LOSS extends Strategy
     @Override
     public void update(PriceData newPriceData)
     {
-        ring.add(priceData.price());
+        ring.add(newPriceData.price());
         priceData = newPriceData;
     }
 
