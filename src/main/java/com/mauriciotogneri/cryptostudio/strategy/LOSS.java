@@ -2,6 +2,7 @@ package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.types.Interval;
+import com.mauriciotogneri.cryptostudio.utils.Percentage;
 import com.mauriciotogneri.cryptostudio.utils.RingBuffer;
 
 /**
@@ -20,7 +21,7 @@ public class LOSS extends Strategy
 
     public LOSS(double buyValue, Interval interval)
     {
-        this.buyValue = Math.abs(buyValue);
+        this.buyValue = buyValue;
         this.ring = new RingBuffer(interval.onDaySize());
     }
 
@@ -34,7 +35,7 @@ public class LOSS extends Strategy
     @Override
     public boolean isTriggered()
     {
-        double limit = ring.oldest() - (ring.oldest() * buyValue / 100);
+        double limit = Percentage.decreaseOf(buyValue, ring.oldest());
 
         return ring.isFull() && (priceData.price() < limit);
     }
