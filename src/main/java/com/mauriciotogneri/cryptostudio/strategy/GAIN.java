@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 
 /**
  * Sell as soon as the current price reaches the profit specified.
@@ -19,7 +19,7 @@ public class GAIN extends Strategy
     }
 
     @Override
-    public void update(CandleStick candleStick)
+    public void update(PriceData priceData)
     {
         // TODO
     }

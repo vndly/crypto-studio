@@ -1,13 +1,13 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 import com.mauriciotogneri.javautils.Strings;
 
 public abstract class Strategy
 {
-    public abstract void update(CandleStick candleStick);
+    public abstract void update(PriceData priceData);
 
     public abstract boolean isTriggered();
 

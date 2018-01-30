@@ -8,6 +8,7 @@ import java.util.Properties;
 
 public class Configuration
 {
+    public final Range<String> source;
     public final Range<String> pair;
     public final Range<String> interval;
     public final Range<Double> maxCost;
@@ -31,6 +32,7 @@ public class Configuration
             input = new FileInputStream(filePath);
             properties.load(input);
 
+            source = new RangeString(properties.getProperty("source"));
             pair = new RangeString(properties.getProperty("pair"));
             interval = new RangeString(properties.getProperty("interval"));
             maxCost = new RangeDouble(properties.getProperty("max_cost"));

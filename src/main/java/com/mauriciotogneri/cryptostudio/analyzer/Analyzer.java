@@ -1,12 +1,11 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 import com.mauriciotogneri.cryptostudio.result.Purchase;
 import com.mauriciotogneri.cryptostudio.result.Result;
+import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 import com.mauriciotogneri.cryptostudio.utils.Decimal;
-
-import java.util.List;
 
 public class Analyzer
 {
@@ -21,16 +20,16 @@ public class Analyzer
         Result result = new Result(parameters);
 
         State state = State.BUYING;
-        List<CandleStick> candleSticks = parameters.candleSticks();
+        Source source  = parameters.source();
         Strategy buyStrategy = parameters.buyStrategy();
         Strategy sellStrategy = parameters.sellStrategy();
 
         Purchase purchase;
 
-        for (CandleStick candleStick : candleSticks)
+        for (PriceData priceData : source.priceData())
         {
-            buyStrategy.update(candleStick);
-            sellStrategy.update(candleStick);
+            buyStrategy.update(priceData);
+            sellStrategy.update(priceData);
 
             if (state == State.BUYING)
             {
@@ -38,9 +37,9 @@ public class Analyzer
                 {
                     state = State.SELLING;
 
-                    double boughtPrice = Decimal.round(candleStick.price());
+                    double boughtPrice = Decimal.round(priceData.price());
                     double boughtAmount = Decimal.round(parameters.maxCost / boughtPrice);
-                    purchase = new Purchase(candleStick.openTime, boughtPrice, boughtAmount);
+                    purchase = new Purchase(priceData.time(), boughtPrice, boughtAmount);
 
                     result.event(purchase);
                 }

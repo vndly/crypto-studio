@@ -1,8 +1,8 @@
 package com.mauriciotogneri.cryptostudio.indicators;
 
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 
 public abstract class Indicator
 {
-    public abstract void update(CandleStick candleStick);
+    public abstract void update(PriceData priceData);
 }

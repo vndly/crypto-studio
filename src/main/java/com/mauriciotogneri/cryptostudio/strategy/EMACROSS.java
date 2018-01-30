@@ -1,11 +1,11 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 
 public class EMACROSS extends Strategy
 {
     @Override
-    public void update(CandleStick candleStick)
+    public void update(PriceData priceData)
     {
         // TODO
     }

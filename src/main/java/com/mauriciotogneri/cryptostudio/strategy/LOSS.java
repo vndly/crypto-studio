@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.CandleStick;
+import com.mauriciotogneri.cryptostudio.model.PriceData;
 import com.mauriciotogneri.cryptostudio.types.Interval;
 import com.mauriciotogneri.cryptostudio.utils.RingBuffer;
 
@@ -16,7 +16,7 @@ public class LOSS extends Strategy
 {
     private final double buyValue;
     private final RingBuffer ring;
-    private CandleStick lastCandleStick;
+    private PriceData priceData;
 
     public LOSS(double buyValue, Interval interval)
     {
@@ -25,10 +25,10 @@ public class LOSS extends Strategy
     }
 
     @Override
-    public void update(CandleStick candleStick)
+    public void update(PriceData newPriceData)
     {
-        ring.add(candleStick.price());
-        lastCandleStick = candleStick;
+        ring.add(priceData.price());
+        priceData = newPriceData;
     }
 
     @Override
@@ -36,6 +36,6 @@ public class LOSS extends Strategy
     {
         double limit = ring.oldest() - (ring.oldest() * buyValue / 100);
 
-        return ring.isFull() && (lastCandleStick.price() < limit);
+        return ring.isFull() && (priceData.price() < limit);
     }
 }
