@@ -1,10 +1,13 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.model.events.StartWatchingEvent;
-import com.mauriciotogneri.cryptostudio.model.session.Session;
+import com.mauriciotogneri.cryptostudio.model.events.TrailingBuyEvent;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.session.Session;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
+/**
+ * Uses the buy strategy to determine if it should by the coin.
+ */
 public class WatchingState extends State
 {
     private final Session session;
@@ -23,7 +26,8 @@ public class WatchingState extends State
 
         if (buyStrategy.isTriggered())
         {
-            session.event(new StartWatchingEvent(priceData.time(), priceData.price()));
+            TrailingBuyEvent trailingBuyEvent = new TrailingBuyEvent(priceData);
+            session.event(trailingBuyEvent);
 
             return new TrailingBuyState(session, priceData.price());
         }

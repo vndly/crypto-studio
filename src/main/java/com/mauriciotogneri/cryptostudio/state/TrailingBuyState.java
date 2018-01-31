@@ -1,9 +1,9 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.model.events.StopWatchingEvent;
-import com.mauriciotogneri.cryptostudio.model.session.Session;
+import com.mauriciotogneri.cryptostudio.model.events.PurchaseEvent;
+import com.mauriciotogneri.cryptostudio.model.events.WatchingEvent;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.events.TrailingBuyEvent;
+import com.mauriciotogneri.cryptostudio.model.session.Session;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 import com.mauriciotogneri.cryptostudio.util.Percentage;
 
@@ -40,10 +40,10 @@ public class TrailingBuyState extends State
                 double boughtPrice = Decimal.round(priceData.price());
                 double boughtAmount = Decimal.round(session.input.maxCost / boughtPrice);
 
-                TrailingBuyEvent trailingBuyEvent = new TrailingBuyEvent(priceData.time(), boughtPrice, boughtAmount);
-                session.event(trailingBuyEvent);
+                PurchaseEvent purchaseEvent = new PurchaseEvent(priceData, boughtPrice, boughtAmount);
+                session.event(purchaseEvent);
 
-                return new SellingState(session, trailingBuyEvent);
+                return new SellingState(session);
             }
             else
             {
@@ -52,7 +52,7 @@ public class TrailingBuyState extends State
         }
         else
         {
-            session.event(new StopWatchingEvent(priceData.time(), price));
+            session.event(new WatchingEvent(priceData));
 
             return new WatchingState(session);
         }
