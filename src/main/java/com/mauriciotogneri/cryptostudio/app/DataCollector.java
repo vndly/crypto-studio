@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.api.Klines;
 import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.source.FileSource;
-import com.mauriciotogneri.cryptostudio.types.Interval;
+import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;

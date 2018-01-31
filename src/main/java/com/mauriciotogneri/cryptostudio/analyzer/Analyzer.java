@@ -4,7 +4,7 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.result.Result;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.state.State;
-import com.mauriciotogneri.cryptostudio.state.WatchingState;
+import com.mauriciotogneri.cryptostudio.state.BuyingState;
 
 public class Analyzer
 {
@@ -14,7 +14,7 @@ public class Analyzer
         Source source = parameters.source();
         Session session = new Session(result, parameters);
 
-        State state = new WatchingState(session);
+        State state = new BuyingState(session);
 
         for (PriceData priceData : source.priceData())
         {

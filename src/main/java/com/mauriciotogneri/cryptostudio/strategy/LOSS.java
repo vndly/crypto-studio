@@ -1,9 +1,9 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.types.Interval;
-import com.mauriciotogneri.cryptostudio.utils.Percentage;
-import com.mauriciotogneri.cryptostudio.utils.RingBuffer;
+import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.util.Percentage;
+import com.mauriciotogneri.cryptostudio.util.RingBuffer;
 
 /**
  * Buy as soon as the pair drops the amount of percentages specified.

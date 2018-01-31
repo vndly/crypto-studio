@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.indicators;
+package com.mauriciotogneri.cryptostudio.indicator;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 

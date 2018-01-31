@@ -2,7 +2,7 @@ package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.types.Interval;
+import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.javautils.Strings;
 
 public abstract class Strategy

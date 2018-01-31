@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.utils;
+package com.mauriciotogneri.cryptostudio.util;
 
 public class RingBuffer
 {

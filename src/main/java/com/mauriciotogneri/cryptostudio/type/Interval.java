@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.types;
+package com.mauriciotogneri.cryptostudio.type;
 
 import com.mauriciotogneri.javautils.Strings;
 

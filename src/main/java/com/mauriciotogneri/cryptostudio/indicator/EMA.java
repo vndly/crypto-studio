@@ -1,8 +1,8 @@
-package com.mauriciotogneri.cryptostudio.indicators;
+package com.mauriciotogneri.cryptostudio.indicator;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 
-public class BB extends Indicator
+public class EMA extends Indicator
 {
     @Override
     public void update(PriceData priceData)

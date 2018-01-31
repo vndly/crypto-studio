@@ -3,8 +3,8 @@ package com.mauriciotogneri.cryptostudio.state;
 import com.mauriciotogneri.cryptostudio.analyzer.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.result.Purchase;
-import com.mauriciotogneri.cryptostudio.utils.Decimal;
-import com.mauriciotogneri.cryptostudio.utils.Percentage;
+import com.mauriciotogneri.cryptostudio.util.Decimal;
+import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 public class TrailingBuyState extends State
 {
@@ -49,7 +49,7 @@ public class TrailingBuyState extends State
         }
         else
         {
-            return new WatchingState(session);
+            return new BuyingState(session);
         }
     }
 }

@@ -4,12 +4,12 @@ import com.mauriciotogneri.cryptostudio.analyzer.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
-public class WatchingState extends State
+public class BuyingState extends State
 {
     private final Session session;
     private final Strategy buyStrategy;
 
-    public WatchingState(Session session)
+    public BuyingState(Session session)
     {
         this.session = session;
         this.buyStrategy = session.parameters.buyStrategy();
