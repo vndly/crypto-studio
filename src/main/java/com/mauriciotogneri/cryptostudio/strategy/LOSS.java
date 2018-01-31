@@ -11,7 +11,7 @@ import com.mauriciotogneri.cryptostudio.util.RingBuffer;
  * <p>
  * Possible buy_value example:
  * buy_value = -7 → buy if the pair has fallen 7% or more in the last 24h
- * 7 → positive numbers are converted to negative. So result is the same as above.
+ * 7 → positive numbers are converted to negative. So output is the same as above.
  */
 public class LOSS extends Strategy
 {

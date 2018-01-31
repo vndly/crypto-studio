@@ -2,7 +2,7 @@ package com.mauriciotogneri.cryptostudio.state;
 
 import com.mauriciotogneri.cryptostudio.analyzer.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.result.Purchase;
+import com.mauriciotogneri.cryptostudio.model.events.Purchase;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 import com.mauriciotogneri.cryptostudio.util.Percentage;
 

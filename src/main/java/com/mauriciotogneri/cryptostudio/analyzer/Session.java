@@ -1,15 +1,15 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
-import com.mauriciotogneri.cryptostudio.model.result.Result;
+import com.mauriciotogneri.cryptostudio.model.output.Output;
 
 public class Session
 {
-    public final Result result;
+    public final Output output;
     public final Parameters parameters;
 
-    public Session(Result result, Parameters parameters)
+    public Session(Output output, Parameters parameters)
     {
-        this.result = result;
+        this.output = output;
         this.parameters = parameters;
     }
 }

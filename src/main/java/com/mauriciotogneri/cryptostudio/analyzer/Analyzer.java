@@ -1,18 +1,18 @@
 package com.mauriciotogneri.cryptostudio.analyzer;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.result.Result;
+import com.mauriciotogneri.cryptostudio.model.output.Output;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.state.State;
 import com.mauriciotogneri.cryptostudio.state.BuyingState;
 
 public class Analyzer
 {
-    public Result run(Parameters parameters)
+    public Output run(Parameters parameters)
     {
-        Result result = new Result(parameters);
+        Output output = new Output(parameters);
         Source source = parameters.source();
-        Session session = new Session(result, parameters);
+        Session session = new Session(output, parameters);
 
         State state = new BuyingState(session);
 
@@ -21,6 +21,6 @@ public class Analyzer
             state = state.update(priceData);
         }
 
-        return result;
+        return output;
     }
 }

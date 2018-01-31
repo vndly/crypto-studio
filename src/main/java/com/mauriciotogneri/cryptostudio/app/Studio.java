@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
 import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
-import com.mauriciotogneri.cryptostudio.model.result.Result;
+import com.mauriciotogneri.cryptostudio.model.output.Output;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;
@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Studio
 {
-    public List<Result> run(Configuration configuration)
+    public List<Output> run(Configuration configuration)
     {
-        List<Result> results = new ArrayList<>();
+        List<Output> outputs = new ArrayList<>();
         Analyzer analyzer = new Analyzer();
 
         for (String source : configuration.source)
@@ -52,8 +52,8 @@ public class Studio
                                                                                            trailingProfit,
                                                                                            stopLossTrigger);
 
-                                                    Result result = analyzer.run(parameters);
-                                                    results.add(result);
+                                                    Output output = analyzer.run(parameters);
+                                                    outputs.add(output);
                                                 }
                                             }
                                         }
@@ -66,7 +66,7 @@ public class Studio
             }
         }
 
-        return results;
+        return outputs;
     }
 
     public static void main(String[] args) throws Exception
@@ -74,9 +74,9 @@ public class Studio
         if (args.length > 1)
         {
             Studio studio = new Studio();
-            List<Result> results = studio.run(new Configuration(args[0]));
+            List<Output> outputs = studio.run(new Configuration(args[0]));
 
-            String json = new GsonBuilder().setPrettyPrinting().create().toJson(results);
+            String json = new GsonBuilder().setPrettyPrinting().create().toJson(outputs);
             Resource.save(new File(args[1]), json);
         }
         else

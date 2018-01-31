@@ -2,7 +2,7 @@ package com.mauriciotogneri.cryptostudio.state;
 
 import com.mauriciotogneri.cryptostudio.analyzer.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.result.Purchase;
+import com.mauriciotogneri.cryptostudio.model.events.Purchase;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
 public class SellingState extends State
@@ -18,7 +18,7 @@ public class SellingState extends State
         this.sellStragegy = session.parameters.sellStrategy();
 
         // TODO: remove
-        session.result.event(purchase);
+        session.output.event(purchase);
     }
 
     @Override

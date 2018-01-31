@@ -1,4 +1,4 @@
-package com.mauriciotogneri.cryptostudio.model.result;
+package com.mauriciotogneri.cryptostudio.model.events;
 
 public class Purchase extends Event
 {
