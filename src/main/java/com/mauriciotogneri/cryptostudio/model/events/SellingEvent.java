@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.model.events;
 
-public class Sale extends Event
+public class SellingEvent extends Event
 {
     public final double boughtPrice;
     public final double boughtAmount;
@@ -10,9 +10,9 @@ public class Sale extends Event
 
     public final double profit;
 
-    public Sale(long time, double boughtPrice, double boughtAmount, double soldPrice, double soldAmount)
+    public SellingEvent(long time, double boughtPrice, double boughtAmount, double soldPrice, double soldAmount)
     {
-        super(time);
+        super("selling", time);
 
         this.boughtPrice = boughtPrice;
         this.boughtAmount = boughtAmount;

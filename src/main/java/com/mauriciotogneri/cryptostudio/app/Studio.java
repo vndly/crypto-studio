@@ -2,9 +2,9 @@ package com.mauriciotogneri.cryptostudio.app;
 
 import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
-import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
+import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
-import com.mauriciotogneri.cryptostudio.model.output.Output;
+import com.mauriciotogneri.cryptostudio.model.session.Output;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;
@@ -40,19 +40,19 @@ public class Studio
                                             {
                                                 for (Double stopLossTrigger : configuration.stopLossTrigger)
                                                 {
-                                                    Parameters parameters = new Parameters(source,
-                                                                                           pair,
-                                                                                           interval,
-                                                                                           maxCost,
-                                                                                           buyStrategy,
-                                                                                           buyValue,
-                                                                                           trailingBuy,
-                                                                                           sellStrategy,
-                                                                                           sellValue,
-                                                                                           trailingProfit,
-                                                                                           stopLossTrigger);
+                                                    Input input = new Input(source,
+                                                                            pair,
+                                                                            interval,
+                                                                            maxCost,
+                                                                            buyStrategy,
+                                                                            buyValue,
+                                                                            trailingBuy,
+                                                                            sellStrategy,
+                                                                            sellValue,
+                                                                            trailingProfit,
+                                                                            stopLossTrigger);
 
-                                                    Output output = analyzer.run(parameters);
+                                                    Output output = analyzer.run(input);
                                                     outputs.add(output);
                                                 }
                                             }

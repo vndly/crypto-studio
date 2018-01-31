@@ -1,24 +1,21 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.analyzer.Session;
+import com.mauriciotogneri.cryptostudio.model.session.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.events.Purchase;
+import com.mauriciotogneri.cryptostudio.model.events.TrailingBuyEvent;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
 public class SellingState extends State
 {
     private final Session session;
-    private final Purchase purchase;
+    private final TrailingBuyEvent trailingBuyEvent;
     private final Strategy sellStragegy;
 
-    public SellingState(Session session, Purchase purchase)
+    public SellingState(Session session, TrailingBuyEvent trailingBuyEvent)
     {
         this.session = session;
-        this.purchase = purchase;
-        this.sellStragegy = session.parameters.sellStrategy();
-
-        // TODO: remove
-        session.output.event(purchase);
+        this.trailingBuyEvent = trailingBuyEvent;
+        this.sellStragegy = session.input.sellStrategy();
     }
 
     @Override

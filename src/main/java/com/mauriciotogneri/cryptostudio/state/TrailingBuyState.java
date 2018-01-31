@@ -1,8 +1,9 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.analyzer.Session;
+import com.mauriciotogneri.cryptostudio.model.events.StopWatchingEvent;
+import com.mauriciotogneri.cryptostudio.model.session.Session;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.model.events.Purchase;
+import com.mauriciotogneri.cryptostudio.model.events.TrailingBuyEvent;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 import com.mauriciotogneri.cryptostudio.util.Percentage;
 
@@ -16,7 +17,7 @@ public class TrailingBuyState extends State
     public TrailingBuyState(Session session, double basePrice)
     {
         this.session = session;
-        this.trailingBuy = session.parameters.trailingBuy;
+        this.trailingBuy = session.input.trailingBuy;
         this.basePrice = basePrice;
         this.lowestPrice = basePrice;
     }
@@ -37,10 +38,12 @@ public class TrailingBuyState extends State
             else if (price > Percentage.increaseOf(trailingBuy, lowestPrice))
             {
                 double boughtPrice = Decimal.round(priceData.price());
-                double boughtAmount = Decimal.round(session.parameters.maxCost / boughtPrice);
-                Purchase purchase = new Purchase(priceData.time(), boughtPrice, boughtAmount);
+                double boughtAmount = Decimal.round(session.input.maxCost / boughtPrice);
 
-                return new SellingState(session, purchase);
+                TrailingBuyEvent trailingBuyEvent = new TrailingBuyEvent(priceData.time(), boughtPrice, boughtAmount);
+                session.event(trailingBuyEvent);
+
+                return new SellingState(session, trailingBuyEvent);
             }
             else
             {
@@ -49,7 +52,9 @@ public class TrailingBuyState extends State
         }
         else
         {
-            return new BuyingState(session);
+            session.event(new StopWatchingEvent(priceData.time(), price));
+
+            return new WatchingState(session);
         }
     }
 }

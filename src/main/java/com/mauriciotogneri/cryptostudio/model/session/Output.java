@@ -1,6 +1,5 @@
-package com.mauriciotogneri.cryptostudio.model.output;
+package com.mauriciotogneri.cryptostudio.model.session;
 
-import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
 import com.mauriciotogneri.cryptostudio.model.events.Event;
 
 import java.util.ArrayList;
@@ -8,12 +7,12 @@ import java.util.List;
 
 public class Output
 {
-    private final Parameters parameters;
+    private final Input input;
     private final List<Event> events;
 
-    public Output(Parameters parameters)
+    public Output(Input input)
     {
-        this.parameters = parameters;
+        this.input = input;
         this.events = new ArrayList<>();
     }
 

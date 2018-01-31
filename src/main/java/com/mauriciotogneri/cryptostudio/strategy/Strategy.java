@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.analyzer.Parameters;
+import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.javautils.Strings;
@@ -11,15 +11,15 @@ public abstract class Strategy
 
     public abstract boolean isTriggered();
 
-    public static Strategy fromString(String name, Parameters parameters)
+    public static Strategy fromString(String name, Input input)
     {
         if (Strings.equals(name, "GAIN"))
         {
-            return new GAIN(parameters.sellValue);
+            return new GAIN(input.sellValue);
         }
         else if (Strings.equals(name, "LOSS"))
         {
-            return new LOSS(parameters.buyValue, Interval.fromCode(parameters.interval));
+            return new LOSS(input.buyValue, Interval.fromCode(input.interval));
         }
         else if (Strings.equals(name, "HIGHBB"))
         {

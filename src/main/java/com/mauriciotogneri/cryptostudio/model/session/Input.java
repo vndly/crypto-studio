@@ -1,9 +1,9 @@
-package com.mauriciotogneri.cryptostudio.analyzer;
+package com.mauriciotogneri.cryptostudio.model.session;
 
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 
-public class Parameters
+public class Input
 {
     public final String source;
     public final String pair;
@@ -17,17 +17,17 @@ public class Parameters
     public final double trailingProfit;
     public final double stopLossTrigger;
 
-    public Parameters(String source,
-                      String pair,
-                      String interval,
-                      double maxCost,
-                      String buyStrategy,
-                      double buyValue,
-                      double trailingBuy,
-                      String sellStrategy,
-                      double sellValue,
-                      double trailingProfit,
-                      double stopLossTrigger)
+    public Input(String source,
+                 String pair,
+                 String interval,
+                 double maxCost,
+                 String buyStrategy,
+                 double buyValue,
+                 double trailingBuy,
+                 String sellStrategy,
+                 double sellValue,
+                 double trailingProfit,
+                 double stopLossTrigger)
     {
         this.source = source;
         this.pair = pair;

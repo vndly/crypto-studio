@@ -1,13 +1,13 @@
 package com.mauriciotogneri.cryptostudio.model.events;
 
-public class Purchase extends Event
+public class TrailingBuyEvent extends Event
 {
     public final double boughtPrice;
     public final double boughtAmount;
 
-    public Purchase(long time, double boughtPrice, double boughtAmount)
+    public TrailingBuyEvent(long time, double boughtPrice, double boughtAmount)
     {
-        super(time);
+        super("trailing_buy", time);
 
         this.boughtPrice = boughtPrice;
         this.boughtAmount = boughtAmount;
