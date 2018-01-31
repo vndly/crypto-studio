@@ -2,8 +2,8 @@ package com.mauriciotogneri.cryptostudio.app;
 
 import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
-import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
+import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.model.session.Output;
 import com.mauriciotogneri.javautils.Resource;
 

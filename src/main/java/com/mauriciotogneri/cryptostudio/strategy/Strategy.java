@@ -1,7 +1,7 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.javautils.Strings;
 
