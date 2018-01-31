@@ -24,12 +24,13 @@ public class Configuration
 
     public Configuration(String filePath) throws Exception
     {
-        Properties properties = new Properties();
         InputStream input = null;
 
         try
         {
             input = new FileInputStream(filePath);
+
+            Properties properties = new Properties();
             properties.load(input);
 
             source = new RangeString(properties.getProperty("source"));
