@@ -50,4 +50,24 @@ public class CandleStick implements PriceData
     {
         return (open + close + high + low) / 4;
     }
+
+    public double open()
+    {
+        return open;
+    }
+
+    public double close()
+    {
+        return close;
+    }
+
+    public double low()
+    {
+        return low;
+    }
+
+    public double high()
+    {
+        return high;
+    }
 }

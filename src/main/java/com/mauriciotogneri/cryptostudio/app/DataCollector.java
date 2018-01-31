@@ -12,12 +12,8 @@ import java.util.List;
 
 public class DataCollector
 {
-    public static void main(String[] args) throws Exception
+    public void run(String pair, Interval interval, Integer days) throws Exception
     {
-        String pair = "ETHBTC";
-        Interval interval = Interval.ONE_MINUTE;
-        Integer days = 30;
-
         Integer limit = interval.onDaySize() * days;
         String filePath = FileSource.file(pair, interval.code());
 
@@ -26,5 +22,18 @@ public class DataCollector
 
         String json = new GsonBuilder().setPrettyPrinting().create().toJson(list);
         Resource.save(new File(filePath), json);
+
+        ChartGenerator chartGenerator = new ChartGenerator();
+        chartGenerator.run(pair, interval);
+    }
+
+    public static void main(String[] args) throws Exception
+    {
+        String pair = "ETHBTC";
+        Interval interval = Interval.ONE_MINUTE;
+        Integer days = 30;
+
+        DataCollector dataCollector = new DataCollector();
+        dataCollector.run(pair, interval, days);
     }
 }
