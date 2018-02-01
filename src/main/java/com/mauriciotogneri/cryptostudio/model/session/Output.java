@@ -1,23 +1,21 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
-import com.mauriciotogneri.cryptostudio.model.events.Event;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Output
 {
     private final Input input;
-    private final List<Event> events;
+    private final List<Operation> operations;
 
     public Output(Input input)
     {
         this.input = input;
-        this.events = new ArrayList<>();
+        this.operations = new ArrayList<>();
     }
 
-    public void event(Event event)
+    public void operation(Operation operation)
     {
-        events.add(event);
+        operations.add(operation);
     }
 }

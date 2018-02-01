@@ -1,7 +1,5 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
-import com.mauriciotogneri.cryptostudio.model.events.Event;
-
 public class Session
 {
     public final Input input;
@@ -13,8 +11,8 @@ public class Session
         this.output = output;
     }
 
-    public void event(Event event)
+    public void operation(Operation operation)
     {
-        output.event(event);
+        output.operation(operation);
     }
 }
