@@ -14,11 +14,6 @@ public class Operation
         this.events = new ArrayList<>();
     }
 
-    public boolean isEmpty()
-    {
-        return events.isEmpty();
-    }
-
     public void event(Event event)
     {
         events.add(event);
