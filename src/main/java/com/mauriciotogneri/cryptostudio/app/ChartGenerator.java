@@ -1,9 +1,9 @@
 package com.mauriciotogneri.cryptostudio.app;
 
-import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.source.FileSource;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.util.Decimal;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;
@@ -21,18 +21,14 @@ public class ChartGenerator
 
         for (PriceData priceData : priceList)
         {
-            CandleStick candleStick = (CandleStick) priceData;
+            if (csv.length() != 0)
+            {
+                csv.append("\n");
+            }
 
-            csv.append(candleStick.time());
+            csv.append(priceData.time());
             csv.append(",");
-            csv.append(candleStick.low());
-            csv.append(",");
-            csv.append(candleStick.open());
-            csv.append(",");
-            csv.append(candleStick.close());
-            csv.append(",");
-            csv.append(candleStick.high());
-            csv.append("\n");
+            csv.append(Decimal.round(priceData.price()));
         }
 
         Resource.save(new File(filePath), csv.toString());
