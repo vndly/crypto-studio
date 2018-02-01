@@ -6,13 +6,11 @@ import com.mauriciotogneri.cryptostudio.util.Decimal;
 public class WatchingSellEvent extends Event
 {
     public final double price;
-    public final double amount;
 
-    public WatchingSellEvent(PriceData priceData, double maxCost)
+    public WatchingSellEvent(PriceData priceData)
     {
-        super("purchase", priceData.time());
+        super("watching_sell", priceData.time());
 
-        this.price = Decimal.round(priceData.price());
-        this.amount = Decimal.round(maxCost / price);
+        this.price = Decimal.roundPrice(priceData.price());
     }
 }

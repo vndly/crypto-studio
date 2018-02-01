@@ -17,7 +17,6 @@ public class LOSS extends Strategy
 {
     private final double buyValue;
     private final RingBuffer ring;
-    private PriceData priceData;
 
     public LOSS(double buyValue, Interval interval)
     {
@@ -26,15 +25,10 @@ public class LOSS extends Strategy
     }
 
     @Override
-    public void update(PriceData newPriceData)
+    public boolean update(PriceData priceData)
     {
-        ring.add(newPriceData.price());
-        priceData = newPriceData;
-    }
+        ring.add(priceData.price());
 
-    @Override
-    public boolean isTriggered()
-    {
         double limit = Percentage.decreaseOf(buyValue, ring.oldest());
 
         return ring.isFull() && (priceData.price() < limit);

@@ -11,6 +11,6 @@ public class TrailingBuyEvent extends Event
     {
         super("trailing_buy", priceData.time());
 
-        this.price = Decimal.round(priceData.price());
+        this.price = Decimal.roundPrice(priceData.price());
     }
 }

@@ -7,15 +7,13 @@ import com.mauriciotogneri.javautils.Strings;
 
 public abstract class Strategy
 {
-    public abstract void update(PriceData priceData);
+    public abstract boolean update(PriceData priceData);
 
-    public abstract boolean isTriggered();
-
-    public static Strategy fromString(String name, Input input)
+    public static Strategy fromString(String name, Input input, double value)
     {
         if (Strings.equals(name, "GAIN"))
         {
-            return new GAIN(input.sellValue);
+            return new GAIN(input.sellValue, value);
         }
         else if (Strings.equals(name, "LOSS"))
         {

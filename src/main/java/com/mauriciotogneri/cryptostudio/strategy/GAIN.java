@@ -1,6 +1,7 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 /**
  * Sell as soon as the current price reaches the profit specified.
@@ -12,21 +13,19 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 public class GAIN extends Strategy
 {
     private final double sellValue;
+    private final double baseValue;
 
-    public GAIN(double sellValue)
+    public GAIN(double sellValue, double baseValue)
     {
         this.sellValue = sellValue;
+        this.baseValue = baseValue;
     }
 
     @Override
-    public void update(PriceData priceData)
+    public boolean update(PriceData priceData)
     {
-        // TODO
-    }
+        double limit = Percentage.increaseOf(sellValue, baseValue);
 
-    @Override
-    public boolean isTriggered()
-    {
-        return false;
+        return (priceData.price() > limit);
     }
 }

@@ -18,17 +18,15 @@ public class WatchingSellState extends State
     public WatchingSellState(Session session, Operation operation, PriceData priceData)
     {
         this.session = session;
-        this.sellStrategy = session.input.sellStrategy();
+        this.sellStrategy = session.input.sellStrategy(priceData.price());
         this.operation = operation;
-        this.operation.event(new WatchingSellEvent(priceData, session.input.maxCost));
+        this.operation.event(new WatchingSellEvent(priceData));
     }
 
     @Override
     public State update(PriceData priceData)
     {
-        sellStrategy.update(priceData);
-
-        if (sellStrategy.isTriggered())
+        if (sellStrategy.update(priceData))
         {
             return new TrailingSellState(session, operation, priceData);
         }

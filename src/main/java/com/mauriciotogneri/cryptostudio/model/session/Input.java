@@ -49,11 +49,21 @@ public class Input
 
     public Strategy buyStrategy()
     {
-        return Strategy.fromString(buyStrategy, this);
+        return buyStrategy(0);
     }
 
     public Strategy sellStrategy()
     {
-        return Strategy.fromString(sellStrategy, this);
+        return sellStrategy(0);
+    }
+
+    public Strategy buyStrategy(double value)
+    {
+        return Strategy.fromString(buyStrategy, this, value);
+    }
+
+    public Strategy sellStrategy(double value)
+    {
+        return Strategy.fromString(sellStrategy, this, value);
     }
 }

@@ -26,9 +26,7 @@ public class WatchingBuyState extends State
     @Override
     public State update(PriceData priceData)
     {
-        buyStrategy.update(priceData);
-
-        if (buyStrategy.isTriggered())
+        if (buyStrategy.update(priceData))
         {
             return new TrailingBuyState(session, operation, priceData);
         }

@@ -5,14 +5,8 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 public class LOWBB extends Strategy
 {
     @Override
-    public void update(PriceData priceData)
+    public boolean update(PriceData priceData)
     {
-        // TODO
-    }
-
-    @Override
-    public boolean isTriggered()
-    {
-        return false;
+        return false; // TODO
     }
 }

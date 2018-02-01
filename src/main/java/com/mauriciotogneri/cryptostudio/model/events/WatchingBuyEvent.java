@@ -11,6 +11,6 @@ public class WatchingBuyEvent extends Event
     {
         super("watching_buy", priceData.time());
 
-        this.price = Decimal.round(priceData.price());
+        this.price = Decimal.roundPrice(priceData.price());
     }
 }

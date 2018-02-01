@@ -28,7 +28,7 @@ public class ChartGenerator
 
             csv.append(priceData.time());
             csv.append(",");
-            csv.append(Decimal.round(priceData.price()));
+            csv.append(Decimal.roundPrice(priceData.price()));
         }
 
         Resource.save(new File(filePath), csv.toString());
