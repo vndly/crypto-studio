@@ -3,13 +3,13 @@ package com.mauriciotogneri.cryptostudio.model.events;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 
-public class WatchingEvent extends Event
+public class WatchingBuyEvent extends Event
 {
     public final double price;
 
-    public WatchingEvent(PriceData priceData)
+    public WatchingBuyEvent(PriceData priceData)
     {
-        super("watching", priceData.time());
+        super("watching_buy", priceData.time());
 
         this.price = Decimal.round(priceData.price());
     }

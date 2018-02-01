@@ -1,10 +1,15 @@
 package com.mauriciotogneri.cryptostudio.app;
 
 import com.google.gson.GsonBuilder;
-import com.mauriciotogneri.cryptostudio.analyzer.Analyzer;
 import com.mauriciotogneri.cryptostudio.configuration.Configuration;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
+import com.mauriciotogneri.cryptostudio.model.session.Operation;
 import com.mauriciotogneri.cryptostudio.model.session.Output;
+import com.mauriciotogneri.cryptostudio.model.session.Session;
+import com.mauriciotogneri.cryptostudio.source.Source;
+import com.mauriciotogneri.cryptostudio.state.State;
+import com.mauriciotogneri.cryptostudio.state.WatchingBuyState;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;
@@ -16,7 +21,6 @@ public class Studio
     public List<Output> run(Configuration configuration)
     {
         List<Output> outputs = new ArrayList<>();
-        Analyzer analyzer = new Analyzer();
 
         for (String source : configuration.source)
         {
@@ -52,7 +56,7 @@ public class Studio
                                                                             trailingProfit,
                                                                             stopLossTrigger);
 
-                                                    Output output = analyzer.run(input);
+                                                    Output output = simulate(input);
                                                     outputs.add(output);
                                                 }
                                             }
@@ -67,6 +71,22 @@ public class Studio
         }
 
         return outputs;
+    }
+
+    public Output simulate(Input input)
+    {
+        Output output = new Output(input);
+        Source source = input.source();
+        Session session = new Session(input, output);
+        State state = new WatchingBuyState(session, new Operation());
+        List<PriceData> priceList = source.priceData();
+
+        for (PriceData priceData : priceList)
+        {
+            state = state.update(priceData);
+        }
+
+        return output;
     }
 
     public static void main(String[] args) throws Exception

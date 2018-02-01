@@ -1,63 +1,56 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.model.events.PurchaseEvent;
-import com.mauriciotogneri.cryptostudio.model.events.WatchingEvent;
+import com.mauriciotogneri.cryptostudio.model.events.Event;
+import com.mauriciotogneri.cryptostudio.model.events.WatchingBuyEvent;
+import com.mauriciotogneri.cryptostudio.model.events.WatchingSellEvent;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Operation;
 import com.mauriciotogneri.cryptostudio.model.session.Session;
+import com.mauriciotogneri.cryptostudio.trailing.Trailing;
+import com.mauriciotogneri.cryptostudio.trailing.Trailing.TrailingState;
+import com.mauriciotogneri.cryptostudio.trailing.TrailingBuy;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
-import com.mauriciotogneri.cryptostudio.util.Percentage;
+
+import static com.mauriciotogneri.cryptostudio.trailing.Trailing.TrailingState.BUY;
+import static com.mauriciotogneri.cryptostudio.trailing.Trailing.TrailingState.ROLLBACK;
 
 public class TrailingBuyState extends State
 {
     private final Session session;
     private final Operation operation;
-    private final double trailingBuy;
-    private final double basePrice;
-    private double lowestPrice;
+    private final Trailing trailingBuy;
 
     public TrailingBuyState(Session session, Operation operation, double basePrice)
     {
         this.session = session;
         this.operation = operation;
-        this.trailingBuy = session.input.trailingBuy;
-        this.basePrice = basePrice;
-        this.lowestPrice = basePrice;
+        this.trailingBuy = new TrailingBuy(session.input.trailingBuy, basePrice);
     }
 
     @Override
     public State update(PriceData priceData)
     {
-        double price = priceData.price();
+        TrailingState state = trailingBuy.update(priceData);
 
-        if (price <= basePrice)
+        if (state == BUY)
         {
-            if (price < lowestPrice)
-            {
-                lowestPrice = price;
+            double boughtPrice = Decimal.round(priceData.price());
+            double boughtAmount = Decimal.round(session.input.maxCost / boughtPrice);
 
-                return this;
-            }
-            else if (price > Percentage.increaseOf(trailingBuy, lowestPrice))
-            {
-                double boughtPrice = Decimal.round(priceData.price());
-                double boughtAmount = Decimal.round(session.input.maxCost / boughtPrice);
+            Event event = new WatchingSellEvent(priceData, boughtPrice, boughtAmount);
+            operation.event(event);
 
-                PurchaseEvent purchaseEvent = new PurchaseEvent(priceData, boughtPrice, boughtAmount);
-                operation.event(purchaseEvent);
+            return new WatchingSellState(session, operation);
+        }
+        else if (state == ROLLBACK)
+        {
+            operation.event(new WatchingBuyEvent(priceData));
 
-                return new SellingState(session, operation);
-            }
-            else
-            {
-                return this;
-            }
+            return new WatchingBuyState(session, operation);
         }
         else
         {
-            operation.event(new WatchingEvent(priceData));
-
-            return new WatchingState(session, operation);
+            return this;
         }
     }
 }
