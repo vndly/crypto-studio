@@ -1,0 +1,131 @@
+<html>
+<head>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <script src='https://code.highcharts.com/stock/highstock.js'></script>
+
+    <script type='text/javascript'>
+
+			$(document).ready(function()
+			{
+				loadJSON('result.json', function(response)
+				{
+				    var data = JSON.parse(response)
+
+				    var select = document.getElementById('select')
+				    select.value = ''
+				    select.addEventListener('change', function()
+				    {
+				    	processResult(data[select.value])
+				    })
+
+				    for (var index in data)
+				    {
+				        var entry = data[index]
+				    	var option = document.createElement('option')
+				    	option.value = index
+						option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair
+						select.add(option)
+				    }
+				})
+			})
+
+			function loadJSON(file, callback)
+			{
+			    var xobj = new XMLHttpRequest()
+			    xobj.overrideMimeType('application/json')
+			    xobj.open('GET', file, true)
+			    xobj.onreadystatechange = function()
+			    {
+					if ((xobj.readyState == 4) && (xobj.status == '200'))
+					{
+						callback(xobj.responseText)
+					}
+			    }
+			    xobj.send(null)
+			}
+
+			function processResult(json)
+			{
+				var fileName = '../chart/' + json.input.pair + '_' + json.input.interval + '.json'
+				console.log(fileName)
+
+				loadJSON(fileName, function(response)
+				{
+				    var data = JSON.parse(response)
+				    var markers = []
+
+				    var sectionIndex = 65
+
+				    for (var index in json.operations)
+				    {
+				    	var sectionName = String.fromCharCode(sectionIndex++)
+				    	var operation = json.operations[index]
+
+				    	for (var i in operation.events)
+					    {
+					    	var event = operation.events[i]
+					    	
+					    	markers.push(
+					    	{
+					    		x: event.time,
+				                title: sectionName + (parseInt(i) + 1),
+				                text: event.type + ': ' + event.price
+					    	})
+					    }
+				    }
+
+				    render(data, markers)
+				})
+			}
+
+			function render(data, markers)
+			{
+				Highcharts.stockChart('container', {
+
+					chart: {
+				        zoomType: 'x',
+				        panning: true,
+				        panKey: 'shift'
+				    },
+
+			        tooltip: {
+			            style: {
+			                width: '200px'
+			            },
+			            valueDecimals: 8,
+			            shared: true
+			        },
+
+			        series: [
+			        {
+			            name: 'Price',
+			            data: data,
+			            id: 'dataseries'
+			        },
+			        {
+			            type: 'flags',
+			            data: markers,
+			            onSeries: 'dataseries',
+			            shape: 'circlepin',
+			            width: 16
+			        }]
+			    })
+			}
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<center>
+    <select id='select' onselect='onSelect'>
+        <option disabled selected value></option>
+    </select>
+</center>
+<div id='container' style='height: 100%; width: 100%'></div>
+</body>
+</html>
