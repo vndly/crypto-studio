@@ -5,124 +5,118 @@
 
     <script type='text/javascript'>
 
-			$(document).ready(function()
-			{
-				loadJSON('result.json', function(response)
-				{
-				    var data = JSON.parse(response)
+        $(document).ready(function()
+        {
+            loadJSON('result.json', function(response)
+            {
+                var data = JSON.parse(response)
 
-				    var select = document.getElementById('select')
-				    select.value = ''
-				    select.addEventListener('change', function()
-				    {
-				    	processResult(data[select.value])
-				    })
+                var select = document.getElementById('select')
+                select.value = ''
+                select.addEventListener('change', function()
+                {
+                    processResult(data[select.value])
+                })
 
-				    for (var index in data)
-				    {
-				        var entry = data[index]
-				    	var option = document.createElement('option')
-				    	option.value = index
-						option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair
-						select.add(option)
-				    }
-				})
-			})
+                for (var index in data)
+                {
+                    var entry = data[index]
+                    var option = document.createElement('option')
+                    option.value = index
+                    option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair
+                    select.add(option)
+                }
+            })
+        })
 
-			function loadJSON(file, callback)
-			{
-			    var xobj = new XMLHttpRequest()
-			    xobj.overrideMimeType('application/json')
-			    xobj.open('GET', file, true)
-			    xobj.onreadystatechange = function()
-			    {
-					if ((xobj.readyState == 4) && (xobj.status == '200'))
-					{
-						callback(xobj.responseText)
-					}
-			    }
-			    xobj.send(null)
-			}
+        function loadJSON(file, callback)
+        {
+            var xobj = new XMLHttpRequest()
+            xobj.overrideMimeType('application/json')
+            xobj.open('GET', file, true)
+            xobj.onreadystatechange = function()
+            {
+                if ((xobj.readyState == 4) && (xobj.status == '200'))
+                {
+                    callback(xobj.responseText)
+                }
+            }
+            xobj.send(null)
+        }
 
-			function processResult(json)
-			{
-				var fileName = '../chart/' + json.input.pair + '_' + json.input.interval + '.json'
-				console.log(fileName)
+        function processResult(json)
+        {
+            var fileName = '../chart/' + json.input.pair + '_' + json.input.interval + '.json'
+            console.log(fileName)
 
-				loadJSON(fileName, function(response)
-				{
-				    var data = JSON.parse(response)
-				    var markers = []
+            loadJSON(fileName, function(response)
+            {
+                var data = JSON.parse(response)
+                var markers = []
 
-				    var sectionIndex = 65
+                var sectionIndex = 65
 
-				    for (var index in json.operations)
-				    {
-				    	var sectionName = String.fromCharCode(sectionIndex++)
-				    	var operation = json.operations[index]
+                for (var index in json.operations)
+                {
+                    var sectionName = String.fromCharCode(sectionIndex++)
+                    var operation = json.operations[index]
 
-				    	for (var i in operation.events)
-					    {
-					    	var event = operation.events[i]
-					    	
-					    	markers.push(
-					    	{
-					    		x: event.time,
-				                title: sectionName + (parseInt(i) + 1),
-				                text: event.type + ': ' + event.price
-					    	})
-					    }
-				    }
+                    for (var i in operation.events)
+                    {
+                        var event = operation.events[i]
 
-				    render(data, markers)
-				})
-			}
+                        markers.push(
+                        {
+                            x: event.time,
+                            title: sectionName + (parseInt(i) + 1),
+                            text: event.type + ': ' + event.price
+                        })
+                    }
+                }
 
-			function render(data, markers)
-			{
-				Highcharts.stockChart('container', {
+                render(data, markers)
+            })
+        }
 
-					chart: {
-				        zoomType: 'x',
-				        panning: true,
-				        panKey: 'shift'
-				    },
+        function render(data, markers)
+        {
+            Highcharts.stockChart('container', {
 
-			        tooltip: {
-			            style: {
-			                width: '200px'
-			            },
-			            valueDecimals: 8,
-			            shared: true
-			        },
+                chart: {
+                    zoomType: 'x',
+                    panning: true,
+                    panKey: 'shift'
+                },
 
-			        series: [
-			        {
-			            name: 'Price',
-			            data: data,
-			            id: 'dataseries'
-			        },
-			        {
-			            type: 'flags',
-			            data: markers,
-			            onSeries: 'dataseries',
-			            shape: 'circlepin',
-			            width: 16
-			        }]
-			    })
-			}
+                tooltip: {
+                    style: {
+                        width: '200px'
+                    },
+                    valueDecimals: 8,
+                    shared: true
+                },
 
-
-
-
-
-
+                series: [
+                {
+                    name: 'Price',
+                    data: data,
+                    id: 'dataseries'
+                },
+                {
+                    type: 'flags',
+                    data: markers,
+                    onSeries: 'dataseries',
+                    shape: 'circlepin',
+                    width: 16
+                }]
+            })
+        }
 
     </script>
 </head>
 <body>
 <center>
-    <select id='select' onselect='onSelect'>
+    <select id='select'>
         <option disabled selected value></option>
     </select>
 </center>
