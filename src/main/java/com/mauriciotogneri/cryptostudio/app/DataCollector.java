@@ -24,7 +24,7 @@ public class DataCollector
         Resource.save(new File(filePath), json);
 
         ChartGenerator chartGenerator = new ChartGenerator();
-        chartGenerator.run(pair, interval);
+        chartGenerator.json(pair, interval);
     }
 
     public static void main(String[] args) throws Exception
