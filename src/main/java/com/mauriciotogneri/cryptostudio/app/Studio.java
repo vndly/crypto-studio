@@ -75,6 +75,8 @@ public class Studio
 
     public Output simulate(Input input)
     {
+        long startTime = System.currentTimeMillis();
+
         Output output = new Output(input);
         Source source = input.source();
         Session session = new Session(input, output);
@@ -85,6 +87,10 @@ public class Studio
         {
             state = state.update(priceData);
         }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println(String.format("Simulation time: %s ms", endTime - startTime));
 
         return output;
     }

@@ -4,13 +4,13 @@
       "source": "FILE",
       "pair": "ETHBTC",
       "interval": "1m",
-      "maxCost": 0.0025,
+      "maxCost": 0.0022,
       "buyStrategy": "LOSS",
-      "buyValue": -0.49,
-      "trailingBuy": 0.35,
+      "buyValue": -0.5,
+      "trailingBuy": 0.2,
       "sellStrategy": "GAIN",
-      "sellValue": 0.89,
-      "trailingProfit": 0.33,
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
       "stopLossTrigger": 0.0
     },
     "operations": [
@@ -42,8 +42,8 @@
           },
           {
             "price": 0.05292225,
-            "amount": 0.04723911,
-            "total": 0.0025,
+            "amount": 0.04157042,
+            "total": 0.0022,
             "type": "buy",
             "time": 1514921100000,
             "date": "2018-01-02 19:25:00"
@@ -62,9 +62,552 @@
           },
           {
             "price": 0.05675975,
-            "amount": 0.04723911,
-            "total": 0.00268128,
-            "profitTotal": 1.8128E-4,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06345525,
+            "amount": 0.0346701,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.06345525,
+            "type": "watching_sell",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.064075,
+            "type": "trailing_sell",
+            "time": 1515302880000,
+            "date": "2018-01-07 05:28:00"
+          },
+          {
+            "price": 0.0647455,
+            "amount": 0.0346701,
+            "total": 0.00224473,
+            "profitTotal": 4.473E-5,
+            "profitPercentage": 2.03,
+            "type": "sale",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.0647455,
+            "type": "watching_buy",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.085217,
+            "amount": 0.02581645,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.085217,
+            "type": "watching_sell",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.086267,
+            "type": "trailing_sell",
+            "time": 1515623280000,
+            "date": "2018-01-10 22:28:00"
+          },
+          {
+            "price": 0.08578125,
+            "type": "watching_sell",
+            "time": 1515623520000,
+            "date": "2018-01-10 22:32:00"
+          },
+          {
+            "price": 0.086721,
+            "type": "trailing_sell",
+            "time": 1515629940000,
+            "date": "2018-01-11 00:19:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
+            "profitPercentage": 4.38,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 3.0063E-4,
+    "profitPercentage": 4.55
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.25,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06345525,
+            "amount": 0.0346701,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.06345525,
+            "type": "watching_sell",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.064075,
+            "type": "trailing_sell",
+            "time": 1515302880000,
+            "date": "2018-01-07 05:28:00"
+          },
+          {
+            "price": 0.0647455,
+            "amount": 0.0346701,
+            "total": 0.00224473,
+            "profitTotal": 4.473E-5,
+            "profitPercentage": 2.03,
+            "type": "sale",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.0647455,
+            "type": "watching_buy",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.085217,
+            "amount": 0.02581645,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.085217,
+            "type": "watching_sell",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.086267,
+            "type": "trailing_sell",
+            "time": 1515623280000,
+            "date": "2018-01-10 22:28:00"
+          },
+          {
+            "price": 0.08578125,
+            "type": "watching_sell",
+            "time": 1515623520000,
+            "date": "2018-01-10 22:32:00"
+          },
+          {
+            "price": 0.086721,
+            "type": "trailing_sell",
+            "time": 1515629940000,
+            "date": "2018-01-11 00:19:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
+            "profitPercentage": 4.38,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 3.0063E-4,
+    "profitPercentage": 4.55
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.3,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06345525,
+            "amount": 0.0346701,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.06345525,
+            "type": "watching_sell",
+            "time": 1515143220000,
+            "date": "2018-01-05 09:07:00"
+          },
+          {
+            "price": 0.064075,
+            "type": "trailing_sell",
+            "time": 1515302880000,
+            "date": "2018-01-07 05:28:00"
+          },
+          {
+            "price": 0.0647455,
+            "amount": 0.0346701,
+            "total": 0.00224473,
+            "profitTotal": 4.473E-5,
+            "profitPercentage": 2.03,
+            "type": "sale",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.0647455,
+            "type": "watching_buy",
+            "time": 1515303480000,
+            "date": "2018-01-07 05:38:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.085217,
+            "amount": 0.02581645,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.085217,
+            "type": "watching_sell",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.086267,
+            "type": "trailing_sell",
+            "time": 1515623280000,
+            "date": "2018-01-10 22:28:00"
+          },
+          {
+            "price": 0.08578125,
+            "type": "watching_sell",
+            "time": 1515623520000,
+            "date": "2018-01-10 22:32:00"
+          },
+          {
+            "price": 0.086721,
+            "type": "trailing_sell",
+            "time": 1515629940000,
+            "date": "2018-01-11 00:19:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
+            "profitPercentage": 4.38,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 3.0063E-4,
+    "profitPercentage": 4.55
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.35,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
             "profitPercentage": 7.25,
             "type": "sale",
             "time": 1514921820000,
@@ -112,8 +655,8 @@
           },
           {
             "price": 0.085217,
-            "amount": 0.02933687,
-            "total": 0.0025,
+            "amount": 0.02581645,
+            "total": 0.0022,
             "type": "buy",
             "time": 1515623100000,
             "date": "2018-01-10 22:25:00"
@@ -144,9 +687,9 @@
           },
           {
             "price": 0.08895,
-            "amount": 0.02933687,
-            "total": 0.00260951,
-            "profitTotal": 1.0951E-4,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
             "profitPercentage": 4.38,
             "type": "sale",
             "time": 1515631020000,
@@ -155,7 +698,766 @@
         ]
       }
     ],
-    "profitTotal": 2.9079E-4,
+    "profitTotal": 2.559E-4,
     "profitPercentage": 5.81
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.39999999999999997,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06358075,
+            "type": "watching_buy",
+            "time": 1515143280000,
+            "date": "2018-01-05 09:08:00"
+          },
+          {
+            "price": 0.06047675,
+            "type": "trailing_buy",
+            "time": 1515229680000,
+            "date": "2018-01-06 09:08:00"
+          },
+          {
+            "price": 0.0604835,
+            "type": "watching_buy",
+            "time": 1515229800000,
+            "date": "2018-01-06 09:10:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.085217,
+            "amount": 0.02581645,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.085217,
+            "type": "watching_sell",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.086267,
+            "type": "trailing_sell",
+            "time": 1515623280000,
+            "date": "2018-01-10 22:28:00"
+          },
+          {
+            "price": 0.08578125,
+            "type": "watching_sell",
+            "time": 1515623520000,
+            "date": "2018-01-10 22:32:00"
+          },
+          {
+            "price": 0.086721,
+            "type": "trailing_sell",
+            "time": 1515629940000,
+            "date": "2018-01-11 00:19:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
+            "profitPercentage": 4.38,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 2.559E-4,
+    "profitPercentage": 5.81
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.44999999999999996,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06358075,
+            "type": "watching_buy",
+            "time": 1515143280000,
+            "date": "2018-01-05 09:08:00"
+          },
+          {
+            "price": 0.06047675,
+            "type": "trailing_buy",
+            "time": 1515229680000,
+            "date": "2018-01-06 09:08:00"
+          },
+          {
+            "price": 0.0604835,
+            "type": "watching_buy",
+            "time": 1515229800000,
+            "date": "2018-01-06 09:10:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.085217,
+            "amount": 0.02581645,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.085217,
+            "type": "watching_sell",
+            "time": 1515623100000,
+            "date": "2018-01-10 22:25:00"
+          },
+          {
+            "price": 0.086267,
+            "type": "trailing_sell",
+            "time": 1515623280000,
+            "date": "2018-01-10 22:28:00"
+          },
+          {
+            "price": 0.08578125,
+            "type": "watching_sell",
+            "time": 1515623520000,
+            "date": "2018-01-10 22:32:00"
+          },
+          {
+            "price": 0.086721,
+            "type": "trailing_sell",
+            "time": 1515629940000,
+            "date": "2018-01-11 00:19:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02581645,
+            "total": 0.00229637,
+            "profitTotal": 9.637E-5,
+            "profitPercentage": 4.38,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 2.559E-4,
+    "profitPercentage": 5.81
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.49999999999999994,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06358075,
+            "type": "watching_buy",
+            "time": 1515143280000,
+            "date": "2018-01-05 09:08:00"
+          },
+          {
+            "price": 0.06047675,
+            "type": "trailing_buy",
+            "time": 1515229680000,
+            "date": "2018-01-06 09:08:00"
+          },
+          {
+            "price": 0.0604835,
+            "type": "watching_buy",
+            "time": 1515229800000,
+            "date": "2018-01-06 09:10:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.08568525,
+            "amount": 0.02567536,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08568525,
+            "type": "watching_sell",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08649325,
+            "type": "trailing_sell",
+            "time": 1515629880000,
+            "date": "2018-01-11 00:18:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02567536,
+            "total": 0.00228382,
+            "profitTotal": 8.382E-5,
+            "profitPercentage": 3.81,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 2.4335E-4,
+    "profitPercentage": 5.53
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.5499999999999999,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06358075,
+            "type": "watching_buy",
+            "time": 1515143280000,
+            "date": "2018-01-05 09:08:00"
+          },
+          {
+            "price": 0.06047675,
+            "type": "trailing_buy",
+            "time": 1515229680000,
+            "date": "2018-01-06 09:08:00"
+          },
+          {
+            "price": 0.0604835,
+            "type": "watching_buy",
+            "time": 1515229800000,
+            "date": "2018-01-06 09:10:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.08568525,
+            "amount": 0.02567536,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08568525,
+            "type": "watching_sell",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08649325,
+            "type": "trailing_sell",
+            "time": 1515629880000,
+            "date": "2018-01-11 00:18:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02567536,
+            "total": 0.00228382,
+            "profitTotal": 8.382E-5,
+            "profitPercentage": 3.81,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 2.4335E-4,
+    "profitPercentage": 5.53
+  },
+  {
+    "input": {
+      "source": "FILE",
+      "pair": "ETHBTC",
+      "interval": "1m",
+      "maxCost": 0.0022,
+      "buyStrategy": "LOSS",
+      "buyValue": -0.5,
+      "trailingBuy": 0.6,
+      "sellStrategy": "GAIN",
+      "sellValue": 0.9,
+      "trailingProfit": 0.3,
+      "stopLossTrigger": 0.0
+    },
+    "operations": [
+      {
+        "events": [
+          {
+            "price": 0.0541425,
+            "type": "watching_buy",
+            "time": 1514665380000,
+            "date": "2017-12-30 20:23:00"
+          },
+          {
+            "price": 0.05316725,
+            "type": "trailing_buy",
+            "time": 1514751720000,
+            "date": "2017-12-31 20:22:00"
+          },
+          {
+            "price": 0.05317175,
+            "type": "watching_buy",
+            "time": 1514751900000,
+            "date": "2017-12-31 20:25:00"
+          },
+          {
+            "price": 0.0560805,
+            "type": "trailing_buy",
+            "time": 1514920380000,
+            "date": "2018-01-02 19:13:00"
+          },
+          {
+            "price": 0.05292225,
+            "amount": 0.04157042,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05292225,
+            "type": "watching_sell",
+            "time": 1514921100000,
+            "date": "2018-01-02 19:25:00"
+          },
+          {
+            "price": 0.05352125,
+            "type": "trailing_sell",
+            "time": 1514921220000,
+            "date": "2018-01-02 19:27:00"
+          },
+          {
+            "price": 0.05675975,
+            "amount": 0.04157042,
+            "total": 0.00235953,
+            "profitTotal": 1.5953E-4,
+            "profitPercentage": 7.25,
+            "type": "sale",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          }
+        ]
+      },
+      {
+        "events": [
+          {
+            "price": 0.05675975,
+            "type": "watching_buy",
+            "time": 1514921820000,
+            "date": "2018-01-02 19:37:00"
+          },
+          {
+            "price": 0.063456,
+            "type": "trailing_buy",
+            "time": 1515143100000,
+            "date": "2018-01-05 09:05:00"
+          },
+          {
+            "price": 0.06358075,
+            "type": "watching_buy",
+            "time": 1515143280000,
+            "date": "2018-01-05 09:08:00"
+          },
+          {
+            "price": 0.06047675,
+            "type": "trailing_buy",
+            "time": 1515229680000,
+            "date": "2018-01-06 09:08:00"
+          },
+          {
+            "price": 0.0604835,
+            "type": "watching_buy",
+            "time": 1515229800000,
+            "date": "2018-01-06 09:10:00"
+          },
+          {
+            "price": 0.08651175,
+            "type": "trailing_buy",
+            "time": 1515621960000,
+            "date": "2018-01-10 22:06:00"
+          },
+          {
+            "price": 0.08568525,
+            "amount": 0.02567536,
+            "total": 0.0022,
+            "type": "buy",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08568525,
+            "type": "watching_sell",
+            "time": 1515623160000,
+            "date": "2018-01-10 22:26:00"
+          },
+          {
+            "price": 0.08649325,
+            "type": "trailing_sell",
+            "time": 1515629880000,
+            "date": "2018-01-11 00:18:00"
+          },
+          {
+            "price": 0.08895,
+            "amount": 0.02567536,
+            "total": 0.00228382,
+            "profitTotal": 8.382E-5,
+            "profitPercentage": 3.81,
+            "type": "sale",
+            "time": 1515631020000,
+            "date": "2018-01-11 00:37:00"
+          }
+        ]
+      }
+    ],
+    "profitTotal": 2.4335E-4,
+    "profitPercentage": 5.53
   }
 ]
