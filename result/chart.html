@@ -54,11 +54,10 @@
                 var data = JSON.parse(response)
                 var markers = []
 
-                var sectionIndex = 65
+                var index = 1
 
                 for (var index in json.operations)
                 {
-                    var sectionName = String.fromCharCode(sectionIndex++)
                     var operation = json.operations[index]
 
                     for (var i in operation.events)
@@ -68,14 +67,53 @@
                         markers.push(
                         {
                             x: event.time,
-                            title: sectionName + (parseInt(i) + 1),
-                            text: event.type + ': ' + event.price
+                            title: index + eventTitle(event),
+                            text: eventText(event)
                         })
                     }
+
+                    index++
                 }
 
                 render(data, markers)
             })
+        }
+
+        function eventTitle(event)
+        {
+            if (event.type == 'watching_buy')
+            {
+                return 'WB'
+            }
+            else if (event.type == 'trailing_buy')
+            {
+                return 'TB'
+            }
+            else if (event.type == 'purchase')
+            {
+                return 'B'
+            }
+            else if (event.type == 'watching_sell')
+            {
+                return 'WS'
+            }
+            else if (event.type == 'trailing_sell')
+            {
+                return 'TS'
+            }
+            else if (event.type == 'sale')
+            {
+                return 'S'
+            }
+            else
+            {
+                return event.type
+            }
+        }
+
+        function eventText(event)
+        {
+            return event.type.replace('_', ' ') + ': ' + event.price
         }
 
         function render(data, markers)
@@ -111,6 +149,8 @@
                 }]
             })
         }
+
+
 
     </script>
 </head>
