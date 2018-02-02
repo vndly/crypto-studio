@@ -64,7 +64,8 @@
             "price": 0.05675975,
             "amount": 0.04723911,
             "total": 0.00268128,
-            "profit": 7.25,
+            "profitTotal": 1.8128E-4,
+            "profitPercentage": 7.25,
             "type": "sale",
             "time": 1514921820000,
             "date": "2018-01-02 19:37:00"
@@ -145,13 +146,16 @@
             "price": 0.08895,
             "amount": 0.02933687,
             "total": 0.00260951,
-            "profit": 4.38,
+            "profitTotal": 1.0951E-4,
+            "profitPercentage": 4.38,
             "type": "sale",
             "time": 1515631020000,
             "date": "2018-01-11 00:37:00"
           }
         ]
       }
-    ]
+    ],
+    "profitTotal": 2.9079E-4,
+    "profitPercentage": 5.81
   }
 ]

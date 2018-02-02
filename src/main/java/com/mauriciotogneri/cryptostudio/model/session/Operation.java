@@ -2,6 +2,7 @@ package com.mauriciotogneri.cryptostudio.model.session;
 
 import com.mauriciotogneri.cryptostudio.model.events.Event;
 import com.mauriciotogneri.cryptostudio.model.events.TradeBuyEvent;
+import com.mauriciotogneri.cryptostudio.model.events.TradeSaleEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,21 @@ public class Operation
     public void event(Event event)
     {
         events.add(event);
+    }
+
+    public double profitTotal()
+    {
+        return tradeSaleEvent().profitTotal;
+    }
+
+    public double profitPercentage()
+    {
+        return tradeSaleEvent().profitPercentage;
+    }
+
+    private TradeSaleEvent tradeSaleEvent()
+    {
+        return(TradeSaleEvent) events.get(events.size() - 1);
     }
 
     public TradeBuyEvent purchase()

@@ -23,7 +23,7 @@
                     var entry = data[index]
                     var option = document.createElement('option')
                     option.value = index
-                    option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair
+                    option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair + ' - ' + entry.profitTotal + ' - ' + entry.profitPercentage + '%'
                     select.add(option)
                 }
             })
@@ -119,7 +119,7 @@
             }
             else if (event.type == 'sale')
             {
-                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total + ' - profit: ' + event.profit + '%'
+                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total + ' - profit total: ' + event.profitTotal + ' - profit percentage: ' + event.profitPercentage + '%'
             }
             else
             {
