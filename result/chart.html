@@ -89,7 +89,7 @@
             {
                 return 'TB'
             }
-            else if (event.type == 'purchase')
+            else if (event.type == 'buy')
             {
                 return 'B'
             }
@@ -113,7 +113,18 @@
 
         function eventText(event)
         {
-            return event.type.replace('_', ' ') + ': ' + event.price
+            if (event.type == 'buy')
+            {
+                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total
+            }
+            else if (event.type == 'sale')
+            {
+                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total + ' - profit: ' + event.profit + '%'
+            }
+            else
+            {
+                return event.type.replace('_', ' ') + ': ' + event.price
+            }
         }
 
         function render(data, markers)
@@ -144,11 +155,12 @@
                     type: 'flags',
                     data: markers,
                     onSeries: 'dataseries',
-                    shape: 'circlepin',
-                    width: 16
+                    shape: 'squarepin',
+                    width: 30
                 }]
             })
         }
+
 
 
 
