@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.state;
 
-import com.mauriciotogneri.cryptostudio.model.events.PurchaseEvent;
+import com.mauriciotogneri.cryptostudio.model.events.TradeBuyEvent;
 import com.mauriciotogneri.cryptostudio.model.events.TrailingBuyEvent;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Operation;
@@ -37,7 +37,7 @@ public class TrailingBuyState extends State
 
         if (state == BUY)
         {
-            operation.event(new PurchaseEvent(priceData, session.input.maxCost));
+            operation.event(new TradeBuyEvent(priceData, session.input.maxCost));
 
             return new WatchingSellState(session, operation, priceData);
         }

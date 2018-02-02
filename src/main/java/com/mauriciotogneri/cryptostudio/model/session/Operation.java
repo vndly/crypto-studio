@@ -1,7 +1,7 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
 import com.mauriciotogneri.cryptostudio.model.events.Event;
-import com.mauriciotogneri.cryptostudio.model.events.PurchaseEvent;
+import com.mauriciotogneri.cryptostudio.model.events.TradeBuyEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,13 @@ public class Operation
         events.add(event);
     }
 
-    public PurchaseEvent purchase()
+    public TradeBuyEvent purchase()
     {
         for (Event event : events)
         {
-            if (event instanceof PurchaseEvent)
+            if (event instanceof TradeBuyEvent)
             {
-                return (PurchaseEvent) event;
+                return (TradeBuyEvent) event;
             }
         }
 
