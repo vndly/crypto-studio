@@ -38,7 +38,7 @@ public class Operation
 
     private TradeSaleEvent tradeSaleEvent()
     {
-        return(TradeSaleEvent) events.get(events.size() - 1);
+        return (TradeSaleEvent) events.get(events.size() - 1);
     }
 
     public TradeBuyEvent purchase()
