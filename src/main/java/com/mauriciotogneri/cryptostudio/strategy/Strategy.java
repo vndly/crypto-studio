@@ -3,55 +3,61 @@ package com.mauriciotogneri.cryptostudio.strategy;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.type.Interval;
-import com.mauriciotogneri.javautils.Strings;
 
 public abstract class Strategy
 {
+    public enum StrategyType
+    {
+        GAIN,
+        LOSS,
+        HIGHBB,
+        LOWBB,
+        SMACROSS,
+        SMAGAIN,
+        SMASPREAD,
+        EMACROSS,
+        EMAGAIN,
+        EMASPREAD
+    }
+
     public abstract boolean update(PriceData priceData);
 
-    public static Strategy fromString(String name, Input input, double value)
+    public static Strategy fromString(StrategyType type, Input input, double value)
     {
-        if (Strings.equals(name, "GAIN"))
+        switch (type)
         {
-            return new GAIN(input.sellValue, value);
-        }
-        else if (Strings.equals(name, "LOSS"))
-        {
-            return new LOSS(input.buyValue, Interval.fromCode(input.interval));
-        }
-        else if (Strings.equals(name, "HIGHBB"))
-        {
-            return new HIGHBB();
-        }
-        else if (Strings.equals(name, "LOWBB"))
-        {
-            return new LOWBB();
-        }
-        else if (Strings.equals(name, "SMACROSS"))
-        {
-            return new SMACROSS();
-        }
-        else if (Strings.equals(name, "SMAGAIN"))
-        {
-            return new SMAGAIN();
-        }
-        else if (Strings.equals(name, "SMASPREAD"))
-        {
-            return new SMASPREAD();
-        }
-        else if (Strings.equals(name, "EMACROSS"))
-        {
-            return new EMACROSS();
-        }
-        else if (Strings.equals(name, "EMAGAIN"))
-        {
-            return new EMAGAIN();
-        }
-        else if (Strings.equals(name, "EMASPREAD"))
-        {
-            return new EMASPREAD();
-        }
+            case GAIN:
+                return new GAIN(input.sellValue, value);
 
-        throw new RuntimeException("Invalid strategy: " + name);
+            case LOSS:
+                return new LOSS(input.buyValue, Interval.fromCode(input.interval));
+
+            case HIGHBB:
+                return new HIGHBB();
+
+            case LOWBB:
+                return new LOWBB();
+
+            case SMACROSS:
+                return new SMACROSS();
+
+            case SMAGAIN:
+                return new SMAGAIN();
+
+            case SMASPREAD:
+                return new SMASPREAD();
+
+            case EMACROSS:
+                return new EMACROSS();
+
+            case EMAGAIN:
+                return new EMAGAIN();
+
+            case EMASPREAD:
+                return new EMASPREAD();
+
+            default:
+                throw new RuntimeException("Invalid strategy: " + type);
+        }
     }
 }

@@ -1,21 +1,27 @@
 package com.mauriciotogneri.cryptostudio.source;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.javautils.Strings;
 
 import java.util.List;
 
 public abstract class Source
 {
+    public enum SourceType
+    {
+        FILE
+    }
+
     public abstract List<PriceData> priceData();
 
-    public static Source fromString(String name, String pair, String interval)
+    public static Source fromString(SourceType type, String pair, String interval)
     {
-        if (Strings.equals(name, "FILE"))
+        switch (type)
         {
-            return new FileSource(pair, interval);
-        }
+            case FILE:
+                return new FileSource(pair, interval);
 
-        throw new RuntimeException("Invalid source: " + name);
+            default:
+                throw new RuntimeException("Invalid source: " + type);
+        }
     }
 }

@@ -1,7 +1,9 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
 import com.mauriciotogneri.cryptostudio.source.Source;
+import com.mauriciotogneri.cryptostudio.source.Source.SourceType;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
+import com.mauriciotogneri.cryptostudio.strategy.Strategy.StrategyType;
 
 public class Input
 {
@@ -44,7 +46,7 @@ public class Input
 
     public Source source()
     {
-        return Source.fromString(source, pair, interval);
+        return Source.fromString(SourceType.valueOf(source), pair, interval);
     }
 
     public Strategy buyStrategy()
@@ -59,11 +61,11 @@ public class Input
 
     public Strategy buyStrategy(double value)
     {
-        return Strategy.fromString(buyStrategy, this, value);
+        return Strategy.fromString(StrategyType.valueOf(buyStrategy), this, value);
     }
 
     public Strategy sellStrategy(double value)
     {
-        return Strategy.fromString(sellStrategy, this, value);
+        return Strategy.fromString(StrategyType.valueOf(sellStrategy), this, value);
     }
 }
