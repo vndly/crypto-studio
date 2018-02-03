@@ -1,23 +1,28 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
+import com.mauriciotogneri.cryptostudio.indicator.Indicator;
+import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.source.Source.SourceType;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy.StrategyType;
+import com.mauriciotogneri.cryptostudio.type.Interval;
 
 public class Input
 {
-    public final String source;
+    public final SourceType source;
     public final String pair;
     public final String interval;
     public final double maxCost;
-    public final String buyStrategy;
+    public final StrategyType buyStrategy;
     public final double buyValue;
     public final double trailingBuy;
-    public final String sellStrategy;
+    public final StrategyType sellStrategy;
     public final double sellValue;
     public final double trailingProfit;
     public final double stopLossTrigger;
+
+    public transient final Indicator indicator;
 
     public Input(String source,
                  String pair,
@@ -31,41 +36,37 @@ public class Input
                  double trailingProfit,
                  double stopLossTrigger)
     {
-        this.source = source;
+        this.source = SourceType.valueOf(source);
         this.pair = pair;
         this.interval = interval;
         this.maxCost = maxCost;
-        this.buyStrategy = buyStrategy;
+        this.buyStrategy = StrategyType.valueOf(buyStrategy);
         this.buyValue = buyValue;
         this.trailingBuy = trailingBuy;
-        this.sellStrategy = sellStrategy;
+        this.sellStrategy = StrategyType.valueOf(sellStrategy);
         this.sellValue = sellValue;
         this.trailingProfit = trailingProfit;
         this.stopLossTrigger = stopLossTrigger;
+        this.indicator = Indicator.fromStrategy(StrategyType.valueOf(buyStrategy), this);
+    }
+
+    public void update(PriceData priceData)
+    {
+        indicator.update(priceData);
     }
 
     public Source source()
     {
-        return Source.fromString(SourceType.valueOf(source), pair, interval);
+        return Source.fromString(source, pair, Interval.fromCode(interval));
     }
 
     public Strategy buyStrategy()
     {
-        return buyStrategy(0);
-    }
-
-    public Strategy sellStrategy()
-    {
-        return sellStrategy(0);
-    }
-
-    public Strategy buyStrategy(double value)
-    {
-        return Strategy.fromString(StrategyType.valueOf(buyStrategy), this, value);
+        return Strategy.buyStrategy(buyStrategy, this);
     }
 
     public Strategy sellStrategy(double value)
     {
-        return Strategy.fromString(StrategyType.valueOf(sellStrategy), this, value);
+        return Strategy.sellStrategy(sellStrategy, this, value);
     }
 }

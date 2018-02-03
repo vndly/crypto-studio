@@ -16,7 +16,7 @@ public class ChartGenerator
     public void csv(String pair, Interval interval) throws Exception
     {
         String filePath = String.format("chart/%s_%s.csv", pair, interval.code());
-        FileSource fileSource = new FileSource(pair, interval.code());
+        FileSource fileSource = new FileSource(pair, interval);
         List<PriceData> priceList = fileSource.priceData();
 
         StringBuilder csv = new StringBuilder();
@@ -39,7 +39,7 @@ public class ChartGenerator
     public void json(String pair, Interval interval) throws Exception
     {
         String filePath = String.format("chart/%s_%s.json", pair, interval.code());
-        FileSource fileSource = new FileSource(pair, interval.code());
+        FileSource fileSource = new FileSource(pair, interval);
         List<PriceData> priceList = fileSource.priceData();
 
         List<double[]> list = new ArrayList<>();

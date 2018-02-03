@@ -2,7 +2,6 @@ package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
-import com.mauriciotogneri.cryptostudio.type.Interval;
 
 public abstract class Strategy
 {
@@ -22,15 +21,12 @@ public abstract class Strategy
 
     public abstract boolean update(PriceData priceData);
 
-    public static Strategy fromString(StrategyType type, Input input, double value)
+    public static Strategy buyStrategy(StrategyType type, Input input)
     {
         switch (type)
         {
-            case GAIN:
-                return new GAIN(input.sellValue, value);
-
             case LOSS:
-                return new LOSS(input.buyValue, Interval.fromCode(input.interval));
+                return new LOSS(input.indicator);
 
             case HIGHBB:
                 return new HIGHBB();
@@ -55,6 +51,18 @@ public abstract class Strategy
 
             case EMASPREAD:
                 return new EMASPREAD();
+
+            default:
+                throw new RuntimeException("Invalid strategy: " + type);
+        }
+    }
+
+    public static Strategy sellStrategy(StrategyType type, Input input, double value)
+    {
+        switch (type)
+        {
+            case GAIN:
+                return new GAIN(input.sellValue, value);
 
             default:
                 throw new RuntimeException("Invalid strategy: " + type);

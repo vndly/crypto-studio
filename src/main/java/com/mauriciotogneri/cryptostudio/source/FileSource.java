@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.type.Interval;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -13,9 +14,9 @@ import java.util.Scanner;
 public class FileSource extends Source
 {
     private final String pair;
-    private final String interval;
+    private final Interval interval;
 
-    public FileSource(String pair, String interval)
+    public FileSource(String pair, Interval interval)
     {
         this.pair = pair;
         this.interval = interval;
@@ -40,7 +41,7 @@ public class FileSource extends Source
         }
     }
 
-    public static String file(String pair, String interval)
+    public static String file(String pair, Interval interval)
     {
         return String.format("data/%s_%s.json", pair, interval);
     }

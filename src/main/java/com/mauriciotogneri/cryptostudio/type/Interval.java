@@ -89,4 +89,10 @@ public enum Interval
     {
         return code;
     }
+
+    @Override
+    public String toString()
+    {
+        return code;
+    }
 }

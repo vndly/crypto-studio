@@ -21,7 +21,7 @@ public class WatchingSellState extends State
     public WatchingSellState(Session session, Operation operation, PriceData priceData)
     {
         this.session = session;
-        this.sellStrategy = session.input.sellStrategy(priceData.price());
+        this.sellStrategy = session.input.sellStrategy(operation.buyPrice());
         this.operation = operation;
         this.operation.event(new WatchingSellEvent(priceData));
         this.stopLoss = new StopLoss(operation.buyPrice(), session.input.stopLossTrigger);

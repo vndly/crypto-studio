@@ -15,7 +15,7 @@ public class DataCollector
     public void run(String pair, Interval interval, Integer days) throws Exception
     {
         Integer limit = interval.onDaySize() * days;
-        String filePath = FileSource.file(pair, interval.code());
+        String filePath = FileSource.file(pair, interval);
 
         Klines klines = new Klines(pair, interval, limit);
         List<CandleStick> list = klines.execute();

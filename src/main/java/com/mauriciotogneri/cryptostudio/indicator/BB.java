@@ -5,7 +5,7 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 public class BB extends Indicator
 {
     @Override
-    public boolean update(PriceData priceData)
+    public boolean isTriggered(PriceData priceData)
     {
         return false; // TODO
     }

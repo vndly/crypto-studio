@@ -85,6 +85,7 @@ public class Studio
 
         for (PriceData priceData : priceList)
         {
+            input.update(priceData);
             state = state.update(priceData);
         }
 
