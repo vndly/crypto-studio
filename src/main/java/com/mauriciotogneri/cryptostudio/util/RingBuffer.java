@@ -28,6 +28,18 @@ public class RingBuffer
         return ring[position];
     }
 
+    public double newest()
+    {
+        if (position > 0)
+        {
+            return ring[position - 1];
+        }
+        else
+        {
+            return ring[ring.length - 1];
+        }
+    }
+
     public double sum()
     {
         double sum = 0;

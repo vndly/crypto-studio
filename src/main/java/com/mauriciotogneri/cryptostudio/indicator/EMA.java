@@ -5,8 +5,8 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 public class EMA extends Indicator
 {
     @Override
-    public boolean isTriggered(PriceData priceData)
+    public void update(PriceData priceData)
     {
-        return false; // TODO
+        // TODO
     }
 }

@@ -22,6 +22,10 @@ public class Configuration
     public final Range<Double> trailingProfit;
     public final Range<Double> stopLossTrigger;
 
+    public final Range<Integer> smaPeriod;
+    public final Range<Integer> sma1;
+    public final Range<Integer> sma2;
+
     public Configuration(String filePath) throws Exception
     {
         InputStream input = null;
@@ -46,6 +50,10 @@ public class Configuration
             sellValue = new RangeDouble(properties.getProperty("sell_value"));
             trailingProfit = new RangeDouble(properties.getProperty("trailing_profit"));
             stopLossTrigger = new RangeDouble(properties.getProperty("stop_loss_trigger"));
+
+            smaPeriod = new RangeInteger(properties.getProperty("SMA_period"));
+            sma1 = new RangeInteger(properties.getProperty("SMA_1"));
+            sma2 = new RangeInteger(properties.getProperty("SMA_2"));
         }
         finally
         {

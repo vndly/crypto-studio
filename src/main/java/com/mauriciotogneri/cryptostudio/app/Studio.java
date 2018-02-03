@@ -44,20 +44,32 @@ public class Studio
                                             {
                                                 for (Double stopLossTrigger : configuration.stopLossTrigger)
                                                 {
-                                                    Input input = new Input(source,
-                                                                            pair,
-                                                                            interval,
-                                                                            maxCost,
-                                                                            buyStrategy,
-                                                                            buyValue,
-                                                                            trailingBuy,
-                                                                            sellStrategy,
-                                                                            sellValue,
-                                                                            trailingProfit,
-                                                                            stopLossTrigger);
+                                                    for (Integer smaPeriod : configuration.smaPeriod)
+                                                    {
+                                                        for (Integer sma1 : configuration.sma1)
+                                                        {
+                                                            for (Integer sma2 : configuration.sma2)
+                                                            {
+                                                                Input input = new Input(source,
+                                                                                        pair,
+                                                                                        interval,
+                                                                                        maxCost,
+                                                                                        buyStrategy,
+                                                                                        buyValue,
+                                                                                        trailingBuy,
+                                                                                        sellStrategy,
+                                                                                        sellValue,
+                                                                                        trailingProfit,
+                                                                                        stopLossTrigger,
+                                                                                        smaPeriod,
+                                                                                        sma1,
+                                                                                        sma2);
 
-                                                    Output output = simulate(input);
-                                                    outputs.add(output);
+                                                                Output output = simulate(input);
+                                                                outputs.add(output);
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }

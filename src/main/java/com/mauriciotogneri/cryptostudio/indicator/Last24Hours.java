@@ -17,10 +17,13 @@ public class Last24Hours extends Indicator
     }
 
     @Override
-    public boolean isTriggered(PriceData priceData)
+    public void update(PriceData priceData)
     {
         ring.add(priceData.price());
+    }
 
+    public boolean isTriggered(PriceData priceData)
+    {
         double limit = Percentage.decreaseOf(buyValue, ring.oldest());
 
         return ring.isFull() && (priceData.price() < limit);

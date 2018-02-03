@@ -7,19 +7,7 @@ import com.mauriciotogneri.cryptostudio.type.Interval;
 
 public abstract class Indicator
 {
-    private boolean triggered = false;
-
-    public abstract boolean isTriggered(PriceData priceData);
-
-    public void update(PriceData priceData)
-    {
-        triggered = isTriggered(priceData);
-    }
-
-    public boolean isTriggered()
-    {
-        return triggered;
-    }
+    public abstract void update(PriceData priceData);
 
     public static Indicator fromStrategy(StrategyType type, Input input)
     {
@@ -35,7 +23,7 @@ public abstract class Indicator
             case SMACROSS:
             case SMAGAIN:
             case SMASPREAD:
-                return new SMA();
+                return new SMA(Interval.fromCode(input.interval), input.smaPeriod, input.sma1, input.sma2);
 
             case EMACROSS:
             case EMAGAIN:

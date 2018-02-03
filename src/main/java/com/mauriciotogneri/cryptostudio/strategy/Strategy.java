@@ -1,5 +1,7 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
+import com.mauriciotogneri.cryptostudio.indicator.Last24Hours;
+import com.mauriciotogneri.cryptostudio.indicator.SMA;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
 
@@ -26,7 +28,7 @@ public abstract class Strategy
         switch (type)
         {
             case LOSS:
-                return new LOSS(input.indicator);
+                return new LOSS((Last24Hours) input.indicator);
 
             case HIGHBB:
                 return new HIGHBB();
@@ -38,7 +40,7 @@ public abstract class Strategy
                 return new SMACROSS();
 
             case SMAGAIN:
-                return new SMAGAIN();
+                return new SMAGAIN(input.buyValue, (SMA) input.indicator);
 
             case SMASPREAD:
                 return new SMASPREAD();

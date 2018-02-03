@@ -14,13 +14,19 @@ public class Input
     public final String pair;
     public final String interval;
     public final double maxCost;
+
     public final StrategyType buyStrategy;
     public final double buyValue;
     public final double trailingBuy;
+
     public final StrategyType sellStrategy;
     public final double sellValue;
     public final double trailingProfit;
     public final double stopLossTrigger;
+
+    public final int smaPeriod;
+    public final int sma1;
+    public final int sma2;
 
     public transient final Indicator indicator;
 
@@ -34,7 +40,10 @@ public class Input
                  String sellStrategy,
                  double sellValue,
                  double trailingProfit,
-                 double stopLossTrigger)
+                 double stopLossTrigger,
+                 int smaPeriod,
+                 int sma1,
+                 int sma2)
     {
         this.source = SourceType.valueOf(source);
         this.pair = pair;
@@ -47,6 +56,10 @@ public class Input
         this.sellValue = sellValue;
         this.trailingProfit = trailingProfit;
         this.stopLossTrigger = stopLossTrigger;
+        this.smaPeriod = smaPeriod;
+        this.sma1 = sma1;
+        this.sma2 = sma2;
+
         this.indicator = Indicator.fromStrategy(StrategyType.valueOf(buyStrategy), this);
     }
 

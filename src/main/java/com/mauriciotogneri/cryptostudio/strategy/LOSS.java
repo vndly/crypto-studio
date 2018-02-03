@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.indicator.Indicator;
+import com.mauriciotogneri.cryptostudio.indicator.Last24Hours;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 
 /**
@@ -12,9 +12,9 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
  */
 public class LOSS extends Strategy
 {
-    private final Indicator indicator;
+    private final Last24Hours indicator;
 
-    public LOSS(Indicator indicator)
+    public LOSS(Last24Hours indicator)
     {
         this.indicator = indicator;
     }
@@ -22,6 +22,6 @@ public class LOSS extends Strategy
     @Override
     public boolean update(PriceData priceData)
     {
-        return indicator.isTriggered();
+        return indicator.isTriggered(priceData);
     }
 }
