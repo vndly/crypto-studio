@@ -21,6 +21,11 @@ public class Operation
         events.add(event);
     }
 
+    public double buyPrice()
+    {
+        return purchase().price;
+    }
+
     public double profitTotal()
     {
         return tradeSaleEvent().profitTotal;

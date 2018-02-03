@@ -19,6 +19,6 @@ public class TradeSaleEvent extends Event
         this.amount = tradeBuyEvent.amount;
         this.total = Decimal.roundPrice(price * amount);
         this.profitTotal = Decimal.roundPrice(total - tradeBuyEvent.total);
-        this.profitPercentage = Decimal.roundPercentage((total * 100 / tradeBuyEvent.total) - 100) * ((total > tradeBuyEvent.total) ? 1 : -1);
+        this.profitPercentage = Decimal.roundPercentage((total * 100 / tradeBuyEvent.total) - 100);
     }
 }

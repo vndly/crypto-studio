@@ -23,7 +23,7 @@
                     var entry = data[index]
                     var option = document.createElement('option')
                     option.value = index
-                    option.text = (parseInt(index) + 1) + ' - ' + entry.input.pair + ' - ' + entry.profitTotal + ' - ' + entry.profitPercentage + '%'
+                    option.text = (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
                     select.add(option)
                 }
             })
@@ -115,15 +115,15 @@
         {
             if (event.type == 'buy')
             {
-                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total
+                return '<b>' + event.type.replace('_', ' ') + '</b><br>price: ' + event.price + '<br>amount: ' + event.amount + '<br>total: ' + event.total
             }
             else if (event.type == 'sale')
             {
-                return event.type.replace('_', ' ') + ' - price: ' + event.price + ' - amount: ' + event.amount + ' - total: ' + event.total + ' - profit total: ' + event.profitTotal + ' - profit percentage: ' + event.profitPercentage + '%'
+                return '<b>' + event.type.replace('_', ' ') + '</b><br>price: ' + event.price + '<br>amount: ' + event.amount + '<br>total: ' + event.total + '<br>profit total: ' + event.profitTotal + '<br>profit percentage: ' + event.profitPercentage + '%'
             }
             else
             {
-                return event.type.replace('_', ' ') + ': ' + event.price
+                return '<b>' + event.type.replace('_', ' ') + ':</b> ' + event.price
             }
         }
 
@@ -160,9 +160,6 @@
                 }]
             })
         }
-
-
-
 
     </script>
 </head>
