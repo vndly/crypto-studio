@@ -5,8 +5,8 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 public class SMA extends Indicator
 {
     @Override
-    public void update(PriceData priceData)
+    public boolean update(PriceData priceData)
     {
-        // TODO
+        return false; // TODO
     }
 }

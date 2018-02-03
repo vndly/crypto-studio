@@ -12,20 +12,16 @@ import com.mauriciotogneri.cryptostudio.util.Percentage;
  */
 public class GAIN extends Strategy
 {
-    private final double sellValue;
-    private final double baseValue;
+    private final double limit;
 
     public GAIN(double sellValue, double baseValue)
     {
-        this.sellValue = sellValue;
-        this.baseValue = baseValue;
+        this.limit = Percentage.increaseOf(sellValue, baseValue);
     }
 
     @Override
     public boolean update(PriceData priceData)
     {
-        double limit = Percentage.increaseOf(sellValue, baseValue);
-
         return (priceData.price() > limit);
     }
 }
