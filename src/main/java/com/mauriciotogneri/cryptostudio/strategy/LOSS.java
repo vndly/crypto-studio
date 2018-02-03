@@ -8,10 +8,9 @@ import com.mauriciotogneri.cryptostudio.util.RingBuffer;
 /**
  * Buy as soon as the pair drops the amount of percentages specified.
  * The percentage is the 24h change specified buy your exchange.
- * <p>
  * Possible buy_value example:
- * buy_value = -7 → buy if the pair has fallen 7% or more in the last 24h
- * 7 → positive numbers are converted to negative. So session is the same as above.
+ * -7 → buy if the pair has fallen 7% or more in the last 24h
+ * 7 → positive numbers are converted to negative
  */
 public class LOSS extends Strategy
 {

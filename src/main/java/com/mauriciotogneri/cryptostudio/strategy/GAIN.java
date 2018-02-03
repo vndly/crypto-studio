@@ -5,10 +5,9 @@ import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 /**
  * Sell as soon as the current price reaches the profit specified.
- * <p>
  * Possible sell_value example:
- * sell_value = 2.5 → sell if profit is 2.5% or more.
- * -10 → sell if profit is -10% or more.
+ * 2.5 → sell if profit is 2.5% or more
+ * -10 → sell if profit is -10% or more
  */
 public class GAIN extends Strategy
 {
