@@ -1,0 +1,29 @@
+html
+{
+	font-family: sans;
+}
+
+fieldset
+{
+	display: inline-block
+}
+
+.sma
+{
+	color: #da6767;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.ema
+{
+	color: #61a053;
+	margin-right: 10px;
+    margin-left: 10px;
+}
+
+.container
+{
+	width: 100%;
+	height: 90%;
+}

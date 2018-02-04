@@ -1,3 +1,5 @@
+var chart = null
+
 $(document).ready(function()
 {
     loadJSON('../output.json', function(response)
@@ -5,7 +7,6 @@ $(document).ready(function()
         var data = JSON.parse(response)
 
         var select = document.getElementById('select')
-        select.value = ''
         select.addEventListener('change', function()
         {
             processResult(data[select.value])
@@ -109,7 +110,7 @@ function eventMarkers(json)
 
 function render(data, sma1, sma2, ema1, ema2, events)
 {
-    Highcharts.stockChart('container', {
+    chart = Highcharts.stockChart('container', {
 
         chart: {
             zoomType: 'x',
@@ -176,4 +177,32 @@ function render(data, sma1, sma2, ema1, ema2, events)
             }
         ]
     })
+}
+
+function updateSMA(checkbox)
+{
+	if (checkbox.checked)
+	{
+		chart.series[1].show()
+		chart.series[2].show()
+	}
+	else
+	{
+		chart.series[1].hide()
+        chart.series[2].hide()
+	}
+}
+
+function updateEMA(checkbox)
+{
+	if (checkbox.checked)
+    {
+        chart.series[3].show()
+        chart.series[4].show()
+    }
+    else
+    {
+        chart.series[3].hide()
+        chart.series[4].hide()
+    }
 }
