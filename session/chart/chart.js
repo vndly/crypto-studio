@@ -141,12 +141,14 @@ function render(data, sma1, sma2, ema1, ema2, events)
                 name: 'SMA 1',
                 data: sma1,
                 id: 'sma1',
+                type: 'spline',
                 color: '#da6767'
             },
             {
                 name: 'SMA 2',
                 data: sma2,
                 id: 'sma2',
+                type: 'spline',
                 dashStyle: 'Dot',
                 color: '#da6767'
             },
@@ -154,12 +156,14 @@ function render(data, sma1, sma2, ema1, ema2, events)
                 name: 'EMA 1',
                 data: ema1,
                 id: 'ema1',
+                type: 'spline',
                 color: '#8ce38d'
             },
             {
                 name: 'EMA 2',
                 data: ema2,
                 id: 'ema2',
+                type: 'spline',
                 dashStyle: 'Dot',
                 color: '#8ce38d'
             },

@@ -4,6 +4,10 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.cryptostudio.util.RingBuffer;
 
+/**
+ * EMA = ((Current_Price - Previous_EMA) * Weight) + Previous EMA
+ * EMA = (Current_Price * Weight) + (Previous_EMA * (1 – Weight))
+ */
 public class EMA extends Indicator
 {
     private int periodIndex;
