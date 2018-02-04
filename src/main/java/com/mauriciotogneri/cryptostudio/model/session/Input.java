@@ -1,7 +1,5 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
-import com.mauriciotogneri.cryptostudio.indicator.Indicator;
-import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.source.Source.SourceType;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
@@ -27,8 +25,6 @@ public class Input
     public final int smaPeriod;
     public final int sma1;
     public final int sma2;
-
-    public transient final Indicator indicator;
 
     public Input(String source,
                  String pair,
@@ -59,13 +55,11 @@ public class Input
         this.smaPeriod = smaPeriod;
         this.sma1 = sma1;
         this.sma2 = sma2;
-
-        this.indicator = Indicator.fromStrategy(StrategyType.valueOf(buyStrategy), this);
     }
 
-    public void update(PriceData priceData)
+    public Interval interval()
     {
-        indicator.update(priceData);
+        return Interval.fromCode(interval);
     }
 
     public Source source()

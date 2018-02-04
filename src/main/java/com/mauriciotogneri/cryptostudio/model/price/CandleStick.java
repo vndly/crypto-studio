@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.model.price;
 
-public class CandleStick implements PriceData
+public class CandleStick
 {
     private final long openTime;
     private final double open;
@@ -39,13 +39,11 @@ public class CandleStick implements PriceData
         this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
     }
 
-    @Override
     public long time()
     {
         return openTime;
     }
 
-    @Override
     public double price()
     {
         return (open + close + high + low) / 4;

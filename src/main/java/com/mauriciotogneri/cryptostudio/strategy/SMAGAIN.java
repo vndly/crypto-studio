@@ -1,6 +1,5 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.indicator.SMA;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.util.Percentage;
 
@@ -14,20 +13,21 @@ import com.mauriciotogneri.cryptostudio.util.Percentage;
 public class SMAGAIN extends Strategy
 {
     private final double buyValue;
-    private final SMA indicator;
 
-    public SMAGAIN(double buyValue, SMA indicator)
+    public SMAGAIN(double buyValue)
     {
         this.buyValue = buyValue;
-        this.indicator = indicator;
     }
 
     @Override
     public boolean update(PriceData priceData)
     {
-        if (indicator.isFull())
+        double sma1 = priceData.sma1();
+        double sma2 = priceData.sma2();
+
+        if ((sma1 != 0) && (sma2 != 0))
         {
-            double lowestSMA = Math.min(indicator.sma1(), indicator.sma2());
+            double lowestSMA = Math.min(sma1, sma2);
 
             if (buyValue < 0)
             {

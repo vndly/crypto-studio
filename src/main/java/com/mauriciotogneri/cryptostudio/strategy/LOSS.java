@@ -1,7 +1,7 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
-import com.mauriciotogneri.cryptostudio.indicator.Last24Hours;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 /**
  * Buy as soon as the pair drops the amount of percentages specified.
@@ -12,16 +12,27 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
  */
 public class LOSS extends Strategy
 {
-    private final Last24Hours indicator;
+    private final double buyValue;
 
-    public LOSS(Last24Hours indicator)
+    public LOSS(double buyValue)
     {
-        this.indicator = indicator;
+        this.buyValue = buyValue;
     }
 
     @Override
     public boolean update(PriceData priceData)
     {
-        return indicator.isTriggered(priceData);
+        double last24H = priceData.last24H();
+
+        if (last24H != 0)
+        {
+            double limit = Percentage.decreaseOf(buyValue, last24H);
+
+            return (priceData.price() < limit);
+        }
+        else
+        {
+            return false;
+        }
     }
 }

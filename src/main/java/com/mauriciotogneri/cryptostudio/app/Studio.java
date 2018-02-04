@@ -92,12 +92,11 @@ public class Studio
         Output output = new Output(input);
         Source source = input.source();
         Session session = new Session(input, output);
-        List<PriceData> priceList = source.priceData();
+        List<PriceData> priceList = source.priceData(input);
         State state = new WatchingBuyState(session, new Operation(), priceList.get(0));
 
         for (PriceData priceData : priceList)
         {
-            input.update(priceData);
             state = state.update(priceData);
         }
 

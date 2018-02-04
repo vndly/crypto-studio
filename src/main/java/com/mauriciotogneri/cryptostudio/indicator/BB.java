@@ -1,11 +1,11 @@
 package com.mauriciotogneri.cryptostudio.indicator;
 
-import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 
 public class BB extends Indicator
 {
     @Override
-    public void update(PriceData priceData)
+    public void update(PriceHistory priceHistory)
     {
         // TODO
     }

@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.indicator;
 
-import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.cryptostudio.util.RingBuffer;
 
@@ -24,9 +24,9 @@ public class SMA extends Indicator
     }
 
     @Override
-    public void update(PriceData priceData)
+    public void update(PriceHistory priceHistory)
     {
-        periodSum += priceData.price();
+        periodSum += priceHistory.price();
         periodIndex++;
 
         if (periodIndex == period)
@@ -36,28 +36,18 @@ public class SMA extends Indicator
             sma1.add(average);
             sma2.add(average);
 
-            if (sma2.isFull())
-            {
-                System.out.print(String.format("[%s,%s],", priceData.time(), sma2.average()));
-            }
-
             periodSum = 0;
             periodIndex = 0;
         }
     }
 
-    public boolean isFull()
-    {
-        return sma1.isFull() && sma2.isFull();
-    }
-
     public double sma1()
     {
-        return sma1.average();
+        return sma1.isFull() ? sma1.average() : 0;
     }
 
     public double sma2()
     {
-        return sma2.average();
+        return sma2.isFull() ? sma2.average() : 0;
     }
 }

@@ -2,12 +2,16 @@ package com.mauriciotogneri.cryptostudio.source;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
+import com.mauriciotogneri.cryptostudio.indicator.Last24Hours;
+import com.mauriciotogneri.cryptostudio.indicator.SMA;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
+import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.type.Interval;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +27,7 @@ public class FileSource extends Source
     }
 
     @Override
-    public List<PriceData> priceData()
+    public List<PriceData> priceData(Input input)
     {
         try
         {
@@ -31,14 +35,39 @@ public class FileSource extends Source
             InputStream inputStream = new FileInputStream(filePath);
             String json = new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next();
 
-            return new Gson().fromJson(json, new TypeToken<List<CandleStick>>()
+            List<PriceHistory> priceHistory = new Gson().fromJson(json, new TypeToken<List<PriceHistory>>()
             {
             }.getType());
+
+            return priceData(priceHistory, input);
         }
         catch (Exception e)
         {
             throw new RuntimeException(e);
         }
+    }
+
+    private List<PriceData> priceData(List<PriceHistory> priceHistory, Input input)
+    {
+        Last24Hours last24Hours = new Last24Hours(input.interval());
+        SMA sma = new SMA(input.interval(), input.smaPeriod, input.sma1, input.sma2);
+
+        List<PriceData> priceData = new ArrayList<>();
+
+        for (PriceHistory price : priceHistory)
+        {
+            last24Hours.update(price);
+            sma.update(price);
+
+            priceData.add(new PriceData(
+                    price.time(),
+                    price.price(),
+                    sma.sma1(),
+                    sma.sma2(),
+                    last24Hours.oldest()));
+        }
+
+        return priceData;
     }
 
     public static String file(String pair, Interval interval)

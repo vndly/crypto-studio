@@ -1,31 +1,26 @@
 package com.mauriciotogneri.cryptostudio.indicator;
 
-import com.mauriciotogneri.cryptostudio.model.price.PriceData;
+import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 import com.mauriciotogneri.cryptostudio.type.Interval;
-import com.mauriciotogneri.cryptostudio.util.Percentage;
 import com.mauriciotogneri.cryptostudio.util.RingBuffer;
 
 public class Last24Hours extends Indicator
 {
-    private final double buyValue;
     private final RingBuffer ring;
 
-    public Last24Hours(double buyValue, Interval interval)
+    public Last24Hours(Interval interval)
     {
-        this.buyValue = buyValue;
         this.ring = new RingBuffer(interval.onDaySize());
     }
 
     @Override
-    public void update(PriceData priceData)
+    public void update(PriceHistory priceHistory)
     {
-        ring.add(priceData.price());
+        ring.add(priceHistory.price());
     }
 
-    public boolean isTriggered(PriceData priceData)
+    public double oldest()
     {
-        double limit = Percentage.decreaseOf(buyValue, ring.oldest());
-
-        return ring.isFull() && (priceData.price() < limit);
+        return ring.isFull() ? ring.oldest() : 0;
     }
 }
