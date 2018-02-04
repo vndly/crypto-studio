@@ -6,6 +6,7 @@ import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 import com.mauriciotogneri.cryptostudio.source.FileSource;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.type.Pair;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.File;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class DataCollector
 {
-    public void run(String pair, Interval interval, Integer days) throws Exception
+    public void run(Pair pair, Interval interval, Integer days) throws Exception
     {
         Integer limit = interval.inDays() * days;
         String filePath = FileSource.file(pair, Interval.TEN_SECONDS);
@@ -50,7 +51,7 @@ public class DataCollector
 
     public static void main(String[] args) throws Exception
     {
-        String pair = "ADABTC";
+        Pair pair = Pair.ETHBTC;
         Interval interval = Interval.ONE_MINUTE;
         Integer days = 7;
 

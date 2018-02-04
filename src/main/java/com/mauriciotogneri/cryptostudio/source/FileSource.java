@@ -8,6 +8,7 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.type.Pair;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -17,10 +18,10 @@ import java.util.Scanner;
 
 public class FileSource extends Source
 {
-    private final String pair;
+    private final Pair pair;
     private final Interval interval;
 
-    public FileSource(String pair, Interval interval)
+    public FileSource(Pair pair, Interval interval)
     {
         this.pair = pair;
         this.interval = interval;
@@ -70,7 +71,7 @@ public class FileSource extends Source
         return priceData;
     }
 
-    public static String file(String pair, Interval interval)
+    public static String file(Pair pair, Interval interval)
     {
         return String.format("data/%s_%s.json", pair, interval);
     }

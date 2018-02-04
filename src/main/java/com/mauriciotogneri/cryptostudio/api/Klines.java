@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.type.Pair;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,13 +14,13 @@ import okhttp3.HttpUrl;
 
 public class Klines
 {
-    private final String pair;
+    private final Pair pair;
     private final Interval interval;
     private final Integer limit;
 
     private static final int MAX_LIMIT = 500;
 
-    public Klines(String pair, Interval interval, Integer limit)
+    public Klines(Pair pair, Interval interval, Integer limit)
     {
         this.pair = pair;
         this.interval = interval;
@@ -64,7 +65,7 @@ public class Klines
                 .scheme("https")
                 .host("api.binance.com")
                 .encodedPath("/api/v1/klines")
-                .addQueryParameter("symbol", pair)
+                .addQueryParameter("symbol", pair.toString())
                 .addQueryParameter("interval", interval.code())
                 .addQueryParameter("limit", String.valueOf(size));
 

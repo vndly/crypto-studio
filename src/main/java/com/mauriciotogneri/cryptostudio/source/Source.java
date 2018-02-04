@@ -3,6 +3,7 @@ package com.mauriciotogneri.cryptostudio.source;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.type.Pair;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public abstract class Source
 
     public abstract List<PriceData> priceData(Input input);
 
-    public static Source fromString(SourceType type, String pair, Interval interval)
+    public static Source fromString(SourceType type, Pair pair, Interval interval)
     {
         switch (type)
         {

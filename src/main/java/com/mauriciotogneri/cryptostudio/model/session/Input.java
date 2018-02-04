@@ -5,11 +5,12 @@ import com.mauriciotogneri.cryptostudio.source.Source.SourceType;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy;
 import com.mauriciotogneri.cryptostudio.strategy.Strategy.StrategyType;
 import com.mauriciotogneri.cryptostudio.type.Interval;
+import com.mauriciotogneri.cryptostudio.type.Pair;
 
 public class Input
 {
     public final SourceType source;
-    public final String pair;
+    public final Pair pair;
     public final String interval;
     public final double maxCost;
 
@@ -42,7 +43,7 @@ public class Input
                  int sma2)
     {
         this.source = SourceType.valueOf(source);
-        this.pair = pair;
+        this.pair = Pair.valueOf(pair);
         this.interval = interval;
         this.maxCost = maxCost;
         this.buyStrategy = StrategyType.valueOf(buyStrategy);
