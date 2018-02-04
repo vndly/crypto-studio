@@ -1,16 +1,21 @@
 <html>
 <head>
-    <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
-    <script src='https://code.highcharts.com/stock/highstock.js'></script>
-    <script src='chart.js'></script>
-    <script src='events.js'></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="chart.js"></script>
+    <script src="events.js"></script>
 </head>
 <body>
 <center>
-    <select id='select'>
+    <span style="color:#da6767;font-family:sans;margin-right:20px"><b>―― SMA1</b></span>
+    <span style="color:#da6767;font-family:sans;margin-right:20px"><b>······ SMA2</b></span>
+    <span style="color:#8ce38d;font-family:sans;margin-right:20px"><b>―― EMA 1</b></span>
+    <span style="color:#8ce38d;font-family:sans;margin-right:20px"><b>······ EMA 2</b></span>
+    <select id="select">
         <option disabled selected value></option>
     </select>
 </center>
-<div id='container' style='height: 100%; width: 100%'></div>
+<div id="container" style="height: 100%; width: 100%"></div>
 </body>
 </html>

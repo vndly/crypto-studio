@@ -19,6 +19,12 @@ $(document).ready(function()
             option.text = entryName(index, entry)
             select.add(option)
         }
+        
+        if (data.length)
+        {
+            select.value = 0
+            processResult(data[select.value])
+        }
     })
 })
 
@@ -135,25 +141,27 @@ function render(data, sma1, sma2, ema1, ema2, events)
                 name: 'SMA 1',
                 data: sma1,
                 id: 'sma1',
-                color: '#FF000055'
+                color: '#da6767'
             },
             {
                 name: 'SMA 2',
                 data: sma2,
                 id: 'sma2',
-                color: '#FF0000'
+                dashStyle: 'Dot',
+                color: '#da6767'
             },
             {
                 name: 'EMA 1',
                 data: ema1,
                 id: 'ema1',
-                color: '#00FF0055'
+                color: '#8ce38d'
             },
             {
                 name: 'EMA 2',
                 data: ema2,
                 id: 'ema2',
-                color: '#00FF00'
+                dashStyle: 'Dot',
+                color: '#8ce38d'
             },
             {
                 type: 'flags',

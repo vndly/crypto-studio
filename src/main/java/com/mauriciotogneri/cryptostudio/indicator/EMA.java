@@ -45,11 +45,11 @@ public class EMA extends Indicator
 
     public double ema1()
     {
-        return ema1.isFull() ? ema1.average() * 2 : 0; // TODO: this is a test
+        return ema1.isFull() ? ema1.average() * 1.01 : 0; // TODO: this is a test
     }
 
     public double ema2()
     {
-        return ema2.isFull() ? ema2.average() * 2 : 0; // TODO: this is a test
+        return ema2.isFull() ? ema2.average() * 1.01 : 0; // TODO: this is a test
     }
 }
