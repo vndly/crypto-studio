@@ -10,6 +10,7 @@ public class EMA extends Indicator
     private double periodSum;
 
     private final int period;
+    private final double weight;
     private final RingBuffer ema1;
     private final RingBuffer ema2;
 
@@ -19,6 +20,7 @@ public class EMA extends Indicator
         this.periodSum = 0;
 
         this.period = period / interval.inSeconds();
+        this.weight = 2d / (double) (this.period + 1);
         this.ema1 = new RingBuffer(ema1);
         this.ema2 = new RingBuffer(ema2);
     }
