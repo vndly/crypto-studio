@@ -16,25 +16,33 @@ public class DataCollector
 {
     public void run(String pair, Interval interval, Integer days) throws Exception
     {
-        Integer limit = interval.onDaySize() * days;
-        String filePath = FileSource.file(pair, interval);
+        Integer limit = interval.inDays() * days;
+        String filePath = FileSource.file(pair, Interval.TEN_SECONDS);
 
         Klines klines = new Klines(pair, interval, limit);
         List<CandleStick> candleSticks = klines.execute();
-        List<PriceHistory> priceHistory = priceHistory(candleSticks);
+        List<PriceHistory> priceHistory = priceHistory(interval, candleSticks);
 
         String json = new GsonBuilder().setPrettyPrinting().create().toJson(priceHistory);
         Resource.save(new File(filePath), json);
     }
 
-    public List<PriceHistory> priceHistory(List<CandleStick> candleSticks)
+    public List<PriceHistory> priceHistory(Interval interval, List<CandleStick> candleSticks)
     {
+        int sections = interval.inSeconds() / 10;
         List<PriceHistory> list = new ArrayList<>();
 
         for (CandleStick candleStick : candleSticks)
         {
-            // TODO: split
-            list.add(new PriceHistory(candleStick.time(), candleStick.price()));
+            long openTime = candleStick.openTime();
+
+            for (int i = 0; i < sections; i++)
+            {
+                long time = openTime + (i * 10000);
+                double price = candleStick.price((double) i / (double) (sections - 1));
+
+                list.add(new PriceHistory(time, price));
+            }
         }
 
         return list;
@@ -42,7 +50,7 @@ public class DataCollector
 
     public static void main(String[] args) throws Exception
     {
-        String pair = "ETHBTC";
+        String pair = "ADABTC";
         Interval interval = Interval.ONE_MINUTE;
         Integer days = 7;
 

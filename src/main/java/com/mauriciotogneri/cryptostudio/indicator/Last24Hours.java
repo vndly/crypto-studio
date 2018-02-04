@@ -10,7 +10,7 @@ public class Last24Hours extends Indicator
 
     public Last24Hours(Interval interval)
     {
-        this.ring = new RingBuffer(interval.onDaySize());
+        this.ring = new RingBuffer(interval.inDays());
     }
 
     @Override

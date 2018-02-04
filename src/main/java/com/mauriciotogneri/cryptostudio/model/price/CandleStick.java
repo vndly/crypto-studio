@@ -39,33 +39,19 @@ public class CandleStick
         this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
     }
 
-    public long time()
+    public long openTime()
     {
         return openTime;
     }
 
-    public double price()
+    public double price(double fraction)
     {
-        return (open + close + high + low) / 4;
+        return open + ((close - open) * fraction);
     }
 
-    public double open()
+    @Override
+    public String toString()
     {
-        return open;
-    }
-
-    public double close()
-    {
-        return close;
-    }
-
-    public double low()
-    {
-        return low;
-    }
-
-    public double high()
-    {
-        return high;
+        return String.format("open: %s, close: %s", open, close);
     }
 }

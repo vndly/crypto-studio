@@ -41,7 +41,7 @@ public class Klines
             List<CandleStick> newElements = execute(httpRequest, endTime, size);
             list.addAll(newElements);
 
-            endTime = newElements.get(newElements.size() - 1).time() - 1;
+            endTime = newElements.get(newElements.size() - 1).openTime() - 1;
 
             try
             {

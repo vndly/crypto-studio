@@ -4,6 +4,7 @@ import com.mauriciotogneri.javautils.Strings;
 
 public enum Interval
 {
+    TEN_SECONDS("10s"),
     ONE_MINUTE("1m"),
     THREE_MINUTES("3m"),
     FIVE_MINUTES("5m"),
@@ -40,10 +41,13 @@ public enum Interval
         throw new RuntimeException("Invalid interval code: " + code);
     }
 
-    public int onSecondsSize()
+    public int inSeconds()
     {
         switch (this)
         {
+            case TEN_SECONDS:
+                return 10;
+
             case ONE_MINUTE:
                 return 60;
 
@@ -94,10 +98,13 @@ public enum Interval
         }
     }
 
-    public int onDaySize()
+    public int inDays()
     {
         switch (this)
         {
+            case TEN_SECONDS:
+                return 6 * 60 * 24;
+
             case ONE_MINUTE:
                 return 60 * 24;
 

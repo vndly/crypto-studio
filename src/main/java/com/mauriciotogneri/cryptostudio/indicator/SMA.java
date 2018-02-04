@@ -18,7 +18,7 @@ public class SMA extends Indicator
         this.periodIndex = 0;
         this.periodSum = 0;
 
-        this.period = period / interval.onSecondsSize();
+        this.period = period / interval.inSeconds();
         this.sma1 = new RingBuffer(sma1);
         this.sma2 = new RingBuffer(sma2);
     }
