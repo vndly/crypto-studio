@@ -56,4 +56,22 @@ public class RingBuffer
     {
         return sum() / ring.length;
     }
+
+    public double[] values()
+    {
+        int index = 0;
+        double[] values = new double[ring.length];
+
+        for (int i = position; i < ring.length; i++)
+        {
+            values[index++] = ring[i];
+        }
+
+        for (int i = 0; i < position; i++)
+        {
+            values[index++] = ring[i];
+        }
+
+        return values;
+    }
 }

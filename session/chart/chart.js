@@ -157,7 +157,7 @@ function render(data, sma1, sma2, ema1, ema2, events)
                 data: ema1,
                 id: 'ema1',
                 type: 'spline',
-                color: '#8ce38d'
+                color: '#61a053'
             },
             {
                 name: 'EMA 2',
@@ -165,7 +165,7 @@ function render(data, sma1, sma2, ema1, ema2, events)
                 id: 'ema2',
                 type: 'spline',
                 dashStyle: 'Dot',
-                color: '#8ce38d'
+                color: '#61a053'
             },
             {
                 type: 'flags',
