@@ -5,7 +5,29 @@ html
 
 fieldset
 {
-	display: inline-block
+	display: inline-block;
+	height: 4em;
+	border: 1px solid #ddd;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: #f5f5f5;
+}
+
+legend
+{
+	font-weight: bold;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px 10px 5px 10px;
+	background-color: #ffffff;
+	color: #444444;
+}
+
+input
+{
+	margin: 7px 5px 0px 10px;
+	vertical-align: bottom;
+	top: -1px;
 }
 
 .sma
