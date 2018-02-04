@@ -97,6 +97,19 @@ public class Studio
 
         for (PriceData priceData : priceList)
         {
+            double sma1 = priceData.sma1();
+            double sma2 = priceData.sma2();
+
+            if (sma1 != 0)
+            {
+                output.sma1(priceData.time(), sma1);
+            }
+
+            if (sma2 != 0)
+            {
+                output.sma2(priceData.time(), sma2);
+            }
+
             state = state.update(priceData);
         }
 

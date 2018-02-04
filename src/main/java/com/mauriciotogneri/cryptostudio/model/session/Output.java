@@ -9,6 +9,8 @@ public class Output
 {
     private final Input input;
     private final List<Operation> operations;
+    private final List<double[]> sma1;
+    private final List<double[]> sma2;
     private double profitTotal = 0;
     private double profitPercentage = 0;
 
@@ -16,6 +18,18 @@ public class Output
     {
         this.input = input;
         this.operations = new ArrayList<>();
+        this.sma1 = new ArrayList<>();
+        this.sma2 = new ArrayList<>();
+    }
+
+    public void sma1(long time, double value)
+    {
+        sma1.add(new double[]{time, value});
+    }
+
+    public void sma2(long time, double value)
+    {
+        sma2.add(new double[]{time, value});
     }
 
     public void operation(Operation operation)

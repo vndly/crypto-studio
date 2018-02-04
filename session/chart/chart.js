@@ -51,9 +51,9 @@ function processResult(json)
         var data = JSON.parse(response)
 
         var history = priceHistory(data)
-        var markers = eventMarkers(json)
+        var events = eventMarkers(json)
 
-        render(history, markers)
+        render(history, json.sma1, json.sma2 ,events)
     })
 }
 
@@ -101,7 +101,7 @@ function eventMarkers(json)
     return markers
 }
 
-function render(data, markers)
+function render(data, sma1, sma2, events)
 {
     Highcharts.stockChart('container', {
 
@@ -130,24 +130,19 @@ function render(data, markers)
                 name: 'Price',
                 data: data,
                 id: 'dataseries'
-            }
-
-            ,{
-                name: 'SMA 24',
-                data: [],
+            },{
+                name: 'SMA 1',
+                data: sma1,
                 id: 'sma1',
                 color: '#00FF00'
-            }
-            ,{
-                name: 'SMA 12',
-                data: [],
+            },{
+                name: 'SMA 2',
+                data: sma2,
                 id: 'sma2',
                 color: '#FF0000'
-            }
-
-            ,{
+            },{
                 type: 'flags',
-                data: markers,
+                data: events,
                 onSeries: 'dataseries',
                 shape: 'squarepin',
                 width: 30
