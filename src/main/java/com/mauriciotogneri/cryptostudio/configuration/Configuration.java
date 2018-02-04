@@ -25,6 +25,15 @@ public class Configuration
     public final Range<Integer> smaPeriod;
     public final Range<Integer> sma1;
     public final Range<Integer> sma2;
+    public final Range<Integer> smaCrossCandles;
+
+    public final Range<Integer> emaPeriod;
+    public final Range<Integer> ema1;
+    public final Range<Integer> ema2;
+    public final Range<Integer> emaCrossCandles;
+
+    public final Range<Integer> bbPeriod;
+    public final Range<Integer> bbSma;
 
     public Configuration(String filePath) throws Exception
     {
@@ -54,6 +63,15 @@ public class Configuration
             smaPeriod = new RangeInteger(properties.getProperty("SMA_period"));
             sma1 = new RangeInteger(properties.getProperty("SMA_1"));
             sma2 = new RangeInteger(properties.getProperty("SMA_2"));
+            smaCrossCandles = new RangeInteger(properties.getProperty("SMA_cross_candles"));
+
+            emaPeriod = new RangeInteger(properties.getProperty("EMA_period"));
+            ema1 = new RangeInteger(properties.getProperty("EMA_1"));
+            ema2 = new RangeInteger(properties.getProperty("EMA_2"));
+            emaCrossCandles = new RangeInteger(properties.getProperty("EMA_cross_candles"));
+
+            bbPeriod = new RangeInteger(properties.getProperty("BB_period"));
+            bbSma = new RangeInteger(properties.getProperty("BB_sma"));
         }
         finally
         {

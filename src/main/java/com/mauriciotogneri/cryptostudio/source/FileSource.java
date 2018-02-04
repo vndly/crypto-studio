@@ -2,6 +2,7 @@ package com.mauriciotogneri.cryptostudio.source;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mauriciotogneri.cryptostudio.indicator.EMA;
 import com.mauriciotogneri.cryptostudio.indicator.Last24Hours;
 import com.mauriciotogneri.cryptostudio.indicator.SMA;
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
@@ -52,6 +53,7 @@ public class FileSource extends Source
     {
         Last24Hours last24Hours = new Last24Hours(input.interval());
         SMA sma = new SMA(input.interval(), input.smaPeriod, input.sma1, input.sma2);
+        EMA ema = new EMA(input.interval(), input.emaPeriod, input.ema1, input.ema2);
 
         List<PriceData> priceData = new ArrayList<>();
 
@@ -59,13 +61,16 @@ public class FileSource extends Source
         {
             last24Hours.update(price);
             sma.update(price);
+            ema.update(price);
 
             priceData.add(new PriceData(
                     price.time(),
                     price.price(),
+                    last24Hours.oldest(),
                     sma.sma1(),
                     sma.sma2(),
-                    last24Hours.oldest()));
+                    ema.ema1(),
+                    ema.ema2()));
         }
 
         return priceData;

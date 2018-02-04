@@ -50,23 +50,51 @@ public class Studio
                                                         {
                                                             for (Integer sma2 : configuration.sma2)
                                                             {
-                                                                Input input = new Input(source,
-                                                                                        pair,
-                                                                                        interval,
-                                                                                        maxCost,
-                                                                                        buyStrategy,
-                                                                                        buyValue,
-                                                                                        trailingBuy,
-                                                                                        sellStrategy,
-                                                                                        sellValue,
-                                                                                        trailingProfit,
-                                                                                        stopLossTrigger,
-                                                                                        smaPeriod,
-                                                                                        sma1,
-                                                                                        sma2);
+                                                                for (Integer smaCrossCandles : configuration.smaCrossCandles)
+                                                                {
+                                                                    for (Integer emaPeriod : configuration.emaPeriod)
+                                                                    {
+                                                                        for (Integer ema1 : configuration.ema1)
+                                                                        {
+                                                                            for (Integer ema2 : configuration.ema2)
+                                                                            {
+                                                                                for (Integer emaCrossCandles : configuration.emaCrossCandles)
+                                                                                {
+                                                                                    for (Integer bbPeriod : configuration.bbPeriod)
+                                                                                    {
+                                                                                        for (Integer bbSma : configuration.bbSma)
+                                                                                        {
+                                                                                            Input input = new Input(source,
+                                                                                                                    pair,
+                                                                                                                    interval,
+                                                                                                                    maxCost,
+                                                                                                                    buyStrategy,
+                                                                                                                    buyValue,
+                                                                                                                    trailingBuy,
+                                                                                                                    sellStrategy,
+                                                                                                                    sellValue,
+                                                                                                                    trailingProfit,
+                                                                                                                    stopLossTrigger,
+                                                                                                                    smaPeriod,
+                                                                                                                    sma1,
+                                                                                                                    sma2,
+                                                                                                                    smaCrossCandles,
+                                                                                                                    emaPeriod,
+                                                                                                                    ema1,
+                                                                                                                    ema2,
+                                                                                                                    emaCrossCandles,
+                                                                                                                    bbPeriod,
+                                                                                                                    bbSma);
 
-                                                                Output output = simulate(input);
-                                                                outputs.add(output);
+                                                                                            Output output = simulate(input);
+                                                                                            outputs.add(output);
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -108,6 +136,19 @@ public class Studio
             if (sma2 != 0)
             {
                 output.sma2(priceData.time(), sma2);
+            }
+
+            double ema1 = priceData.ema1();
+            double ema2 = priceData.ema2();
+
+            if (ema1 != 0)
+            {
+                output.ema1(priceData.time(), ema1);
+            }
+
+            if (ema2 != 0)
+            {
+                output.ema2(priceData.time(), ema2);
             }
 
             state = state.update(priceData);
