@@ -48,10 +48,4 @@ public class CandleStick
     {
         return open + ((close - open) * fraction);
     }
-
-    @Override
-    public String toString()
-    {
-        return String.format("open: %s, close: %s", open, close);
-    }
 }

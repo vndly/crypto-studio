@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.type;
 
-public enum  Pair
+public enum Pair
 {
     ADABTC,
     ETHBTC,

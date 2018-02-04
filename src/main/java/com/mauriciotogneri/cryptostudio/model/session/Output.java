@@ -24,12 +24,12 @@ public class Output
 
     public void sma1(long time, double value)
     {
-        sma1.add(new double[]{time, value});
+        sma1.add(new double[] {time, value});
     }
 
     public void sma2(long time, double value)
     {
-        sma2.add(new double[]{time, value});
+        sma2.add(new double[] {time, value});
     }
 
     public void operation(Operation operation)
