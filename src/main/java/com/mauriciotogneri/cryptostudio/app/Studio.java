@@ -123,31 +123,40 @@ public class Studio
         List<PriceData> priceList = source.priceData(input);
         State state = new WatchingBuyState(session, new Operation(), priceList.get(0));
 
+        double lastSma1 = 0;
+        double lastSma2 = 0;
+        double lastEma1 = 0;
+        double lastEma2 = 0;
+
         for (PriceData priceData : priceList)
         {
             double sma1 = priceData.sma1();
             double sma2 = priceData.sma2();
 
-            if (sma1 != 0)
+            if ((sma1 != 0) && (sma1 != lastSma1))
             {
+                lastSma1 = sma1;
                 output.sma1(priceData.time(), sma1);
             }
 
-            if (sma2 != 0)
+            if ((sma2 != 0) && (sma2 != lastSma2))
             {
+                lastSma2 = sma2;
                 output.sma2(priceData.time(), sma2);
             }
 
             double ema1 = priceData.ema1();
             double ema2 = priceData.ema2();
 
-            if (ema1 != 0)
+            if ((ema1 != 0) && (ema1 != lastEma1))
             {
+                lastEma1 = ema1;
                 output.ema1(priceData.time(), ema1);
             }
 
-            if (ema2 != 0)
+            if ((ema2 != 0) && (ema2 != lastEma2))
             {
+                lastEma2 = ema2;
                 output.ema2(priceData.time(), ema2);
             }
 
