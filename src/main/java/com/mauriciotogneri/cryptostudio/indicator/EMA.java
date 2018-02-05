@@ -5,8 +5,7 @@ import com.mauriciotogneri.cryptostudio.type.Interval;
 import com.mauriciotogneri.cryptostudio.util.GroupedRingBuffer;
 
 /**
- * EMA = ((Current_Price - Previous_EMA) * Weight) + Previous EMA
- * EMA = (Current_Price * Weight) + (Previous_EMA * (1 – Weight))
+ * EMA = ((Current_Price - Previous_EMA) * Weight) + Previous_EMA
  */
 public class EMA extends Indicator
 {
