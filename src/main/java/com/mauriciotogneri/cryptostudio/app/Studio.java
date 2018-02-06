@@ -18,6 +18,8 @@ import java.util.List;
 
 public class Studio
 {
+    private static final int MAX_RESULTS = 10;
+
     public List<Output> run(Configuration configuration)
     {
         int index = 0;
@@ -119,7 +121,7 @@ public class Studio
     {
         long startTime = System.currentTimeMillis();
 
-        Output output = new Output(index + 1, input);
+        Output output = new Output(input);
         Source source = input.source();
         Session session = new Session(input, output);
         List<PriceData> priceList = source.priceData(input);
@@ -178,6 +180,12 @@ public class Studio
         {
             Studio studio = new Studio();
             List<Output> outputs = studio.run(new Configuration(args[0]));
+            outputs.sort(Output::compareTo);
+
+            if (outputs.size() > MAX_RESULTS)
+            {
+                outputs = outputs.subList(0, MAX_RESULTS);
+            }
 
             String json = new GsonBuilder().setPrettyPrinting().create().toJson(outputs);
             Resource.save(new File(args[1]), json);

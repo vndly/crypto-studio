@@ -36,7 +36,7 @@ $(document).ready(function()
 
 function entryName(index, entry)
 {
-    return entry.id + '. ' + entry.input.pair + ' | ' + entry.operations.length + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
+    return (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + entry.operations.length + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
 }
 
 function loadJSON(file, callback)

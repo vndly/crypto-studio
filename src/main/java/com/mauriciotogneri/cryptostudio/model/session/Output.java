@@ -1,13 +1,13 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
+import com.google.gson.GsonBuilder;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Output
+public class Output implements Comparable<Output>
 {
-    private final Integer id;
     private final Input input;
     private final List<Operation> operations;
     private final List<double[]> sma1;
@@ -17,9 +17,8 @@ public class Output
     private double profitTotal = 0;
     private double profitPercentage = 0;
 
-    public Output(Integer id, Input input)
+    public Output(Input input)
     {
-        this.id = id;
         this.input = input;
         this.operations = new ArrayList<>();
         this.sma1 = new ArrayList<>();
@@ -63,5 +62,36 @@ public class Output
 
         profitTotal = Decimal.roundPrice(sumTotal);
         profitPercentage = Decimal.roundPercentage(sumPercentage / operations.size());
+    }
+
+    private Summary summary()
+    {
+        return new Summary(input, profitTotal, profitPercentage);
+    }
+
+    @Override
+    public int compareTo(Output output)
+    {
+        return Double.compare(output.profitTotal, profitTotal);
+    }
+
+    private static class Summary
+    {
+        private final Input input;
+        private final double profitTotal;
+        private final double profitPercentage;
+
+        private Summary(Input input, double profitTotal, double profitPercentage)
+        {
+            this.input = input;
+            this.profitTotal = profitTotal;
+            this.profitPercentage = profitPercentage;
+        }
+    }
+
+    @Override
+    public String toString()
+    {
+        return new GsonBuilder().setPrettyPrinting().create().toJson(summary());
     }
 }
