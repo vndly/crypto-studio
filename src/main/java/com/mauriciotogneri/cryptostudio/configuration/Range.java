@@ -15,6 +15,11 @@ public class Range<T> implements Iterable<T>
         list.add(element);
     }
 
+    public int size()
+    {
+        return list.size();
+    }
+
     @Override
     public Iterator<T> iterator()
     {

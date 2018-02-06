@@ -47,7 +47,7 @@ public abstract class Strategy
                 return new EMACROSS();
 
             case EMAGAIN:
-                return new EMAGAIN();
+                return new EMAGAIN(input.buyValue);
 
             case EMASPREAD:
                 return new EMASPREAD();

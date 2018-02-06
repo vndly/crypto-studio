@@ -20,6 +20,8 @@ public class Studio
 {
     public List<Output> run(Configuration configuration)
     {
+        int index = 0;
+        int size = configuration.size();
         List<Output> outputs = new ArrayList<>();
 
         for (String source : configuration.source)
@@ -86,7 +88,7 @@ public class Studio
                                                                                                                     bbPeriod,
                                                                                                                     bbSma);
 
-                                                                                            Output output = simulate(input);
+                                                                                            Output output = simulate(input, index++, size);
                                                                                             outputs.add(output);
                                                                                         }
                                                                                     }
@@ -113,7 +115,7 @@ public class Studio
         return outputs;
     }
 
-    public Output simulate(Input input)
+    public Output simulate(Input input, int index, int size)
     {
         long startTime = System.currentTimeMillis();
 
@@ -165,7 +167,7 @@ public class Studio
 
         long endTime = System.currentTimeMillis();
 
-        System.out.println(String.format("Simulation time: %s ms", endTime - startTime));
+        System.out.println(String.format("Simulation time (%s/%s): %s ms", index + 1, size, endTime - startTime));
 
         return output;
     }

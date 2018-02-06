@@ -16,10 +16,21 @@ public class RangeDouble extends Range<Double>
             Double end = Double.parseDouble(parts[1].trim());
             Double step = Double.parseDouble(parts[2].trim());
 
-            while (start <= end)
+            if (start < end)
             {
-                add(start);
-                start += step;
+                while (start <= end)
+                {
+                    add(start);
+                    start += step;
+                }
+            }
+            else
+            {
+                while (start >= end)
+                {
+                    add(start);
+                    start += step;
+                }
             }
         }
         else

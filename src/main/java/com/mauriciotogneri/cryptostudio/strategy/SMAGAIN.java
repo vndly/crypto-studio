@@ -4,11 +4,11 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 /**
- * Buy as soon as the price goes below the specified SMA line.
+ * Buy as soon as the price goes a percentage below the specified SMA line.
  * ALL_buy_value is a percentage below or above the lowest of the 2 SMA lines.
  * Possible example:
  * -3 → buy if the current price is 3% below (or lower) the lowest SMA line
- * 3 → buy if the current price is 3% above (or lower) the lowest SMA line
+ * 3 → buy if the current price is 3% above (or higher) the lowest SMA line
  */
 public class SMAGAIN extends Strategy
 {
@@ -35,7 +35,7 @@ public class SMAGAIN extends Strategy
             }
             else
             {
-                return priceData.price() < Percentage.increaseOf(buyValue, lowestSMA);
+                return priceData.price() > Percentage.increaseOf(buyValue, lowestSMA);
             }
         }
         else

@@ -78,4 +78,34 @@ public class Configuration
             Resource.close(input);
         }
     }
+
+    public int size()
+    {
+        return source.size() *
+                pair.size() *
+                interval.size() *
+                maxCost.size() *
+
+                buyStrategy.size() *
+                buyValue.size() *
+                trailingBuy.size() *
+
+                sellStrategy.size() *
+                sellValue.size() *
+                trailingProfit.size() *
+                stopLossTrigger.size() *
+
+                smaPeriod.size() *
+                sma1.size() *
+                sma2.size() *
+                smaCrossCandles.size() *
+
+                emaPeriod.size() *
+                ema1.size() *
+                ema2.size() *
+                emaCrossCandles.size() *
+
+                bbPeriod.size() *
+                bbSma.size();
+    }
 }
