@@ -11,6 +11,11 @@ $(document).ready(function()
         {
             processResult(data[select.value])
         })
+        
+        data.sort(function(a, b)
+        {
+			return (a.profitTotal < b.profitTotal) ? 1 : ((a.profitTotal > b.profitTotal) ? -1 : 0)
+        })
 
         for (var index in data)
         {
@@ -31,7 +36,7 @@ $(document).ready(function()
 
 function entryName(index, entry)
 {
-    return (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + entry.operations.length + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
+    return entry.id + '. ' + entry.input.pair + ' | ' + entry.operations.length + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
 }
 
 function loadJSON(file, callback)

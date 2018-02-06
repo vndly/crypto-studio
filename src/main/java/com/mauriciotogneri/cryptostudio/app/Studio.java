@@ -119,7 +119,7 @@ public class Studio
     {
         long startTime = System.currentTimeMillis();
 
-        Output output = new Output(input);
+        Output output = new Output(index + 1, input);
         Source source = input.source();
         Session session = new Session(input, output);
         List<PriceData> priceList = source.priceData(input);

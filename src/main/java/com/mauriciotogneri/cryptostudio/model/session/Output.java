@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Output
 {
+    private final Integer id;
     private final Input input;
     private final List<Operation> operations;
     private final List<double[]> sma1;
@@ -16,8 +17,9 @@ public class Output
     private double profitTotal = 0;
     private double profitPercentage = 0;
 
-    public Output(Input input)
+    public Output(Integer id, Input input)
     {
+        this.id = id;
         this.input = input;
         this.operations = new ArrayList<>();
         this.sma1 = new ArrayList<>();
