@@ -31,7 +31,7 @@ $(document).ready(function()
 
 function entryName(index, entry)
 {
-    return (parseInt(index) + 1) + '. ' + operationsSummary(entry.operations) + ' | ' + entry.totalProfit + ' | ' + entry.averagePercentageProfit + '%'
+    return (parseInt(index) + 1) + '. ' + operationsSummary(entry.operations) + ' | ' + entry.totalProfit + ' | ' + entry.averagePercentageProfit.toFixed(2) + '%'
 }
 
 function loadJSON(file, callback)
@@ -70,7 +70,7 @@ function fillInputTable(result)
 {
 	fillInputCell('input.operations', operationsSummary(result.operations))
 	fillInputCell('input.totalProfit', result.totalProfit)
-	fillInputCell('input.averagePercentage', result.averagePercentageProfit + '%')
+	fillInputCell('input.averagePercentage', result.averagePercentageProfit.toFixed(2) + '%')
 	fillInputCell('input.source', result.input.source)
 	fillInputCell('input.pair', result.input.pair)
 	fillInputCell('input.interval', result.input.interval)

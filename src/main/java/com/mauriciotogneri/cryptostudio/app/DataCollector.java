@@ -53,7 +53,7 @@ public class DataCollector
     {
         Pair pair = Pair.ETHBTC;
         Interval interval = Interval.ONE_MINUTE;
-        Integer days = 7;
+        Integer days = 30;
 
         DataCollector dataCollector = new DataCollector();
         dataCollector.run(pair, interval, days);

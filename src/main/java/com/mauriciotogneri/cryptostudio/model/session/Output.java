@@ -82,7 +82,7 @@ public class Output
 
     private int percentageProfitableOperations()
     {
-        return (int)((double)profitableOperations()/(double) operations.size());
+        return (int) ((double) profitableOperations() / (double) operations.size());
     }
 
     private Summary summary()
