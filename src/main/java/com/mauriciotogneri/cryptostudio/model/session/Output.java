@@ -51,13 +51,20 @@ public class Output implements Comparable<Output>
     {
         operations.add(operation);
 
+        /*outputs.sort(Output::compareTo);
+
+        if (outputs.size() > MAX_RESULTS)
+        {
+            outputs = outputs.subList(0, MAX_RESULTS);
+        }*/
+
         double sumTotal = 0;
         double sumPercentage = 0;
 
         for (Operation current : operations)
         {
             sumTotal += current.totalProfit();
-            sumPercentage += current.averagePercentageProfit();
+            sumPercentage += current.percentageProfit();
         }
 
         totalProfit = Decimal.roundPrice(sumTotal);

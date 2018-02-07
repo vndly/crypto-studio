@@ -31,7 +31,7 @@ public class Operation
         return tradeSaleEvent().totalProfit;
     }
 
-    public double averagePercentageProfit()
+    public double percentageProfit()
     {
         return tradeSaleEvent().percentageProfit;
     }
