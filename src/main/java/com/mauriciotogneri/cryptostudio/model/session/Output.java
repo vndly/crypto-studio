@@ -14,8 +14,8 @@ public class Output implements Comparable<Output>
     private final List<double[]> sma2;
     private final List<double[]> ema1;
     private final List<double[]> ema2;
-    private double profitTotal = 0;
-    private double profitPercentage = 0;
+    private double totalProfit = 0;
+    private double averagePercentageProfit = 0;
 
     public Output(Input input)
     {
@@ -56,36 +56,36 @@ public class Output implements Comparable<Output>
 
         for (Operation current : operations)
         {
-            sumTotal += current.profitTotal();
-            sumPercentage += current.profitPercentage();
+            sumTotal += current.totalProfit();
+            sumPercentage += current.averagePercentageProfit();
         }
 
-        profitTotal = Decimal.roundPrice(sumTotal);
-        profitPercentage = Decimal.roundPercentage(sumPercentage / operations.size());
+        totalProfit = Decimal.roundPrice(sumTotal);
+        averagePercentageProfit = Decimal.roundPercentage(sumPercentage / operations.size());
     }
 
     private Summary summary()
     {
-        return new Summary(input, profitTotal, profitPercentage);
+        return new Summary(input, totalProfit, averagePercentageProfit);
     }
 
     @Override
     public int compareTo(Output output)
     {
-        return Double.compare(output.profitTotal, profitTotal);
+        return Double.compare(output.totalProfit, totalProfit);
     }
 
     private static class Summary
     {
         private final Input input;
-        private final double profitTotal;
-        private final double profitPercentage;
+        private final double totalProfit;
+        private final double averagePercentageProfit;
 
-        private Summary(Input input, double profitTotal, double profitPercentage)
+        private Summary(Input input, double totalProfit, double averagePercentageProfit)
         {
             this.input = input;
-            this.profitTotal = profitTotal;
-            this.profitPercentage = profitPercentage;
+            this.totalProfit = totalProfit;
+            this.averagePercentageProfit = averagePercentageProfit;
         }
     }
 

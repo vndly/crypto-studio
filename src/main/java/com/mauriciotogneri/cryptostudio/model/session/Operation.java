@@ -26,14 +26,14 @@ public class Operation
         return purchase().price;
     }
 
-    public double profitTotal()
+    public double totalProfit()
     {
-        return tradeSaleEvent().profitTotal;
+        return tradeSaleEvent().totalProfit;
     }
 
-    public double profitPercentage()
+    public double averagePercentageProfit()
     {
-        return tradeSaleEvent().profitPercentage;
+        return tradeSaleEvent().percentageProfit;
     }
 
     private TradeSaleEvent tradeSaleEvent()

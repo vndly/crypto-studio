@@ -11,11 +11,6 @@ $(document).ready(function()
         {
             processResult(data[select.value])
         })
-        
-        data.sort(function(a, b)
-        {
-			return (a.profitTotal < b.profitTotal) ? 1 : ((a.profitTotal > b.profitTotal) ? -1 : 0)
-        })
 
         for (var index in data)
         {
@@ -36,7 +31,7 @@ $(document).ready(function()
 
 function entryName(index, entry)
 {
-    return (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + entry.operations.length + ' | ' + entry.profitTotal + ' | ' + entry.profitPercentage + '%'
+    return (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + operationsSummary(entry.operations) + ' | ' + entry.totalProfit + ' | ' + entry.averagePercentageProfit + '%'
 }
 
 function loadJSON(file, callback)
@@ -58,6 +53,8 @@ function processResult(json)
 {
     var fileName = '../../data/' + json.input.pair + '_' + json.input.interval + '.json'
 
+	fillInputTable(json)
+
     loadJSON(fileName, function(response)
     {
         var data = JSON.parse(response)
@@ -67,6 +64,67 @@ function processResult(json)
 
         render(history, json.sma1, json.sma2, json.ema1, json.ema2, events)
     })
+}
+
+function fillInputTable(result)
+{
+	fillInputCell('input.operations', operationsSummary(result.operations))
+	fillInputCell('input.totalProfit', result.totalProfit)
+	fillInputCell('input.averagePercentage', result.averagePercentageProfit + '%')
+	fillInputCell('input.source', result.input.source)
+	fillInputCell('input.pair', result.input.pair)
+	fillInputCell('input.interval', result.input.interval)
+	fillInputCell('input.maxCost', result.input.maxCost)
+	fillInputCell('input.buyStrategy', result.input.buyStrategy)
+	fillInputCell('input.buyValue', round(result.input.buyValue))
+	fillInputCell('input.trailingBuy', round(result.input.trailingBuy))
+	fillInputCell('input.sellStrategy', result.input.sellStrategy)
+	fillInputCell('input.sellValue', round(result.input.sellValue))
+	fillInputCell('input.trailingProfit', round(result.input.trailingProfit))
+	fillInputCell('input.stopLossTrigger', round(result.input.stopLossTrigger))
+	fillInputCell('input.smaPeriod', result.input.smaPeriod)
+	fillInputCell('input.sma1', result.input.sma1)
+	fillInputCell('input.sma2', result.input.sma2)
+	fillInputCell('input.smaCrossCandles', result.input.smaCrossCandles)
+	fillInputCell('input.emaPeriod', result.input.emaPeriod)
+	fillInputCell('input.ema1', result.input.ema1)
+	fillInputCell('input.ema2', result.input.ema2)
+	fillInputCell('input.emaCrossCandles', result.input.emaCrossCandles)
+	fillInputCell('input.bbPeriod', result.input.bbPeriod)
+	fillInputCell('input.bbSma', result.input.bbSma)
+}
+
+function operationsSummary(operations)
+{
+	var positive = 0
+	var negative = 0
+	
+	for (var index in operations)
+	{
+		var events = operations[index].events
+		var last = events[events.length-1]
+		
+		if (last.totalProfit > 0)
+		{
+			positive++
+		}
+		else
+		{
+			negative++
+		}
+	}
+	
+	return operations.length + ' (+' + positive + ' / -' + negative + ')'
+}
+
+function round(value)
+{
+	return Math.round(value * 100) / 100
+}
+
+function fillInputCell(name, value)
+{
+	document.getElementById(name).innerHTML = value
 }
 
 function priceHistory(json)

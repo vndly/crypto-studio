@@ -8,8 +8,8 @@ public class TradeSaleEvent extends Event
     public final double price;
     public final double amount;
     public final double total;
-    public final double profitTotal;
-    public final double profitPercentage;
+    public final double totalProfit;
+    public final double percentageProfit;
 
     public TradeSaleEvent(PriceData priceData, TradeBuyEvent tradeBuyEvent)
     {
@@ -18,7 +18,7 @@ public class TradeSaleEvent extends Event
         this.price = Decimal.roundPrice(priceData.price());
         this.amount = tradeBuyEvent.amount;
         this.total = Decimal.roundPrice(price * amount);
-        this.profitTotal = Decimal.roundPrice(total - tradeBuyEvent.total);
-        this.profitPercentage = Decimal.roundPercentage((total * 100 / tradeBuyEvent.total) - 100);
+        this.totalProfit = Decimal.roundPrice(total - tradeBuyEvent.total);
+        this.percentageProfit = Decimal.roundPercentage((total * 100 / tradeBuyEvent.total) - 100);
     }
 }

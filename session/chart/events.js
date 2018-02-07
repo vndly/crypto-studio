@@ -43,7 +43,7 @@ function eventText(event)
     }
     else if (event.type == 'sale')
     {
-        return '<b>' + event.type.replace('_', ' ') + '</b><br>price: ' + event.price + '<br>amount: ' + event.amount + '<br>total: ' + event.total + '<br>profit total: ' + event.profitTotal + '<br>profit percentage: ' + event.profitPercentage + '%'
+        return '<b>' + event.type.replace('_', ' ') + '</b><br>price: ' + event.price + '<br>amount: ' + event.amount + '<br>total: ' + event.total + '<br>profit total: ' + event.totalProfit + '<br>profit percentage: ' + event.averagePercentageProfit + '%'
     }
     else
     {

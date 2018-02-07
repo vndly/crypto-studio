@@ -8,8 +8,7 @@
     <link href="chart.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
-<table>
+<table class="config-table">
     <tr>
         <td class="input" valign="top">
             <fieldset>
@@ -30,12 +29,109 @@
                 <legend>Session</legend>
                 <select id="select"></select>
             </fieldset>
+            <table border="1" cellpadding="5" class="input-table">
+                <tr>
+                    <td class="input-table-key">Operations</td>
+                    <td id="input.operations" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Total Profit</td>
+                    <td id="input.totalProfit" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Average Percentage</td>
+                    <td id="input.averagePercentage" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Source</td>
+                    <td id="input.source" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Pair</td>
+                    <td id="input.pair" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Interval</td>
+                    <td id="input.interval" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Max Cost</td>
+                    <td id="input.maxCost" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Buy Strategy</td>
+                    <td id="input.buyStrategy" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Buy Value</td>
+                    <td id="input.buyValue" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Trailing Buy</td>
+                    <td id="input.trailingBuy" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Sell Strategy</td>
+                    <td id="input.sellStrategy" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Sell Value</td>
+                    <td id="input.sellValue" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Trailing Profit</td>
+                    <td id="input.trailingProfit" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">Stop Loss Trigger</td>
+                    <td id="input.stopLossTrigger" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">SMA Period</td>
+                    <td id="input.smaPeriod" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">SMA 1</td>
+                    <td id="input.sma1" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">SMA 2</td>
+                    <td id="input.sma2" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">SMA Cross Candles</td>
+                    <td id="input.smaCrossCandles" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">EMA Period</td>
+                    <td id="input.emaPeriod" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">EMA 1</td>
+                    <td id="input.ema1" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">EMA 2</td>
+                    <td id="input.ema2" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">EMA Cross Candles</td>
+                    <td id="input.emaCrossCandles" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">BB Period</td>
+                    <td id="input.bbPeriod" class="input-table-value"></td>
+                </tr>
+                <tr>
+                    <td class="input-table-key">BB SMA</td>
+                    <td id="input.bbSma" class="input-table-value"></td>
+                </tr>
+            </table>
         </td>
         <td>
             <div id="container" class="container"></div>
         </td>
     </tr>
 </table>
-
 </body>
 </html>
