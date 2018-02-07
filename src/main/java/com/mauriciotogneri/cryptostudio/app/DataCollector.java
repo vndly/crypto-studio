@@ -1,6 +1,6 @@
 package com.mauriciotogneri.cryptostudio.app;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 import com.mauriciotogneri.cryptostudio.api.Klines;
 import com.mauriciotogneri.cryptostudio.model.price.CandleStick;
 import com.mauriciotogneri.cryptostudio.model.price.PriceHistory;
@@ -24,7 +24,7 @@ public class DataCollector
         List<CandleStick> candleSticks = klines.execute();
         List<PriceHistory> priceHistory = priceHistory(interval, candleSticks);
 
-        String json = new GsonBuilder().setPrettyPrinting().create().toJson(priceHistory);
+        String json = new Gson().toJson(priceHistory);
         Resource.save(new File(filePath), json);
     }
 
@@ -51,11 +51,21 @@ public class DataCollector
 
     public static void main(String[] args) throws Exception
     {
-        Pair pair = Pair.ETHBTC;
+        Pair[] pairs = new Pair[] {
+                Pair.ADABTC,
+                Pair.ETHBTC,
+                Pair.LTCBTC,
+                Pair.NEOBTC,
+                Pair.XLMBTC,
+                Pair.XRPBTC
+        };
         Interval interval = Interval.ONE_MINUTE;
         Integer days = 30;
 
-        DataCollector dataCollector = new DataCollector();
-        dataCollector.run(pair, interval, days);
+        for (Pair pair : pairs)
+        {
+            DataCollector dataCollector = new DataCollector();
+            dataCollector.run(pair, interval, days);
+        }
     }
 }
