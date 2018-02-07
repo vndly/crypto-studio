@@ -31,7 +31,7 @@ $(document).ready(function()
 
 function entryName(index, entry)
 {
-    return (parseInt(index) + 1) + '. ' + entry.input.pair + ' | ' + operationsSummary(entry.operations) + ' | ' + entry.totalProfit + ' | ' + entry.averagePercentageProfit + '%'
+    return (parseInt(index) + 1) + '. ' + operationsSummary(entry.operations) + ' | ' + entry.totalProfit + ' | ' + entry.averagePercentageProfit + '%'
 }
 
 function loadJSON(file, callback)
