@@ -8,25 +8,34 @@
     <link href="chart.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<center>
-    <fieldset>
-        <legend>Session</legend>
-        <select id="select">
-        </select>
-    </fieldset>
-    <fieldset>
-        <legend>SMA</legend>
-        <input type="checkbox" checked onchange="updateSMA(this)"><span>Enabled</span>
-        <span class="sma"><b>―― SMA1</b></span>
-        <span class="sma"><b>······ SMA2</b></span>
-    </fieldset>
-    <fieldset>
-        <legend>EMA</legend>
-        <input type="checkbox" checked onchange="updateEMA(this)"><span>Enabled</span>
-        <span class="ema"><b>―― EMA 1</b></span>
-        <span class="ema"><b>······ EMA 2</b></span>
-    </fieldset>
-</center>
-<div id="container" class="container"></div>
+
+<table>
+    <tr>
+        <td class="input" valign="top">
+            <fieldset>
+                <legend>SMA</legend>
+                <input type="checkbox" checked onchange="updateSMA(this)"><span>Enabled</span>
+                <span class="sma"><b>―― SMA1</b></span>
+                <span class="sma"><b>······ SMA2</b></span>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <legend>EMA</legend>
+                <input type="checkbox" checked onchange="updateEMA(this)"><span>Enabled</span>
+                <span class="ema"><b>―― EMA 1</b></span>
+                <span class="ema"><b>······ EMA 2</b></span>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <legend>Session</legend>
+                <select id="select"></select>
+            </fieldset>
+        </td>
+        <td>
+            <div id="container" class="container"></div>
+        </td>
+    </tr>
+</table>
+
 </body>
 </html>
