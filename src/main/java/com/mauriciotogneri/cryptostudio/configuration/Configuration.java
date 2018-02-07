@@ -1,5 +1,6 @@
 package com.mauriciotogneri.cryptostudio.configuration;
 
+import com.mauriciotogneri.cryptostudio.type.Maximize;
 import com.mauriciotogneri.javautils.Resource;
 
 import java.io.FileInputStream;
@@ -8,6 +9,9 @@ import java.util.Properties;
 
 public class Configuration
 {
+    public final Integer maxResults;
+    public final Maximize maximize;
+
     public final Range<String> source;
     public final Range<String> pair;
     public final Range<String> interval;
@@ -45,6 +49,9 @@ public class Configuration
 
             Properties properties = new Properties();
             properties.load(input);
+
+            maxResults = Integer.parseInt(properties.getProperty("maxResults"));
+            maximize = Maximize.valueOf(properties.getProperty("maximize"));
 
             source = new RangeString(properties.getProperty("source"));
             pair = new RangeString(properties.getProperty("pair"));

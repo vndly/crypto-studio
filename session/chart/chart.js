@@ -114,7 +114,7 @@ function operationsSummary(operations)
 		}
 	}
 	
-	return operations.length + ' (+' + positive + ' / -' + negative + ')'
+	return operations.length + ' (+' + positive + '/-' + negative + '/' + parseInt(positive/operations.length*100) + '%)'
 }
 
 function round(value)

@@ -18,8 +18,6 @@ import java.util.List;
 
 public class Studio
 {
-    private static final int MAX_RESULTS = 10;
-
     public List<Output> run(Configuration configuration)
     {
         int index = 0;
@@ -178,13 +176,15 @@ public class Studio
     {
         if (args.length > 1)
         {
-            Studio studio = new Studio();
-            List<Output> outputs = studio.run(new Configuration(args[0]));
-            outputs.sort(Output::compareTo);
+            Configuration configuration = new Configuration(args[0]);
 
-            if (outputs.size() > MAX_RESULTS)
+            Studio studio = new Studio();
+            List<Output> outputs = studio.run(configuration);
+            outputs.sort((o1, o2) -> o1.compareTo(o2, configuration.maximize));
+
+            if (outputs.size() > configuration.maxResults)
             {
-                outputs = outputs.subList(0, MAX_RESULTS);
+                outputs = outputs.subList(0, configuration.maxResults);
             }
 
             String json = new GsonBuilder().setPrettyPrinting().create().toJson(outputs);

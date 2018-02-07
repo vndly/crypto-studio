@@ -1,12 +1,13 @@
 package com.mauriciotogneri.cryptostudio.model.session;
 
 import com.google.gson.GsonBuilder;
+import com.mauriciotogneri.cryptostudio.type.Maximize;
 import com.mauriciotogneri.cryptostudio.util.Decimal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Output implements Comparable<Output>
+public class Output
 {
     private final Input input;
     private final List<Operation> operations;
@@ -51,13 +52,6 @@ public class Output implements Comparable<Output>
     {
         operations.add(operation);
 
-        /*outputs.sort(Output::compareTo);
-
-        if (outputs.size() > MAX_RESULTS)
-        {
-            outputs = outputs.subList(0, MAX_RESULTS);
-        }*/
-
         double sumTotal = 0;
         double sumPercentage = 0;
 
@@ -71,15 +65,52 @@ public class Output implements Comparable<Output>
         averagePercentageProfit = Decimal.roundPercentage(sumPercentage / operations.size());
     }
 
+    private int profitableOperations()
+    {
+        int result = 0;
+
+        for (Operation operation : operations)
+        {
+            if (operation.totalProfit() > 0)
+            {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    private int percentageProfitableOperations()
+    {
+        return (int)((double)profitableOperations()/(double) operations.size());
+    }
+
     private Summary summary()
     {
         return new Summary(input, totalProfit, averagePercentageProfit);
     }
 
-    @Override
-    public int compareTo(Output output)
+    public int compareTo(Output output, Maximize maximize)
     {
-        return Double.compare(output.totalProfit, totalProfit);
+        switch (maximize)
+        {
+            case OPERATIONS:
+                return Double.compare(output.operations.size(), operations.size());
+
+            case PROFITABLE_OPERATIONS:
+                return Double.compare(output.profitableOperations(), profitableOperations());
+
+            case PERCENTAGE_PROFITABLE_OPERATIONS:
+                return Double.compare(output.percentageProfitableOperations(), percentageProfitableOperations());
+
+            case TOTAL_PROFIT:
+                return Double.compare(output.totalProfit, totalProfit);
+
+            case AVERAGE_PERCENTAGE_PROFIT:
+                return Double.compare(output.averagePercentageProfit, averagePercentageProfit);
+        }
+
+        throw new RuntimeException("Invalid maximize function");
     }
 
     private static class Summary
