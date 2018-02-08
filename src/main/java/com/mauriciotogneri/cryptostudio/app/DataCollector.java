@@ -15,32 +15,33 @@ import java.util.List;
 
 public class DataCollector
 {
-    public void run(Pair pair, Interval interval, Integer days) throws Exception
+    public void run(Pair pair, Interval inputInterval, Interval outputInterval, Integer days) throws Exception
     {
-        Integer limit = interval.inDays() * days;
-        String filePath = FileSource.file(pair, Interval.TEN_SECONDS);
+        Integer subdivision = inputInterval.inSeconds() / outputInterval.inSeconds();
+        Integer limit = inputInterval.inDays() * days;
+        String filePath = FileSource.file(pair, outputInterval);
 
-        Klines klines = new Klines(pair, interval, limit);
+        Klines klines = new Klines(pair, inputInterval, limit);
         List<CandleStick> candleSticks = klines.execute();
-        List<PriceHistory> priceHistory = priceHistory(interval, candleSticks);
+        List<PriceHistory> priceHistory = priceHistory(subdivision, candleSticks);
 
         String json = new Gson().toJson(priceHistory);
         Resource.save(new File(filePath), json);
     }
 
-    public List<PriceHistory> priceHistory(Interval interval, List<CandleStick> candleSticks)
+    public List<PriceHistory> priceHistory(Integer subdivision, List<CandleStick> candleSticks)
     {
-        int sections = interval.inSeconds() / 10;
         List<PriceHistory> list = new ArrayList<>();
 
         for (CandleStick candleStick : candleSticks)
         {
             long openTime = candleStick.openTime();
 
-            for (int i = 0; i < sections; i++)
+            for (int i = 0; i < subdivision; i++)
             {
-                long time = openTime + (i * 10000);
-                double price = candleStick.price((double) i / (double) (sections - 1));
+                double fraction = (subdivision == 1) ? 1 : ((double) i / (double) (subdivision - 1));
+                long time = openTime + (i * subdivision * 1000);
+                double price = candleStick.price(fraction);
 
                 list.add(new PriceHistory(time, price));
             }
@@ -52,20 +53,21 @@ public class DataCollector
     public static void main(String[] args) throws Exception
     {
         Pair[] pairs = new Pair[] {
-                Pair.ADABTC,
+                //Pair.ADABTC,
                 Pair.ETHBTC,
-                Pair.LTCBTC,
-                Pair.NEOBTC,
-                Pair.XLMBTC,
-                Pair.XRPBTC
+                //Pair.LTCBTC,
+                //Pair.NEOBTC,
+                //Pair.XLMBTC,
+                //Pair.XRPBTC
         };
-        Interval interval = Interval.ONE_MINUTE;
-        Integer days = 30;
+        Interval inputInterval = Interval.ONE_MINUTE;
+        Interval outputInterval = Interval.TEN_SECONDS;
+        Integer days = 7;
 
         for (Pair pair : pairs)
         {
             DataCollector dataCollector = new DataCollector();
-            dataCollector.run(pair, interval, days);
+            dataCollector.run(pair, inputInterval, outputInterval, days);
         }
     }
 }

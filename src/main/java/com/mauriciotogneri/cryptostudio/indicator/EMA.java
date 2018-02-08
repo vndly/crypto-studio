@@ -11,10 +11,9 @@ public class EMA extends Indicator
 {
     private double currentEma1;
     private double currentEma2;
-    private double previousEma1;
-    private double previousEma2;
 
-    private final double weight;
+    private final double weightEma1;
+    private final double weightEma2;
     private final GroupedRingBuffer ema1;
     private final GroupedRingBuffer ema2;
 
@@ -22,7 +21,8 @@ public class EMA extends Indicator
     {
         int period = smaPeriod / interval.inSeconds();
 
-        this.weight = 2d / (period + 1d);
+        this.weightEma1 = 2d / (ema1 + 1d);
+        this.weightEma2 = 2d / (ema2 + 1d);
         this.ema1 = new GroupedRingBuffer(period, ema1);
         this.ema2 = new GroupedRingBuffer(period, ema2);
     }
@@ -30,57 +30,34 @@ public class EMA extends Indicator
     @Override
     public void update(PriceHistory priceHistory)
     {
-        if (ema1.update(priceHistory))
-        {
-            updateEma1();
-        }
-
-        if (ema2.update(priceHistory))
-        {
-            updateEma2();
-        }
-    }
-
-    private void updateEma1()
-    {
         if (ema1.isFull())
         {
-            if (previousEma1 == 0)
-            {
-                previousEma1 = ema1.average();
-            }
-
-            currentEma1 = ema(ema1.values(), previousEma1, weight);
-            previousEma1 = currentEma1;
+            currentEma1 = ema(priceHistory.price(), currentEma1, weightEma1);
         }
-    }
+        else
+        {
+            if (ema1.update(priceHistory))
+            {
+                currentEma1 = ema1.average();
+            }
+        }
 
-    private void updateEma2()
-    {
         if (ema2.isFull())
         {
-            if (previousEma2 == 0)
+            currentEma2 = ema(priceHistory.price(), currentEma2, weightEma2);
+        }
+        else
+        {
+            if (ema2.update(priceHistory))
             {
-                previousEma2 = ema2.average();
+                currentEma2 = ema2.average();
             }
-
-            currentEma2 = ema(ema2.values(), previousEma2, weight);
-            previousEma2 = currentEma2;
         }
     }
 
-    private double ema(double[] values, double initialPrevious, double weight)
+    private double ema(double currentPrice, double previous, double weight)
     {
-        double previous = initialPrevious;
-        double ema = 0;
-
-        for (double value : values)
-        {
-            ema = ((value - previous) * weight) + previous;
-            previous = ema;
-        }
-
-        return ema;
+        return ((currentPrice - previous) * weight) + previous;
     }
 
     public double ema1()
