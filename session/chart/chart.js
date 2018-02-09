@@ -62,12 +62,12 @@ function processResult(json)
         var history = priceHistory(data)
         var events = eventMarkers(json)
         
-        var markersWB = markersByType('WB', events)
-        var markersTB = markersByType('TB', events)
-        var markersB  = markersByType('B',  events)
-        var markersWS = markersByType('WS', events)
-        var markersTS = markersByType('TS', events)
-        var markersS  = markersByType('S',  events)
+        var markersWB = markersByType(TYPE_WB, events)
+        var markersTB = markersByType(TYPE_TB, events)
+        var markersB  = markersByType(TYPE_B,  events)
+        var markersWS = markersByType(TYPE_WS, events)
+        var markersTS = markersByType(TYPE_TS, events)
+        var markersS  = markersByType(TYPE_S,  events)
 
         render(history, json.sma1, json.sma2, json.ema1, json.ema2, markersWB, markersTB, markersB, markersWS, markersTS, markersS)
     })
@@ -160,7 +160,7 @@ function eventMarkers(json)
         for (var i in operation.events)
         {
             var event = operation.events[i]
-            var type = eventTitle(event)
+            var type = eventType(event)
         
             markers.push(
             {
@@ -229,7 +229,8 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 data: sma1,
                 id: 'sma1',
                 type: 'spline',
-                color: '#da6767'
+                color: '#da6767',
+                visible: false
             },
             {
                 name: 'SMA 2',
@@ -237,14 +238,16 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 id: 'sma2',
                 type: 'spline',
                 dashStyle: 'Dot',
-                color: '#da6767'
+                color: '#da6767',
+				visible: false
             },
             {
                 name: 'EMA 1',
                 data: ema1,
                 id: 'ema1',
                 type: 'spline',
-                color: '#61a053'
+                color: '#61a053',
+                visible: false
             },
             {
                 name: 'EMA 2',
@@ -252,7 +255,8 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 id: 'ema2',
                 type: 'spline',
                 dashStyle: 'Dot',
-                color: '#61a053'
+                color: '#61a053',
+                visible: false
             },
             {
                 type: 'flags',
