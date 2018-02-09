@@ -13,14 +13,14 @@
         <td class="input" valign="top">
             <fieldset>
                 <legend>SMA</legend>
-                <input type="checkbox" checked onchange="updateSMA(this)"><span>Enabled</span>
+                <input type="checkbox" checked onchange="showSeries(1, 2, this)"><span>Enabled</span>
                 <span class="sma"><b>―― SMA1</b></span>
                 <span class="sma"><b>··· SMA2</b></span>
             </fieldset>
             <br/>
             <fieldset>
                 <legend>EMA</legend>
-                <input type="checkbox" checked onchange="updateEMA(this)"><span>Enabled</span>
+                <input type="checkbox" checked onchange="showSeries(3, 4, this)"><span>Enabled</span>
                 <span class="ema"><b>―― EMA 1</b></span>
                 <span class="ema"><b>··· EMA 2</b></span>
             </fieldset>
@@ -131,6 +131,14 @@
             </table>
         </td>
         <td>
+            <div class="events-container">
+                <input type="checkbox" onchange="showEvent(5, this)"  class="event">Watching Buy
+                <input type="checkbox" onchange="showEvent(6, this)"  class="event">Trailing Buy
+                <input type="checkbox" onchange="showEvent(7, this)"  class="event">Buy
+                <input type="checkbox" onchange="showEvent(8, this)"  class="event">Watching Sell
+                <input type="checkbox" onchange="showEvent(9, this)"  class="event">Trailing Sell
+                <input type="checkbox" onchange="showEvent(10, this)" class="event">Sell
+            </div>
             <div id="container" class="container"></div>
         </td>
     </tr>

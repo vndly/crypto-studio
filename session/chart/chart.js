@@ -61,8 +61,15 @@ function processResult(json)
 
         var history = priceHistory(data)
         var events = eventMarkers(json)
+        
+        var markersWB = markersByType('WB', events)
+        var markersTB = markersByType('TB', events)
+        var markersB  = markersByType('B',  events)
+        var markersWS = markersByType('WS', events)
+        var markersTS = markersByType('TS', events)
+        var markersS  = markersByType('S',  events)
 
-        render(history, json.sma1, json.sma2, json.ema1, json.ema2, events)
+        render(history, json.sma1, json.sma2, json.ema1, json.ema2, markersWB, markersTB, markersB, markersWS, markersTS, markersS)
     })
 }
 
@@ -153,16 +160,15 @@ function eventMarkers(json)
         for (var i in operation.events)
         {
             var event = operation.events[i]
-
-            if (isValidEvent(event))
+            var type = eventTitle(event)
+        
+            markers.push(
             {
-                markers.push(
-                {
-                    x: event.time,
-                    title: markerIndex + eventTitle(event),
-                    text: eventText(event)
-                })
-            }
+                type: type,
+                x: event.time,
+                title: markerIndex + type,
+                text: eventText(event)
+            })
         }
 
         markerIndex++
@@ -171,7 +177,24 @@ function eventMarkers(json)
     return markers
 }
 
-function render(data, sma1, sma2, ema1, ema2, events)
+function markersByType(type, list)
+{
+	var markers = []
+	
+	for (var index in list)
+	{
+		var element = list[index]
+		
+		if (element.type == type)
+		{
+			markers.push(element)
+		}
+	}
+	
+	return markers
+}
+
+function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, markersWS, markersTS, markersS)
 {
     chart = Highcharts.stockChart('container', {
 
@@ -233,39 +256,78 @@ function render(data, sma1, sma2, ema1, ema2, events)
             },
             {
                 type: 'flags',
-                data: events,
+                data: markersWB,
                 onSeries: 'dataseries',
                 shape: 'squarepin',
-                width: 30
-            }
+                width: 30,
+                visible: false
+            },
+	        {
+	            type: 'flags',
+	            data: markersTB,
+	            onSeries: 'dataseries',
+	            shape: 'squarepin',
+	            width: 30,
+	            visible: false
+	        },
+	        {
+	            type: 'flags',
+	            data: markersB,
+	            onSeries: 'dataseries',
+	            shape: 'squarepin',
+	            width: 30,
+	            visible: false
+	        },
+	        {
+	            type: 'flags',
+	            data: markersWS,
+	            onSeries: 'dataseries',
+	            shape: 'squarepin',
+	            width: 30,
+	            visible: false
+	        },
+	        {
+	            type: 'flags',
+	            data: markersTS,
+	            onSeries: 'dataseries',
+	            shape: 'squarepin',
+	            width: 30,
+	            visible: false
+	        },
+	        {
+	            type: 'flags',
+	            data: markersS,
+	            onSeries: 'dataseries',
+	            shape: 'squarepin',
+	            width: 30,
+	            visible: false
+	        }
         ]
     })
 }
 
-function updateSMA(checkbox)
-{
-	if (checkbox.checked)
-	{
-		chart.series[1].show()
-		chart.series[2].show()
-	}
-	else
-	{
-		chart.series[1].hide()
-        chart.series[2].hide()
-	}
-}
-
-function updateEMA(checkbox)
+function showSeries(indexA, indexB, checkbox)
 {
 	if (checkbox.checked)
     {
-        chart.series[3].show()
-        chart.series[4].show()
+        chart.series[indexA].show()
+        chart.series[indexB].show()
     }
     else
     {
-        chart.series[3].hide()
-        chart.series[4].hide()
+        chart.series[indexA].hide()
+        chart.series[indexB].hide()
+    }
+}
+
+function showEvent(index, checkbox)
+{
+	if (checkbox.checked)
+    {
+        chart.series[index].show()
+    }
+    else
+    {
+        chart.series[index].hide()
     }
 }

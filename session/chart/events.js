@@ -1,8 +1,3 @@
-function isValidEvent(event)
-{
-    return (event.type == 'buy') || (event.type == 'sale')
-}
-
 function eventTitle(event)
 {
     if (event.type == 'watching_buy')
