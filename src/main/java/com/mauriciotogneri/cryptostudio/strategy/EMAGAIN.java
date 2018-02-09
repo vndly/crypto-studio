@@ -1,7 +1,6 @@
 package com.mauriciotogneri.cryptostudio.strategy;
 
 import com.mauriciotogneri.cryptostudio.model.price.PriceData;
-import com.mauriciotogneri.cryptostudio.util.Percentage;
 
 /**
  * Buy as soon as the price goes a percentage below the specified EMA line.
@@ -10,37 +9,26 @@ import com.mauriciotogneri.cryptostudio.util.Percentage;
  * -1 → buy if the current price is 1% below (or lower) the lowest EMA line
  * 1 → buy if the current price is 1% above (or higher) the lowest EMA line
  */
-public class EMAGAIN extends Strategy
+public class EMAGAIN extends MAGAIN
 {
-    private final double buyValue;
-
     public EMAGAIN(double buyValue)
     {
-        this.buyValue = buyValue;
+        super(buyValue);
     }
 
     @Override
-    public boolean update(PriceData priceData)
+    protected double lowest(PriceData priceData)
     {
         double ema1 = priceData.ema1();
         double ema2 = priceData.ema2();
 
         if ((ema1 != 0) && (ema2 != 0))
         {
-            double lowestEMA = Math.min(ema1, ema2);
-
-            if (buyValue < 0)
-            {
-                return priceData.price() < Percentage.decreaseOf(buyValue, lowestEMA);
-            }
-            else
-            {
-                return priceData.price() > Percentage.increaseOf(buyValue, lowestEMA);
-            }
+            return Math.min(ema1, ema2);
         }
         else
         {
-            return false;
+            return 0;
         }
     }
 }
