@@ -230,7 +230,7 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 id: 'sma1',
                 type: 'spline',
                 color: '#da6767',
-                visible: false
+                visible: isChecked('sma')
             },
             {
                 name: 'SMA 2',
@@ -239,7 +239,7 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 type: 'spline',
                 dashStyle: 'Dot',
                 color: '#da6767',
-				visible: false
+				visible: isChecked('sma')
             },
             {
                 name: 'EMA 1',
@@ -247,7 +247,7 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 id: 'ema1',
                 type: 'spline',
                 color: '#61a053',
-                visible: false
+                visible: isChecked('ema')
             },
             {
                 name: 'EMA 2',
@@ -256,55 +256,61 @@ function render(data, sma1, sma2, ema1, ema2, markersWB, markersTB, markersB, ma
                 type: 'spline',
                 dashStyle: 'Dot',
                 color: '#61a053',
-                visible: false
+                visible: isChecked('ema')
             },
             {
                 type: 'flags',
                 data: markersWB,
                 onSeries: 'dataseries',
                 shape: 'squarepin',
+                color: '#00DB04',
                 width: 30,
-                visible: false
+                visible: isChecked('eventWB')
             },
 	        {
 	            type: 'flags',
 	            data: markersTB,
 	            onSeries: 'dataseries',
 	            shape: 'squarepin',
+	            color: '#00A603',
 	            width: 30,
-	            visible: false
+	            visible: isChecked('eventTB')
 	        },
 	        {
 	            type: 'flags',
 	            data: markersB,
 	            onSeries: 'dataseries',
 	            shape: 'squarepin',
+	            color: '#006B02',
 	            width: 30,
-	            visible: false
+	            visible: isChecked('eventB')
 	        },
 	        {
 	            type: 'flags',
 	            data: markersWS,
 	            onSeries: 'dataseries',
 	            shape: 'squarepin',
+	            color: '#F50000',
 	            width: 30,
-	            visible: false
+	            visible: isChecked('eventWS')
 	        },
 	        {
 	            type: 'flags',
 	            data: markersTS,
 	            onSeries: 'dataseries',
 	            shape: 'squarepin',
+	            color: '#BF0000',
 	            width: 30,
-	            visible: false
+	            visible: isChecked('eventTS')
 	        },
 	        {
 	            type: 'flags',
 	            data: markersS,
 	            onSeries: 'dataseries',
 	            shape: 'squarepin',
+	            color: '#9C0000',
 	            width: 30,
-	            visible: false
+	            visible: isChecked('eventS')
 	        }
         ]
     })
@@ -322,6 +328,11 @@ function showSeries(indexA, indexB, checkbox)
         chart.series[indexA].hide()
         chart.series[indexB].hide()
     }
+}
+
+function isChecked(id)
+{
+	return document.getElementById(id).checked
 }
 
 function showEvent(index, checkbox)
