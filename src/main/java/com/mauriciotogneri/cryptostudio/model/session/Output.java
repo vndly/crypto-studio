@@ -95,10 +95,10 @@ public class Output
         switch (maximize)
         {
             case OPERATIONS:
-                return Double.compare(output.operations.size(), operations.size());
+                return Integer.compare(output.operations.size(), operations.size());
 
             case PROFITABLE_OPERATIONS:
-                return Double.compare(output.profitableOperations(), profitableOperations());
+                return Integer.compare(output.profitableOperations(), profitableOperations());
 
             case PERCENTAGE_PROFITABLE_OPERATIONS:
                 return Double.compare(output.percentageProfitableOperations(), percentageProfitableOperations());

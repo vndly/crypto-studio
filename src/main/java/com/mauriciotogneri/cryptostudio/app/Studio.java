@@ -6,14 +6,17 @@ import com.mauriciotogneri.cryptostudio.model.price.PriceData;
 import com.mauriciotogneri.cryptostudio.model.session.Input;
 import com.mauriciotogneri.cryptostudio.model.session.Operation;
 import com.mauriciotogneri.cryptostudio.model.session.Output;
+import com.mauriciotogneri.cryptostudio.model.session.Outputs;
 import com.mauriciotogneri.cryptostudio.model.session.Session;
 import com.mauriciotogneri.cryptostudio.source.Source;
 import com.mauriciotogneri.cryptostudio.state.State;
 import com.mauriciotogneri.cryptostudio.state.WatchingBuyState;
 import com.mauriciotogneri.javautils.Resource;
 
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Studio
@@ -22,7 +25,7 @@ public class Studio
     {
         int index = 0;
         int size = configuration.size();
-        List<Output> outputs = new ArrayList<>();
+        Outputs outputs = new Outputs(configuration.maxResults, configuration.maximize);
 
         for (String source : configuration.source)
         {
@@ -89,7 +92,7 @@ public class Studio
                                                                                                                     bbSma);
 
                                                                                             Output output = simulate(input, index++, size);
-                                                                                            outputs.add(output);
+                                                                                            outputs.addOutput(output);
                                                                                         }
                                                                                     }
                                                                                 }
@@ -167,7 +170,7 @@ public class Studio
 
         long endTime = System.currentTimeMillis();
 
-        System.out.println(String.format("Simulation time (%s/%s): %s ms", index + 1, size, endTime - startTime));
+        System.out.printf("Simulation time (%s/%s): %s ms%n", index + 1, size, endTime - startTime);
 
         return output;
     }
@@ -176,19 +179,20 @@ public class Studio
     {
         if (args.length > 1)
         {
+            DateTime startTime = DateTime.now();
+
             Configuration configuration = new Configuration(args[0]);
 
             Studio studio = new Studio();
             List<Output> outputs = studio.run(configuration);
-            outputs.sort((o1, o2) -> o1.compareTo(o2, configuration.maximize));
-
-            if (outputs.size() > configuration.maxResults)
-            {
-                outputs = outputs.subList(0, configuration.maxResults);
-            }
 
             String json = new GsonBuilder().setPrettyPrinting().create().toJson(outputs);
             Resource.save(new File(args[1]), json);
+
+            DateTime endTime = DateTime.now();
+            Period period = new Period(startTime, endTime);
+
+            System.out.printf("Total time: %s hours %s minutes %s seconds", period.getHours(), period.getMinutes(), period.getSeconds());
         }
         else
         {
