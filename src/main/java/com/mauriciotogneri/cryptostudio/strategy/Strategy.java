@@ -41,7 +41,7 @@ public abstract class Strategy
                 return new SMAGAIN(input.buyValue);
 
             case SMASPREAD:
-                return new SMASPREAD();
+                return new SMASPREAD(buyValue);
 
             case EMACROSS:
                 return new EMACROSS();
