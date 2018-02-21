@@ -41,7 +41,7 @@ public abstract class Strategy
                 return new SMAGAIN(input.buyValue);
 
             case SMASPREAD:
-                return new SMASPREAD(buyValue);
+                return new SMASPREAD(input.buyValue);
 
             case EMACROSS:
                 return new EMACROSS();
@@ -50,7 +50,7 @@ public abstract class Strategy
                 return new EMAGAIN(input.buyValue);
 
             case EMASPREAD:
-                return new EMASPREAD();
+                return new EMASPREAD(input.buyValue);
 
             default:
                 throw new RuntimeException("Invalid strategy: " + type);
